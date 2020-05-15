@@ -1,0 +1,22 @@
+#logo-wrapper {
+	display: table;
+	margin-left: 10%;
+	margin-top: 30px;
+}
+
+#logo-red {
+	width: 13px;
+	background-color: #e63946;
+	display: table-cell;
+}
+
+#logo-text {
+	margin: 0;
+	padding: 0;
+	display: table-cell;
+	color: #f1faee;
+	font-weight: 500;
+	letter-spacing: 3px;
+	padding-left: 20px;
+	font-size: 28px;
+}

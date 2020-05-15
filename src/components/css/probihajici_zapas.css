@@ -1,0 +1,95 @@
+#prob-zap-sect {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 50px;
+	height: 100%;
+	max-width: 450px;
+}
+
+#prob-zap-h2 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 24px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+#prob-zap-wrapper {
+	width: 100%;
+	height: 160px;
+}
+
+#prob-zap-tymy {
+	width: 100%;
+	height: 40px;
+	background-color: #23436f;
+	display: flex;
+	justify-content: space-around;
+}
+
+#prob-zap-skore-wrapper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+#prob-zap-domaci {
+	width: 50%;
+	height: 100%;
+	background-color: #e63946;
+	text-align: center;
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 80px;
+	position: relative;
+}
+
+#prob-zap-domaci:before {
+	content: "";
+	display: inline-block;
+	height: calc(100% + 20px);
+	vertical-align: middle;
+}
+
+#prob-zap-hoste {
+	width: 50%;
+	height: 100%;
+	background-color: #f1faee;
+	text-align: center;
+	color: #e63946;
+	font-weight: 500;
+	font-size: 80px;
+	position: relative;
+}
+.prob-zap-jmeno {
+	line-height: 40px;
+	font-weight: 400;
+	font-size: 17px;
+	color: #f1faee;
+	position: absolute;
+	top: -40px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#prob-zap-hoste:before {
+	content: "";
+	display: inline-block;
+	height: calc(100% + 20px);
+	vertical-align: middle;
+}
+
+#prob-zap-timer-left {
+	position: absolute;
+	right: 5px;
+	bottom: 0;
+	font-size: 30px;
+}
+
+#prob-zap-timer-right {
+	position: absolute;
+	left: 5px;
+	bottom: 0;
+	font-size: 30px;
+}
