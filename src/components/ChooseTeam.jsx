@@ -29,26 +29,16 @@ class ChooseTeam extends Component {
 			"Koťátka",
 		],
 		lastGreen: "",
+		search: "",
 	};
 
-	teamChoose = (team, obj, pos) => {
+	teamChoose = (team, obj) => {
 		if (this.state.lastGreen !== "") {
-			this.state.lastGreen.setState(
-				{ greenL: "", greenR: "" },
-				function () {
-					if (pos === "left") {
-						obj.state.greenL = "green";
-					} else {
-						obj.state.greenR = "green";
-					}
-				}
-			);
+			this.state.lastGreen.setState({ green: "" }, function () {
+				obj.state.green = "green";
+			});
 		} else {
-			if (pos === "left") {
-				obj.state.greenL = "green";
-			} else {
-				obj.state.greenR = "green";
-			}
+			obj.state.green = "green";
 		}
 
 		if (team === this.state.favTeam) {
@@ -65,16 +55,25 @@ class ChooseTeam extends Component {
 		}
 	};
 
-	createTeamOptions = () => {
-		let result = [];
+	saveFavTeam = () => {
+		localStorage.setItem("favTeam", JSON.stringify(this.state.favTeam));
+	};
 
-		for (let i = 0; i < this.state.teams.length; i += 2) {
-			result.push(
+	search = (e) => {
+		this.setState({ search: e.target.value, lastGreen: "" });
+		if (this.state.lastGreen !== "") {
+			this.state.lastGreen.setState({ green: "" });
+		}
+	};
+
+	render() {
+		var teamOptions = [];
+
+		for (let i = 0; i < this.state.teams.length; i++) {
+			teamOptions.push(
 				<TeamOption
-					left={this.state.teams[i]}
-					right={this.state.teams[i + 1]}
-					colorL={this.state.colors[i]}
-					colorR={this.state.colors[i + 1]}
+					teamName={this.state.teams[i]}
+					color={this.state.colors[i]}
 					teamChoose={this.teamChoose}
 					green=""
 					key={this.state.teams[i]}
@@ -82,14 +81,27 @@ class ChooseTeam extends Component {
 			);
 		}
 
-		return result;
-	};
+		if (teamOptions.length >= 0) {
+			teamOptions = teamOptions.filter((item, index) => {
+				if (
+					this.state.teams[index]
+						.toLowerCase()
+						.normalize("NFD")
+						.replace(/[\u0300-\u036f]/g, "")
+						.match(
+							this.state.search
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+						)
+				) {
+					return item;
+				} else {
+					return null;
+				}
+			});
+		}
 
-	saveFavTeam = () => {
-		localStorage.setItem("favTeam", JSON.stringify(this.state.favTeam));
-	};
-
-	render() {
 		return (
 			<>
 				<Logo />
@@ -103,11 +115,12 @@ class ChooseTeam extends Component {
 							name=""
 							id=""
 							placeholder="Hledat podle jména týmu, hráče nebo třídy"
+							onChange={this.search}
 						/>
 					</div>
 				</header>
 				<section id="chos-team-sect">
-					{this.createTeamOptions()}
+					{teamOptions.map((team) => team)}
 				</section>
 				<Link
 					id={"chos-team-ulozit"}

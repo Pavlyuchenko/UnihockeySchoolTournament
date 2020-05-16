@@ -6,6 +6,11 @@
 
 #chos-team-sect {
 	margin-bottom: 80px;
+	margin-left: 10%;
+	margin-right: 10%;
+	justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 #chos-team-header {
@@ -64,15 +69,16 @@
 	margin-top: 15px;
 }
 
-.chos-team-left-team {
+.chos-team-team {
 	overflow: hidden;
 	width: 47.5%;
 	padding-top: 46%;
 	position: relative;
 	text-align: center;
+	margin-top: 15px;
 }
 
-.chos-team-left-team span {
+.chos-team-team span {
 	position: absolute;
 	font-size: 20px;
 	left: 50%;
@@ -82,28 +88,6 @@
 
 	font-weight: 500;
 	font-size: 20px;
-	letter-spacing: 1px;
-}
-
-.chos-team-right-team {
-	overflow: hidden;
-	width: 47.5%;
-	padding-top: 46%;
-	position: relative;
-	text-align: center;
-}
-
-.chos-team-right-team span {
-	position: absolute;
-	font-size: 20px;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	width: 100%;
-	top: 50%;
-
-	font-weight: 500;
-	font-size: 22px;
-
 	letter-spacing: 1px;
 }
 
@@ -212,7 +196,7 @@
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	border-radius: 500px;
-	animation: check-drop 0.3s cubic-bezier(0.31, 0.58, 0.28, 0.68);
+	animation: check-drop 0.25s cubic-bezier(0.31, 0.58, 0.28, 0.68);
 }
 
 .green .checkmark {
@@ -220,11 +204,11 @@
 	display: inline-block;
 	width: 22px;
 	height: 22px;
-	-webkit-transform: rotate(45deg) translateX(-50%) translateY(-50%); /* Chrome, Safari, Opera */
+	-webkit-transform: rotate(45deg) translateX(-50%) translateY(-50%);
 	transform: rotate(45deg) translateX(-50%) translateY(-50%);
-	top: calc(50%);
+	top: 50%;
 	left: calc(50% - 11px);
-	animation: check-drop-mark 0.3s cubic-bezier(0.31, 0.58, 0.28, 0.68);
+	animation: check-drop-mark 0.25s cubic-bezier(0.31, 0.58, 0.28, 0.68);
 }
 
 .green .checkmark:before {
@@ -232,7 +216,7 @@
 	position: absolute;
 	width: 8px;
 	height: 30px;
-	background-color: #ccc;
+	background-color: #f1faee;
 	left: 14px;
 	top: -1px;
 }
@@ -242,31 +226,37 @@
 	position: absolute;
 	width: 12px;
 	height: 8px;
-	background-color: #ccc;
+	background-color: #f1faee;
 	left: 4px;
 	top: 21px;
 }
 
 @keyframes check-drop-mark {
 	0% {
+		-webkit-transform: translateY(-200px) translateX(-10%) rotate(45deg);
 		transform: translateY(-200px) translateX(-10%) rotate(45deg);
 	}
 	50% {
+		-webkit-transform: translateY(-20%) translateX(0%) rotate(45deg);
 		transform: translateY(0%) translateX(0%) rotate(45deg);
 	}
 	100% {
-		transform: translateY(calc(-50%+22px)) translateX(0%) rotate(45deg);
+		-webkit-transform: translateY(-50%) translateX(0%) rotate(45deg);
+		transform: translateY(-50%) translateX(0%) rotate(45deg);
 	}
 }
 
 @keyframes check-drop {
 	0% {
+		-webkit-transform: translateY(-200px) translateX(-50%);
 		transform: translateY(-200px) translateX(-50%);
 	}
 	50% {
-		transform: translateY(0%) translateX(-50%);
+		-webkit-transform: translateY(-20%) translateX(-50%);
+		transform: translateY(-20%) translateX(-50%);
 	}
 	100% {
+		-webkit-transform: translateY(-50%) translateX(-50%);
 		transform: translateY(-50%) translateX(-50%);
 	}
 }
