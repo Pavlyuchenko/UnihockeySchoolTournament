@@ -23,6 +23,19 @@ class TeamOption extends Component {
 			>
 				<span>{this.props.teamName}</span>
 				<div className="checkmark"></div>
+				<p className="firstName1">
+					{this.props.jmenaHracu[0] && this.props.jmenaHracu[0]}
+				</p>
+				<p className="secondName1">
+					{this.props.jmenaHracu[0] && this.props.jmenaHracu[1]}
+				</p>
+				<p className="thirdName1">
+					{this.props.jmenaHracu[0] && this.props.jmenaHracu[2]}
+				</p>
+				<p className="fourthName1">
+					{this.props.jmenaHracu[0] && this.props.jmenaHracu[3]}
+				</p>
+				<p className="trida">{this.props.trida}</p>
 			</div>
 		);
 	}

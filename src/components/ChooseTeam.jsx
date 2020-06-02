@@ -14,23 +14,49 @@ class ChooseTeam extends Component {
 			"blue",
 			"red",
 			"white",
-			"red",
 			"blue",
+			"red",
+			"white",
+			"blue",
+			"red",
+			"white",
+			"blue",
+			"red",
+			"white",
+			"blue",
+			"red",
 			"white",
 		],
-		teams: [
-			"Chci zůstat neutrální",
-			"Vygrachanci",
-			"Učitelé",
-			"Boney M",
-			"Antišunkofleci",
-			"Kaspaři",
-			"Pobo Team",
-			"Koťátka",
-		],
+		tymy: ["Chci zůstat neutrální"],
+		jmenaHracu: [[]],
+		tridy: [""],
 		lastGreen: "",
 		search: "",
+		showWhy: false,
 	};
+
+	componentDidMount() {
+		fetch("http://127.0.0.1:5000/choose_team")
+			.then((response) => response.json())
+			.then((result) => {
+				for (let tym of result.tymy) {
+					let hraci = [];
+					let tridy = "";
+					for (let hrac of tym.hraci) {
+						hraci.push(hrac.jmeno);
+						if (!tridy.includes(hrac.trida)) {
+							tridy += hrac.trida + ", ";
+						}
+					}
+					tridy = tridy.slice(0, -2);
+					this.setState({
+						tymy: [...this.state.tymy, tym.nazev],
+						jmenaHracu: [...this.state.jmenaHracu, hraci],
+						tridy: [...this.state.tridy, tridy],
+					});
+				}
+			});
+	}
 
 	teamChoose = (team, obj) => {
 		if (this.state.lastGreen !== "") {
@@ -62,44 +88,93 @@ class ChooseTeam extends Component {
 	search = (e) => {
 		this.setState({ search: e.target.value, lastGreen: "" });
 		if (this.state.lastGreen !== "") {
-			this.state.lastGreen.setState({ green: "" });
+			this.state.lastGreen.setState({
+				green: "",
+			});
+			this.setState({ favTeam: "", showButton: "nodisplay" });
 		}
+	};
+
+	showWhy = () => {
+		this.setState({ showWhy: !this.state.showWhy });
 	};
 
 	render() {
 		var teamOptions = [];
 
-		for (let i = 0; i < this.state.teams.length; i++) {
+		for (let i = 0; i < this.state.tymy.length; i++) {
 			teamOptions.push(
 				<TeamOption
-					teamName={this.state.teams[i]}
+					teamName={this.state.tymy[i]}
 					color={this.state.colors[i]}
 					teamChoose={this.teamChoose}
 					green=""
-					key={this.state.teams[i]}
+					key={this.state.tymy[i]}
+					jmenaHracu={this.state.jmenaHracu[i]}
+					trida={this.state.tridy[i]}
 				/>
 			);
 		}
-
 		if (teamOptions.length >= 0) {
-			teamOptions = teamOptions.filter((item, index) => {
-				if (
-					this.state.teams[index]
-						.toLowerCase()
-						.normalize("NFD")
-						.replace(/[\u0300-\u036f]/g, "")
-						.match(
-							this.state.search
+			teamOptions = teamOptions
+				.filter((item, index) => {
+					if (
+						this.state.tymy[index]
+							.toLowerCase()
+							.normalize("NFD")
+							.replace(/[\u0300-\u036f]/g, "")
+							.match(
+								this.state.search
+									.toLowerCase()
+									.normalize("NFD")
+									.replace(/[\u0300-\u036f]/, "")
+							)
+					) {
+						return item;
+					} else {
+						for (
+							let j = 0;
+							j < this.state.jmenaHracu[index].length;
+							j++
+						) {
+							if (
+								this.state.jmenaHracu[index][j]
+									.toLowerCase()
+									.normalize("NFD")
+									.replace(/[\u0300-\u036f]/g, "")
+									.match(
+										this.state.search
+											.toLowerCase()
+											.normalize("NFD")
+											.replace(/[\u0300-\u036f]/g, "")
+									)
+							) {
+								return item;
+							}
+						}
+						if (
+							this.state.tridy[index]
 								.toLowerCase()
 								.normalize("NFD")
 								.replace(/[\u0300-\u036f]/g, "")
-						)
-				) {
-					return item;
-				} else {
-					return null;
-				}
-			});
+								.match(
+									this.state.search
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+										.replace(". ", ".")
+										.replace(" ", ".")
+										.replace(",", ".")
+										.replace(":", ".")
+								)
+						) {
+							return item;
+						} else {
+							return null;
+						}
+					}
+				})
+				.sort(); //DOmakat
 		}
 
 		return (
@@ -108,7 +183,10 @@ class ChooseTeam extends Component {
 				<header id="chos-team-header">
 					<h1>Vyber si svůj tým*</h1>
 					<h3>*jehož jsi fanouškem nebo hráčem</h3>
-					<span>Proč?</span>
+					<span onClick={this.showWhy}>Proč?</span>
+					<div id={this.state.showWhy ? "show-why" : "dont-show-why"}>
+						<span onClick={this.showWhy}>x</span>
+					</div>
 					<div>
 						<input
 							type="text"

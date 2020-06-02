@@ -1,7 +1,7 @@
 #nasl-zap-sect {
 	margin-top: 70px;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 20%;
+	margin-right: 20%;
 	margin-bottom: 300px;
 }
 
@@ -54,4 +54,11 @@
 	color: #f1faee;
 	position: absolute;
 	right: 0;
+	text-decoration: underline;
+}
+@media only screen and (max-width: 700px) {
+	#nasl-zap-sect {
+		margin-left: 10%;
+		margin-right: 10%;
+	}
 }

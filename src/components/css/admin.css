@@ -1,0 +1,198 @@
+#registrace-nove-tymy-sect {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#registrace-nove-tymy-sect h1 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+.admin-nove-tymy-div {
+	height: 35px;
+	display: flex;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.admin-nove-tymy-div:nth-child(3n + 2) {
+	background-color: #23426e;
+	color: #f1faee;
+}
+
+.admin-nove-tymy-div:nth-child(3n + 3) {
+	background-color: #f1faee;
+	color: #e63946;
+}
+
+.admin-nove-tymy-div:nth-child(3n + 4) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.admin-nove-tymy-nazev {
+	flex-grow: 5;
+	margin-left: 15px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 35px;
+}
+
+.admin-nove-tymy-buttons button {
+	height: 100%;
+	border: none;
+	width: 55px;
+	margin: 0;
+	outline-color: #e63946;
+}
+
+.admin-nove-tymy-buttons button:nth-child(1) {
+	background-color: #4caf50;
+	color: #f1faee;
+}
+
+.admin-nove-tymy-buttons button:nth-child(2) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.admin-nove-tymy-buttons button svg {
+	margin-top: 4px;
+}
+
+/*Prijate tymy */
+
+#registrace-prijate-tymy-sect {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#registrace-prijate-tymy-sect h1 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+.admin-prijate-tymy-div {
+	height: 35px;
+	display: flex;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.admin-prijate-tymy-div:nth-child(3n + 2) {
+	background-color: #23426e;
+	color: #f1faee;
+}
+
+.admin-prijate-tymy-div:nth-child(3n + 3) {
+	background-color: #f1faee;
+	color: #e63946;
+}
+
+.admin-prijate-tymy-div:nth-child(3n + 4) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.admin-prijate-tymy-nazev {
+	flex-grow: 5;
+	margin-left: 15px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 35px;
+}
+
+.admin-prijate-tymy-buttons button {
+	height: 100%;
+	border: none;
+	width: 55px;
+	margin: 0;
+	outline-color: #e63946;
+}
+
+.admin-prijate-tymy-buttons button {
+	background-color: #4caf50;
+	color: #f1faee;
+}
+
+.admin-prijate-tymy-buttons button svg {
+	margin-top: 4px;
+}
+
+.zaplaceno {
+	background-color: #4caf50;
+}
+
+#admin-tymy-statistika {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+	position: relative;
+}
+
+#admin-tymy-statistika h2 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 12px;
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+#admin-tymy-statistika h1 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 60px;
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#admin-reg-tymy {
+	width: 45%;
+	height: 100px;
+	background-color: #e63946;
+	border-radius: 0px;
+	position: relative;
+}
+
+#admin-reg-navstevnici {
+	width: 45%;
+	height: 100px;
+	background-color: #23426e;
+	border-radius: 0px;
+	position: relative;
+}
+
+@media only screen and (min-width: 700px) {
+	#admin-reg-tymy {
+		height: 180px;
+	}
+
+	#admin-reg-navstevnici {
+		height: 180px;
+	}
+
+	#admin-tymy-statistika h2 {
+		font-size: 24px;
+		margin-left: 20px;
+	}
+
+	#admin-tymy-statistika h1 {
+		font-size: 100px;
+	}
+
+	#registrace-nove-tymy-sect {
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+
+	#registrace-prijate-tymy-sect {
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+}

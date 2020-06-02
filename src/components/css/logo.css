@@ -1,6 +1,6 @@
 #logo-wrapper {
 	display: table;
-	margin-left: 10%;
+	margin-left: 20%;
 	margin-top: 30px;
 }
 
@@ -18,5 +18,17 @@
 	font-weight: 500;
 	letter-spacing: 3px;
 	padding-left: 20px;
-	font-size: 28px;
+	font-size: 32px;
+}
+
+@media only screen and (max-width: 700px) {
+	#logo-wrapper {
+		display: table;
+		margin-left: 10%;
+		margin-top: 30px;
+	}
+
+	#logo-text {
+		font-size: 28px;
+	}
 }

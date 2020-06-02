@@ -1,0 +1,122 @@
+#rozp-wrapper {
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 50px;
+	margin-bottom: 90px;
+}
+
+#rozpis-nadpis {
+	width: 100%;
+	height: 50px;
+	background-color: #23426e;
+	color: #f1faee;
+	line-height: 50px;
+}
+
+#rozpis-nadpis h1 {
+	font-weight: 500;
+	margin-left: 15px;
+	font-size: 27px;
+}
+
+.rozpis-zapas/*:nth-child(odd)*/ {
+	background: linear-gradient(to right, #e63946 50%, #f1faee 50%);
+	color: #f1faee;
+}
+/*.rozpis-zapas:nth-child(even) {
+	background-color: #f1faee;
+	color: #e63946;
+}*/
+
+.rozpis-zapas {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 35px;
+	margin-top: 15px;
+	line-height: 35px;
+	font-size: 18px;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.rozpis-zapas span:first-child {
+	margin-left: 15px;
+}
+
+.rozpis-zapas span:last-child {
+	margin-right: 15px;
+}
+
+.rozpis-cas {
+	position: absolute;
+	right: 50.4%;
+	font-weight: 500;
+	font-size: 25px;
+}
+
+.rozpis-cas-2 {
+	position: absolute;
+	color: #e63946;
+	left: 50.2%;
+	font-weight: 500;
+	font-size: 25px;
+}
+
+.rozpis-hoste {
+	color: #e63946;
+	font-weight: 500;
+}
+
+@media only screen and (max-width: 700px) {
+	#rozp-wrapper {
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 50px;
+		margin-bottom: 90px;
+	}
+
+	#rozpis-nadpis {
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	#rozpis-nadpis h1 {
+		margin-left: 10px;
+		font-size: 24px;
+	}
+
+	.rozpis-zapas {
+		width: 100%;
+		height: 30px;
+		margin-top: 10px;
+		line-height: 30px;
+		font-size: 18px;
+	}
+
+	.rozpis-cas {
+		font-size: 20px;
+	}
+
+	.rozpis-cas-2 {
+		font-size: 20px;
+	}
+
+	.rozpis-zapas span:first-child {
+		margin-left: 10px;
+	}
+
+	.rozpis-zapas span:last-child {
+		margin-right: 10px;
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.rozpis-domaci {
+		font-size: 4.2vw;
+	}
+	.rozpis-hoste {
+		font-size: 4.2vw;
+	}
+}

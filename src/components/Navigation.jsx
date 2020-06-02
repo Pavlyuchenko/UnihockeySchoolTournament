@@ -7,6 +7,7 @@ import {
 } from "react-device-detect";
 import { Link } from "react-router-dom";
 import "./css/mobile_nav.css";
+import "./css/pc-navigation.css";
 
 class Navigation extends Component {
 	state = {
@@ -66,7 +67,10 @@ class Navigation extends Component {
 							Tabulky
 						</div>
 					</Link>
-					<span id="mobile-nav-circle"></span>
+					<span
+						id="mobile-nav-circle"
+						onClick={this.changeClass}
+					></span>
 					<div
 						className={this.state.class}
 						onClick={this.changeClass}
@@ -77,7 +81,23 @@ class Navigation extends Component {
 					</div>
 				</MobileView>
 				<BrowserView>
-					<h1> This is rendered only in browser </h1>
+					<div id="pc-nav">
+						<Link to="/rozpis">
+							<span>Rozpis</span>
+						</Link>
+						<Link to="/pravidla">
+							<span>Pravidla</span>
+						</Link>
+						<Link to="/dotazy">
+							<span>Dotazy</span>
+						</Link>
+						<Link to="/pavouk">
+							<span>Pavouk</span>
+						</Link>
+						<Link to="/tabulky">
+							<span>Tabulky</span>
+						</Link>
+					</div>
 				</BrowserView>
 			</>
 		);

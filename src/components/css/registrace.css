@@ -1,0 +1,513 @@
+#registrace-tym-div ::placeholder {
+	font-weight: 500;
+	font-size: 17px;
+	color: #e63946;
+}
+
+.registrace-jmena-flex ::placeholder {
+	font-weight: 500;
+	font-size: 15px;
+	color: #e63946;
+}
+
+::-webkit-input-placeholder {
+	opacity: 1;
+}
+::-moz-placeholder {
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	opacity: 1;
+}
+
+#register-sect {
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 50px;
+}
+
+#register-top-div {
+	margin-bottom: 25px;
+}
+
+#register-top-div h1 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 32px;
+	margin-bottom: 0px;
+}
+
+#register-star-div {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+#register-star {
+	margin-top: 10px;
+	color: #f1faee;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 125%;
+	word-wrap: break-word;
+	width: 200px;
+}
+
+#register-coze {
+	color: #f1faee;
+	text-decoration: underline;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 500 !important;
+}
+
+input,
+label {
+	display: block;
+}
+
+#registrace-tym-div {
+	margin-bottom: 50px;
+}
+
+#register-nazev-tymu-label {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+#register-nazev-tymu-input {
+	width: 100%;
+	padding: 10px 0px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 0px solid transparent;
+	font-weight: 500;
+	font-size: 17px;
+	margin-bottom: 0;
+	font-family: "Rubik", sans-serif;
+	padding-left: 10px;
+	color: #e63946;
+	outline: none;
+	transition: background-color 0.2s;
+}
+
+#registrace-max-deset {
+	float: right;
+	color: #f1faee;
+	margin-top: 5px;
+	font-size: 17px;
+}
+
+.registrace-labels {
+	display: flex;
+	justify-content: space-between;
+	color: #f1faee;
+	margin-bottom: 2px;
+	font-size: 20px;
+}
+
+.registrace-jmena-flex {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.register-jmeno-hrace {
+	width: 100%;
+	border: 2px solid transparent;
+	height: 30px;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	font-family: "Rubik", sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	padding-left: 10px;
+	color: #e63946;
+	margin: 0;
+	outline: none;
+	transition: 0s;
+}
+
+input:focus,
+input:active {
+	border: 0;
+	padding-top: 4px;
+	padding-left: 12px;
+	border-bottom: 3px solid #e63946;
+}
+
+.register-trida {
+	width: 17%;
+	outline-color: #e63946;
+	border: 0;
+	background-color: #23426e;
+	color: #f1faee;
+	padding-left: 5px;
+	font-family: "Rubik", sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	min-width: 50px;
+}
+
+.registrace-jmena-div {
+	margin-bottom: 15px;
+}
+
+#registrace-proc-jmeno {
+	float: right;
+	margin-top: -5px;
+	color: #f1faee;
+	font-size: 13px;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+#regiser-button {
+	width: 100%;
+	height: 40px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	background-color: #e63946;
+	color: #f1faee;
+	border: 0;
+
+	font-family: "Rubik", sans-serif;
+	font-weight: 500 !important;
+	font-size: 24px;
+
+	outline-color: #f1faee;
+}
+
+#regiser-button:hover,
+#regiser-button:active {
+	background-color: #f1faee;
+	color: #e63946;
+}
+
+#regiser-button-zpet {
+	width: 100%;
+	height: 40px;
+	margin-top: 45px;
+	margin-bottom: 20px;
+	background-color: #f1faee;
+	color: #e63946;
+	border: 0;
+
+	font-family: "Rubik", sans-serif;
+	font-weight: 500 !important;
+	font-size: 24px;
+
+	position: relative;
+
+	outline-color: #f1faee;
+}
+
+#regiser-button-zpet:hover,
+#regiser-button-zpet:active {
+	background-color: #f1faee;
+	color: #e63946;
+}
+
+.text-entered {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+#messenger-image {
+	vertical-align: middle;
+	width: 25px;
+	margin-left: 5px;
+}
+
+#regiser-pokracovat-button {
+	width: 20%;
+	min-width: 180px;
+	height: 40px;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	background-color: #e63946;
+	color: #f1faee;
+	border: 0;
+	float: right;
+
+	font-family: "Rubik", sans-serif;
+	font-weight: 500 !important;
+	font-size: 24px;
+
+	outline-color: #f1faee;
+}
+
+#register-status {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+#register-status div {
+	margin-left: 50px;
+	margin-right: 50px;
+	position: relative;
+}
+
+#primary::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	background-color: #e63946;
+	z-index: -1;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#primary {
+	height: 40px;
+	width: 40px;
+
+	cursor: pointer;
+}
+
+#primary span {
+	position: absolute;
+	margin-left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	top: 50%;
+	font-size: 24px;
+	font-weight: 500;
+	color: #f1faee;
+}
+
+#primary p {
+	position: absolute;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	top: 75%;
+	font-size: 18px;
+	width: max-content;
+	font-weight: 500;
+	color: #f1faee;
+}
+
+#secondary {
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+}
+
+#secondary::before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	background-color: #f1faee;
+	z-index: -1;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 5px;
+}
+
+#secondary span {
+	position: absolute;
+	margin-left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	top: calc(50% + 5px);
+	font-size: 20px;
+	font-weight: 500;
+	color: #e63946;
+}
+
+#secondary p {
+	position: absolute;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	top: 120%;
+	font-size: 15px;
+	width: max-content;
+	font-weight: 400;
+	color: #f1faee;
+}
+
+#registrace-first-round {
+	margin-top: 70px;
+}
+
+#registrace-second-round {
+	margin-top: 90px;
+}
+
+@media only screen and (min-width: 700px) {
+	#registrace-tym-div ::placeholder {
+		font-size: 24px;
+	}
+
+	.registrace-jmena-flex ::placeholder {
+		font-weight: 500;
+		font-size: 17px;
+		color: #e63946;
+	}
+
+	#register-sect {
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+
+	#register-top-div h1 {
+		font-size: 40px;
+	}
+
+	#register-star {
+		font-size: 17px;
+		word-wrap: normal;
+		width: auto;
+	}
+
+	#register-nazev-tymu-label {
+		font-size: 28px;
+	}
+
+	#register-nazev-tymu-input {
+		height: 45px;
+		font-size: 24px;
+		padding: 22px 0px;
+		padding-left: 15px;
+		border: 8px solid transparent;
+	}
+
+	#register-nazev-tymu-input:focus,
+	#register-nazev-tymu-input:active {
+		border: 0;
+		padding-top: 30px;
+		padding-left: 23px;
+		border-bottom: 8px solid #e63946;
+	}
+
+	#registrace-inputs {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		position: relative;
+	}
+
+	.registrace-jmena-div {
+		width: 48%;
+	}
+
+	.register-jmeno-hrace {
+		width: 87%;
+		height: 35px;
+		font-size: 17px;
+	}
+
+	.register-trida {
+		height: 35px;
+		width: 8%;
+		min-width: 55px;
+		font-size: 15px;
+		transition: 0.2s;
+	}
+
+	.register-trida:focus {
+		background-color: #f1faee;
+		color: #23426e;
+	}
+
+	#registrace-proc-jmeno {
+		position: absolute;
+		right: 0;
+		bottom: -10px;
+		font-size: 16px;
+		letter-spacing: 0.5px;
+	}
+
+	#regiser-button {
+		width: 250px;
+		height: 50px;
+		font-size: 26px;
+		position: absolute;
+		cursor: pointer;
+		right: 20%;
+		transition: 0.2s;
+	}
+	#regiser-button-zpet {
+		width: 150px;
+		height: 40px;
+		font-size: 26px;
+		position: absolute;
+		cursor: pointer;
+		left: 20%;
+		transition: 0.2s;
+		color: #e63946;
+		font-weight: 500;
+		font-family: "Rubik", sans-serif;
+		padding-left: 20px;
+	}
+
+	#messenger-image {
+		vertical-align: middle;
+		margin-left: "5px";
+		width: 35px;
+	}
+
+	#primary::before {
+		width: 60px;
+		height: 60px;
+	}
+
+	#primary {
+		height: 60px;
+		width: 60px;
+	}
+
+	#primary span {
+		transform: translateX(-50%) translateY(-50%);
+		top: 50%;
+		font-size: 34px;
+	}
+
+	#primary p {
+		transform: translateX(-50%);
+		top: 75%;
+		font-size: 24px;
+	}
+
+	#secondary {
+		height: 60px;
+		width: 60px;
+		cursor: pointer;
+	}
+
+	#secondary::before {
+		width: 50px;
+		height: 50px;
+		top: 5px;
+	}
+
+	#secondary span {
+		transform: translateX(-50%) translateY(-50%);
+		top: 50%;
+		font-size: 28px;
+	}
+
+	#secondary p {
+		top: 85%;
+		font-size: 20px;
+	}
+
+	#register-status div {
+		margin-left: 70px;
+		margin-right: 70px;
+	}
+
+	#register-status {
+		margin-top: 60px;
+	}
+}

@@ -1,0 +1,21 @@
+#pc-nav {
+	position: absolute;
+	right: 20%;
+	top: 30px;
+	color: #f1faee;
+	height: 114px;
+	display: flex;
+	left: calc(30% + 150px); /*650px;*/
+	justify-content: space-between;
+}
+
+a {
+	color: #f1faee;
+	text-decoration: none;
+}
+
+#pc-nav span {
+	line-height: 114px;
+	font-size: 1vw;
+	font-weight: 400;
+}
