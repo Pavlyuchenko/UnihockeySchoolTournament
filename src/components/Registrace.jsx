@@ -192,6 +192,12 @@ class Registrace extends Component {
 					<div
 						id="registrace-first-round"
 						style={this.state.firstRound}
+						onKeyDown={(e) => {
+							console.log(e.key);
+							if (e.key === "Enter") {
+								this.switchView("next");
+							}
+						}}
 					>
 						<div id="registrace-tym-div">
 							<label

@@ -1,0 +1,301 @@
+#adming-zapasy {
+	background-color: #23426e;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+#adming-zapasy h3 {
+	padding: 0;
+	margin: 0;
+
+	color: #f1faee;
+	font-weight: 500;
+
+	font-size: 24px;
+}
+
+#adming-zapasy-popis-flex {
+	display: flex;
+
+	margin-top: 15px;
+	background-color: #f1faee;
+}
+
+#adming-zapasy-popis {
+	width: 100%;
+	padding: 5px;
+	padding-left: 1%;
+	padding-right: 2%;
+
+	color: #102d38;
+	font-weight: 500;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+#adming-zapasy-order-popis {
+	color: #102d38;
+	font-weight: 500;
+	padding: 5px;
+
+	width: 5%;
+	min-width: 40px;
+}
+
+.adming-zapas {
+	display: flex;
+	margin-top: 10px;
+}
+
+.adming-zapas:nth-child(odd) {
+	background-color: #102d38;
+	color: #f1faee;
+}
+
+.adming-zapas:nth-child(even) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.adming-zapas-flex {
+	width: 100%;
+	padding: 5px;
+	padding-left: 1%;
+	padding-right: 2%;
+
+	line-height: 25px;
+
+	color: #f1faee;
+	font-weight: 500;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.adming-zapasy-order {
+	color: #f1faee;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;
+	width: 5%;
+	min-width: 40px;
+
+	font-size: 16px;
+}
+
+.adming-zapasy-order-input {
+	color: #f1faee;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px;
+	width: 5%;
+	min-width: 30px;
+	height: 15px;
+
+	font-size: 16px;
+}
+
+.adming-zapas .adming-zapasy-order-input {
+	border: 0;
+	padding: 5px;
+
+	background-color: #f1faee;
+	color: #102d38;
+
+	font-size: 16px;
+}
+
+.adming-zapas .adming-zapasy-order-input:focus {
+	border: 0;
+	padding-left: 5px;
+}
+
+#adming-zapasy-pridat {
+	background-color: #4caf50;
+	color: #f1faee;
+	border: 0;
+
+	width: 110px;
+	height: 30px;
+
+	margin-left: 50%;
+	transform: translateX(-50%);
+	margin-top: 15px;
+
+	font-size: 22px;
+	font-weight: 500;
+
+	display: block;
+	text-align: center;
+
+	cursor: pointer;
+	user-select: none;
+
+	transition: 0.2s;
+}
+
+#adming-zapasy-pridat:hover {
+	background-color: #307033;
+}
+
+#adming-zapasy-novy-zapas {
+	position: fixed;
+	bottom: 0px;
+	left: 0%;
+	right: 0%;
+	height: 80px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+
+	display: flex;
+	justify-content: space-between;
+
+	background-color: #e63946;
+}
+
+#adming-zapasy-novy-domaci,
+#adming-zapasy-novy-hoste {
+	width: 45%;
+}
+
+#adming-zapasy-novy-domaci select,
+#adming-zapasy-novy-hoste select {
+	width: 95%;
+	border: 0;
+	background-color: #23426e;
+	height: 40px;
+	color: #f1faee;
+	font-size: 26px;
+	font-weight: 500;
+	font-family: "Rubik";
+}
+
+#adming-zapasy-novy-order {
+	width: 10%;
+}
+
+#adming-zapasy-novy-order input {
+	width: 50%;
+	border: 0;
+	background-color: #e63946;
+	height: 40px;
+	color: #f1faee;
+	font-size: 26px;
+	font-weight: 500;
+	font-family: "Rubik";
+	text-align: center;
+
+	padding: 0;
+
+	min-width: 40px;
+}
+
+#adming-zapasy-novy-order button {
+	width: 50%;
+	border: 0;
+	background-color: #4caf50;
+	height: 40px;
+	color: #f1faee;
+	font-size: 25px;
+	font-weight: 500;
+	font-family: "Rubik";
+
+	min-width: 40px;
+}
+
+/* Tymyyyyyyy */
+
+#adming-tymy {
+	margin-left: 20%;
+	margin-right: 45%;
+	background-color: #f1faee;
+	padding: 20px;
+
+	margin-top: 30px;
+}
+
+#adming-tymy h3 {
+	padding: 0;
+	margin: 0;
+
+	color: #102d38;
+	font-weight: 500;
+
+	font-size: 24px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 15px;
+}
+
+thead {
+	background-color: #102d38;
+	width: 100%;
+	text-align: left;
+}
+
+th {
+	font-weight: 500;
+	font-size: 20px;
+	padding: 5px;
+	padding-left: 10px;
+
+	color: #f1faee;
+}
+
+td {
+	font-weight: 500;
+	font-size: 18px;
+	padding: 5px;
+	padding-left: 13px;
+}
+
+tr {
+	border-bottom: 2px solid #102d38;
+	transition: 0.2s;
+
+	cursor: pointer;
+}
+
+tr:hover {
+	background-color: #102d38;
+}
+
+tr:nth-child(even) {
+	color: #e63946;
+}
+
+tr:nth-child(odd) {
+	color: #23426e;
+}
+
+@media only screen and (max-width: 700px) {
+	#adming-zapasy {
+		margin-left: 10%;
+		margin-right: 10%;
+
+		margin-top: 40px;
+		padding: 10px;
+	}
+	.adming-zapas-flex {
+		font-size: 13px;
+		height: 10px;
+	}
+	#adming-zapasy-pridat {
+		width: 100%;
+	}
+
+	#adming-zapasy-novy-domaci,
+	#adming-zapasy-novy-hoste {
+		width: 40%;
+	}
+	#adming-zapasy-novy-order {
+		width: 20%;
+	}
+}

@@ -15,6 +15,8 @@ import Dotazy from "./components/Dotazy";
 import Pavouk from "./components/Pavouk";
 import Registrace from "./components/Registrace";
 import Admin from "./components/Admin";
+import AdminGroup from "./components/AdminGroup";
+import Casovac from "./components/Casovac";
 
 class App extends Component {
 	checkFavoriteTeam = () => {
@@ -78,27 +80,15 @@ class App extends Component {
 					<Route exact path="/pravidla" component={Pravidla} />
 					<Route exact path="/dotazy" component={Dotazy} />
 					<Route exact path="/tabulky" component={Tabulky} />
+					<Route exact path="/casovac" component={Casovac} />
 
 					<Route
 						exact
 						path="/registrace"
-						component={
-							() => <Registrace />
-							/* 
-							
-							*** Schováno na později ***
-
-							this.checkRegistrovan() ? (
-								<Main
-									changeTheme={this.changeTheme}
-									colors={this.state}
-								/>
-							) : (
-								<Registrace />
-							)*/
-						}
+						component={() => <Registrace />}
 					/>
 					<Route exact path="/admin" component={Admin} />
+					<Route exact path="/adming" component={AdminGroup} />
 				</Switch>
 			</Router>
 		);

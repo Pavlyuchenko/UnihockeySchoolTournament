@@ -3,22 +3,62 @@ import "./css/probihajici_zapas.css";
 
 class ProbihajiciZapas extends Component {
 	state = {};
+
+	/*componentDidMount() {
+		fetch("http://127.0.0.1:5000/choose_team")
+			.then((response) => response.json())
+			.then((result) => {
+				for (let tym of result.tymy) {
+					let hraci = [];
+					let tridy = "";
+					for (let hrac of tym.hraci) {
+						hraci.push(hrac.jmeno);
+						if (!tridy.includes(hrac.trida)) {
+							tridy += hrac.trida + ", ";
+						}
+					}
+					tridy = tridy.slice(0, -2);
+					this.setState({
+						tymy: [...this.state.tymy, tym.nazev],
+						jmenaHracu: [...this.state.jmenaHracu, hraci],
+						tridy: [...this.state.tridy, tridy],
+					});
+				}
+			});
+	}*/
+
 	render() {
 		return (
 			<section id="prob-zap-sect">
-				<h2 id="prob-zap-h2">Probíhající zápas:</h2>
+				{/*<h2 id="prob-zap-h2">Probíhající zápas:</h2>*/}
 				<div id="prob-zap-wrapper">
 					<div id="prob-zap-tymy"></div>
 					<div id="prob-zap-skore-wrapper">
 						<div id="prob-zap-domaci">
-							<span className="prob-zap-jmeno">Vygrachanci</span>5
-							<span id="prob-zap-timer-left">12</span>
+							<span className="prob-zap-jmeno">Vygrachanci</span>
+							{this.props.casovac.skore1}
+							<span id="prob-zap-timer-left">
+								{this.props.casovac.minuty < 12 &&
+								this.props.casovac.minuty >= 0
+									? this.props.casovac.minuty < 10
+										? "0" + this.props.casovac.minuty
+										: this.props.casovac.minuty
+									: "kon"}
+							</span>
 						</div>
 						<div id="prob-zap-hoste">
 							<span className="prob-zap-jmeno">
 								Antišunkofleci
 							</span>
-							4<span id="prob-zap-timer-right">56</span>
+							{this.props.casovac.skore2}
+							<span id="prob-zap-timer-right">
+								{this.props.casovac.minuty < 12 &&
+								this.props.casovac.minuty >= 0
+									? this.props.casovac.sekundy < 10
+										? "0" + this.props.casovac.sekundy
+										: this.props.casovac.sekundy
+									: "ec"}
+							</span>
 						</div>
 					</div>
 				</div>

@@ -129,8 +129,8 @@ label {
 	transition: 0s;
 }
 
-input:focus,
-input:active {
+.register-jmeno-hrace:focus,
+.register-jmeno-hrace:active {
 	border: 0;
 	padding-top: 4px;
 	padding-left: 12px;

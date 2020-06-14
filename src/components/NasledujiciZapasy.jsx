@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class NasledujiciZapasy extends Component {
 	state = { zapasy: [] };
 
-	componentDidMount() {
+	/*componentDidMount() {
 		fetch("http://127.0.0.1:5000/main")
 			.then((response) => response.json())
 			.then((result) => {
@@ -19,16 +19,16 @@ class NasledujiciZapasy extends Component {
 					zapasy: arr,
 				});
 			});
-	}
+	}*/
 
 	createZapasy = () => {
 		let result = [];
 		let domaci = "";
 		let hoste = "";
 
-		for (let i = 0; i < this.state.zapasy.length; i++) {
-			domaci = this.state.zapasy[i].domaci;
-			hoste = this.state.zapasy[i].hoste;
+		for (let i = 0; i < this.props.zapasy.length; i++) {
+			domaci = this.props.zapasy[i].domaci;
+			hoste = this.props.zapasy[i].hoste;
 			result.push(
 				<Zapas
 					domaci={domaci}
