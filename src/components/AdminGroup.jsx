@@ -4,7 +4,13 @@ import Navigation from "./Navigation";
 import "./css/adming.css";
 
 class AdminGroup extends Component {
-	state = { zapasy: [], classes: [], displayNew: "none" };
+	state = {
+		zapasy: [],
+		classes: [],
+		displayNew: "none",
+		tymy: [],
+		chosenId: 1,
+	};
 
 	componentDidMount() {
 		this.loadZapasyAndTymy();
@@ -67,7 +73,7 @@ class AdminGroup extends Component {
 									fetch(
 										"http://127.0.0.1:5000/update_order",
 										requestOptions
-									).then(() => this.loadZapasy());
+									).then(() => this.loadZapasyAndTymy());
 								}
 							}}
 							style={{
@@ -106,6 +112,117 @@ class AdminGroup extends Component {
 		} else {
 			this.setState({ displayNew: "none" });
 		}
+	};
+
+	addTableRow = () => {
+		let res = [];
+
+		for (let tym of this.state.tymy) {
+			res.push(
+				<tr
+					key={tym.nazev + tym.id}
+					onClick={() => this.setState({ chosenId: tym.id })}
+				>
+					<td>{tym.nazev}</td>
+					<td align="right">A</td>
+					<td align="right">{tym.body}</td>
+					<td align="right">{tym.vyhry}</td>
+					<td align="right">{tym.remizy}</td>
+					<td align="right">{tym.prohry}</td>
+					<td align="right">{tym.zapasy}</td>
+				</tr>
+			);
+		}
+
+		return res;
+	};
+
+	chosenTeam = () => {
+		let tym = this.state.tymy.filter(
+			(team) => team.id === this.state.chosenId
+		);
+
+		let nazev = "";
+		let hraciArr = [];
+		let zapasy = [];
+		let zapasyArr = [];
+		if (tym.length > 0) {
+			nazev = tym[0].nazev;
+
+			for (let hrac of tym[0].hraci) {
+				hraciArr.push(
+					<div key={hrac.jmeno} className="adming-tym-detail-hraci">
+						<span>{hrac.jmeno}</span>
+						<span>{hrac.trida}</span>
+					</div>
+				);
+			}
+
+			zapasy = this.state.zapasy.filter(
+				(zapas) => zapas.domaci === nazev || zapas.hoste === nazev
+			);
+
+			for (let zapas of zapasy) {
+				zapasyArr.push(
+					<div className="adming-tym-detail-zapas">
+						<span key={"Domaci" + zapas.domaci + zapas.hoste}>
+							{zapas.domaci}
+						</span>
+						<span
+							key={"Cas" + zapas.cas + zapas.domaci + zapas.hoste}
+						>
+							{zapas.cas}
+						</span>
+						<span key={"Hoste" + zapas.domaci + zapas.hoste}>
+							{zapas.hoste}
+						</span>
+					</div>
+				);
+			}
+		}
+
+		return (
+			<section id="adming-tym-detail">
+				<h3>{nazev}</h3>
+				<div id="adming-tym-detail-flex">
+					<div style={{ width: "50%" }}>
+						<h4>Následující zápasy</h4>
+						{zapasyArr}
+					</div>
+					<div style={{ width: "50%" }}>
+						<h4 style={{ textAlign: "right" }}>Soupiska</h4>
+						{hraciArr}
+					</div>
+				</div>
+
+				<div id="adming-tym-info">
+					<div>
+						<label htmlFor="">Body</label>
+						<input type="text" value="7" />
+					</div>
+					<div>
+						<label htmlFor="">Záp</label>
+						<input type="text" value="7" />
+					</div>
+					<div>
+						<label htmlFor="">V</label>
+						<input type="text" value="7" />
+					</div>
+					<div>
+						<label htmlFor="">R</label>
+						<input type="text" value="7" />
+					</div>
+					<div>
+						<label htmlFor="">P</label>
+						<input type="text" value="7" />
+					</div>
+					<div>
+						<label htmlFor="">GR</label>
+						<input type="text" value="7" />
+					</div>
+				</div>
+			</section>
+		);
 	};
 
 	render() {
@@ -162,64 +279,27 @@ class AdminGroup extends Component {
 					</div>
 				</section>
 
-				<section id="adming-tymy">
-					<h3>Seznam týmů</h3>
-					<table>
-						<thead>
-							<tr>
-								<th>Název</th>
-								<th>Sk</th>
-								<th>B</th>
-								<th>Z</th>
-								<th>Post</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Antišunkofleci</td>
-								<td>A</td>
-								<td>3</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-							<tr>
-								<td>Učitelé</td>
-								<td>B</td>
-								<td>6</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-							<tr>
-								<td>Vygrachanci</td>
-								<td>C</td>
-								<td>4</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-							<tr>
-								<td>Antišunkofleci</td>
-								<td>A</td>
-								<td>3</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-							<tr>
-								<td>Učitelé</td>
-								<td>B</td>
-								<td>6</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-							<tr>
-								<td>Vygrachanci</td>
-								<td>C</td>
-								<td>4</td>
-								<td>2</td>
-								<td>V</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
+				<div id="adming-flex-wrapper">
+					<section id="adming-tymy">
+						<h3>Seznam týmů</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Název</th>
+									<th align="right">Sk</th>
+									<th align="right">B</th>
+									<th align="right">V</th>
+									<th align="right">R</th>
+									<th align="right">P</th>
+									<th align="right">Z</th>
+								</tr>
+							</thead>
+							<tbody>{this.addTableRow()}</tbody>
+						</table>
+					</section>
+
+					{this.chosenTeam()}
+				</div>
 			</>
 		);
 	}

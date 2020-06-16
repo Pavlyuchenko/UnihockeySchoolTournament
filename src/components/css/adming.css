@@ -154,7 +154,9 @@
 	display: flex;
 	justify-content: space-between;
 
-	background-color: #e63946;
+	background-color: #f1faee;
+
+	border-top: 10px solid #e63946;
 }
 
 #adming-zapasy-novy-domaci,
@@ -209,9 +211,16 @@
 
 /* Tymyyyyyyy */
 
-#adming-tymy {
+#adming-flex-wrapper {
+	display: flex;
+
 	margin-left: 20%;
-	margin-right: 45%;
+	margin-right: 20%;
+}
+
+#adming-tymy {
+	width: 55%;
+	margin-right: 30px;
 	background-color: #f1faee;
 	padding: 20px;
 
@@ -245,6 +254,7 @@ th {
 	font-size: 20px;
 	padding: 5px;
 	padding-left: 10px;
+	padding-right: 20px;
 
 	color: #f1faee;
 }
@@ -254,13 +264,16 @@ td {
 	font-size: 18px;
 	padding: 5px;
 	padding-left: 13px;
+	padding-right: 21px;
 }
 
 tr {
+	cursor: pointer;
+}
+
+tr:not(:last-child) {
 	border-bottom: 2px solid #102d38;
 	transition: 0.2s;
-
-	cursor: pointer;
 }
 
 tr:hover {
@@ -273,6 +286,106 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
 	color: #23426e;
+}
+
+/*Detail tymu*/
+#adming-tym-detail {
+	width: 45%;
+	background-color: #e63946;
+	padding: 20px;
+
+	margin-top: 30px;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+}
+
+#adming-tym-detail h3 {
+	padding: 0;
+	margin: 0;
+
+	color: #f1faee;
+	font-weight: 500;
+
+	font-size: 35px;
+}
+
+#adming-tym-detail-flex {
+	display: flex;
+
+	width: 100%;
+	justify-content: space-between;
+}
+
+#adming-tym-detail h4 {
+	padding: 0;
+	margin: 0;
+	margin-top: 5px;
+
+	color: #f1faee;
+	font-weight: 400;
+
+	font-size: 20px;
+}
+
+.adming-tym-detail-zapas {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+
+	background-color: #102d38;
+	color: #f1faee;
+	padding: 5px;
+}
+
+.adming-tym-detail-zapas span {
+	font-size: 13px;
+}
+
+.adming-tym-detail-hraci {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+
+	background-color: #102d38;
+	color: #f1faee;
+	padding: 5px;
+	padding-left: 10px;
+}
+
+.adming-tym-detail-hraci span {
+	font-size: 16px;
+}
+
+#adming-tym-info {
+	display: flex;
+	justify-content: space-between;
+	flex-grow: 1;
+	margin-bottom: auto;
+	margin-top: auto;
+}
+#adming-tym-info div {
+	margin-top: auto;
+}
+
+#adming-tym-info label {
+	text-align: center;
+	font-weight: 500;
+	color: #f1faee;
+	font-size: 18px;
+}
+
+#adming-tym-info input {
+	width: 55px;
+	height: 52px;
+
+	border: 0;
+	font-size: 40px;
+	font-family: "Rubik";
+	font-weight: 500;
+	text-align: center;
+	color: #102d38;
 }
 
 @media only screen and (max-width: 700px) {
