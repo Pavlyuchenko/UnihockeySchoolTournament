@@ -157,6 +157,8 @@
 	background-color: #f1faee;
 
 	border-top: 10px solid #e63946;
+
+	z-index: 11000;
 }
 
 #adming-zapasy-novy-domaci,
@@ -337,10 +339,13 @@ tr:nth-child(odd) {
 	background-color: #102d38;
 	color: #f1faee;
 	padding: 5px;
+
+	height: 20px;
+	line-height: 20px;
 }
 
 .adming-tym-detail-zapas span {
-	font-size: 13px;
+	font-size: 0.75vw;
 }
 
 .adming-tym-detail-hraci {
@@ -352,6 +357,9 @@ tr:nth-child(odd) {
 	color: #f1faee;
 	padding: 5px;
 	padding-left: 10px;
+
+	height: 20px;
+	line-height: 20px;
 }
 
 .adming-tym-detail-hraci span {

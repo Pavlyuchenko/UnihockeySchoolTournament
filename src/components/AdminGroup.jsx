@@ -10,6 +10,9 @@ class AdminGroup extends Component {
 		displayNew: "none",
 		tymy: [],
 		chosenId: 1,
+		chosenDomaci: 1,
+		chosenHoste: 1,
+		order: 10,
 	};
 
 	componentDidMount() {
@@ -164,7 +167,7 @@ class AdminGroup extends Component {
 
 			for (let zapas of zapasy) {
 				zapasyArr.push(
-					<div className="adming-tym-detail-zapas">
+					<div className="adming-tym-detail-zapas" key={zapas}>
 						<span key={"Domaci" + zapas.domaci + zapas.hoste}>
 							{zapas.domaci}
 						</span>
@@ -185,11 +188,11 @@ class AdminGroup extends Component {
 			<section id="adming-tym-detail">
 				<h3>{nazev}</h3>
 				<div id="adming-tym-detail-flex">
-					<div style={{ width: "50%" }}>
+					<div style={{ width: "48%" }}>
 						<h4>Následující zápasy</h4>
 						{zapasyArr}
 					</div>
-					<div style={{ width: "50%" }}>
+					<div style={{ width: "48%" }}>
 						<h4 style={{ textAlign: "right" }}>Soupiska</h4>
 						{hraciArr}
 					</div>
@@ -198,31 +201,45 @@ class AdminGroup extends Component {
 				<div id="adming-tym-info">
 					<div>
 						<label htmlFor="">Body</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 					<div>
 						<label htmlFor="">Záp</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 					<div>
 						<label htmlFor="">V</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 					<div>
 						<label htmlFor="">R</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 					<div>
 						<label htmlFor="">P</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 					<div>
 						<label htmlFor="">GR</label>
-						<input type="text" value="7" />
+						<input type="text" value="7" onChange={() => ""} />
 					</div>
 				</div>
 			</section>
 		);
+	};
+
+	tymyOption = () => {
+		let res = [];
+
+		for (let tym of this.state.tymy) {
+			res.push(
+				<option value={tym.id} key={"tyym" + tym.id}>
+					{tym.nazev}
+				</option>
+			);
+		}
+
+		return res;
 	};
 
 	render() {
@@ -255,26 +272,80 @@ class AdminGroup extends Component {
 				>
 					<div id="adming-zapasy-novy-domaci">
 						<span>Domácí</span>
-						<select>
-							<option value="Antišunky">Antišunky</option>
-							<option value="Antišunky">Antišunky</option>
-							<option value="Antišunky">Antišunky</option>
-							<option value="Antišunky">Antišunky</option>
-							<option value="Antišunky">Antišunky</option>
-							<option value="Antišunky">Antišunky</option>
+						<select
+							onChange={(e) => {
+								this.setState({ chosenDomaci: e.target.value });
+							}}
+							value={this.state.chosenDomaci}
+						>
+							{this.tymyOption()}
 						</select>
 					</div>
 					<div id="adming-zapasy-novy-hoste">
 						<span>Hosté</span>
-						<select>
-							<option value="Antišunky">Antišunky</option>
+						<select
+							onChange={(e) => {
+								this.setState({ chosenHoste: e.target.value });
+							}}
+							value={this.state.chosenHoste}
+						>
+							{this.tymyOption()}
 						</select>
 					</div>
 					<div id="adming-zapasy-novy-order">
 						<span>Order</span>
 						<div style={{ display: "flex" }}>
-							<input />
-							<button>+</button>
+							<input
+								value={this.state.order}
+								onChange={(e) => {
+									this.setState({ order: e.target.value });
+								}}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										const requestOptions = {
+											method: "POST",
+											headers: {
+												"Content-Type":
+													"application/json",
+											},
+											body: JSON.stringify({
+												domaci_id: this.state
+													.chosenDomaci,
+												hoste_id: this.state
+													.chosenHoste,
+												order: this.state.order,
+											}),
+										};
+										fetch(
+											"http://127.0.0.1:5000/add_zapas",
+											requestOptions
+										).then(() => this.loadZapasyAndTymy());
+										this.addZapas();
+									}
+								}}
+							/>
+							<button
+								onClick={(e) => {
+									const requestOptions = {
+										method: "POST",
+										headers: {
+											"Content-Type": "application/json",
+										},
+										body: JSON.stringify({
+											domaci_id: this.state.chosenDomaci,
+											hoste_id: this.state.chosenHoste,
+											order: this.state.order,
+										}),
+									};
+									fetch(
+										"http://127.0.0.1:5000/add_zapas",
+										requestOptions
+									).then(() => this.loadZapasyAndTymy());
+									this.addZapas();
+								}}
+							>
+								+
+							</button>
 						</div>
 					</div>
 				</section>
