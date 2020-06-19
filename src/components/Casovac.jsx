@@ -12,6 +12,7 @@ class Casovac extends Component {
 		sekundy: -1,
 		desetiny: -1,
 		pauseTimer: true,
+		zapas: "",
 	};
 	componentDidMount() {
 		let minuty = JSON.parse(localStorage.getItem("minuty"));
@@ -68,6 +69,19 @@ class Casovac extends Component {
 						"http://127.0.0.1:5000/update_casovac",
 						requestOptions
 					);
+				} else {
+					const requestOptions = {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							minuty: this.state.minuty,
+							sekundy: this.state.sekundy,
+						}),
+					};
+					fetch(
+						"http://127.0.0.1:5000/pause_casovac",
+						requestOptions
+					);
 				}
 				this.setState({ pauseTimer: !this.state.pauseTimer });
 			}
@@ -95,6 +109,12 @@ class Casovac extends Component {
 					}
 				);
 			});*/
+
+		fetch("http://127.0.0.1:5000/get_curr_zapas")
+			.then((response) => response.json())
+			.then((result) => {
+				this.setState({ zapas: result.zapas });
+			});
 	}
 
 	componentWillUnmount() {
@@ -269,7 +289,7 @@ class Casovac extends Component {
 				<div id="casovac-skore-flex">
 					<div className="casovac-skore-flex-items">
 						<div className="casovac-skore-jmeno">
-							<span>Antišunkofleci</span>
+							<span>{this.state.zapas.domaci}</span>
 						</div>
 						<div className="casovac-skore-skore">
 							<span
@@ -314,7 +334,7 @@ class Casovac extends Component {
 					</div>
 					<div className="casovac-skore-flex-items">
 						<div className="casovac-skore-jmeno">
-							<span>Vygrachanci</span>
+							<span>{this.state.zapas.hoste}</span>
 						</div>
 						<div className="casovac-skore-skore">
 							<span

@@ -51,16 +51,18 @@ class Main extends Component {
 	};
 
 	updateTimer = () => {
-		let casovac = this.state.casovac;
+		if (!this.state.casovac.pause) {
+			let casovac = this.state.casovac;
 
-		if (casovac.sekundy >= 59) {
-			casovac.minuty++;
-			casovac.sekundy = 0;
-		} else {
-			casovac.sekundy++;
+			if (casovac.sekundy >= 59) {
+				casovac.minuty++;
+				casovac.sekundy = 0;
+			} else {
+				casovac.sekundy++;
+			}
+
+			this.setState({ casovac: casovac });
 		}
-
-		this.setState({ casovac: casovac });
 	};
 
 	state = { favTeam: "", test: "", zapasy: [], casovac: "" };
