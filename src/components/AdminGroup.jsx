@@ -149,12 +149,16 @@ class AdminGroup extends Component {
 		let hraciArr = [];
 		let zapasy = [];
 		let zapasyArr = [];
+		let tymStatistiky = [];
 		if (tym.length > 0) {
 			nazev = tym[0].nazev;
 
 			for (let hrac of tym[0].hraci) {
 				hraciArr.push(
-					<div key={hrac.jmeno} className="adming-tym-detail-hraci">
+					<div
+						key={hrac.jmeno + hrac}
+						className="adming-tym-detail-hraci"
+					>
 						<span>{hrac.jmeno}</span>
 						<span>{hrac.trida}</span>
 					</div>
@@ -167,21 +171,79 @@ class AdminGroup extends Component {
 
 			for (let zapas of zapasy) {
 				zapasyArr.push(
-					<div className="adming-tym-detail-zapas" key={zapas}>
-						<span key={"Domaci" + zapas.domaci + zapas.hoste}>
-							{zapas.domaci}
-						</span>
-						<span
-							key={"Cas" + zapas.cas + zapas.domaci + zapas.hoste}
-						>
-							{zapas.cas}
-						</span>
-						<span key={"Hoste" + zapas.domaci + zapas.hoste}>
-							{zapas.hoste}
-						</span>
+					<div
+						className="adming-tym-detail-zapas"
+						key={zapas + zapas.skore1 + zapas.domaci + zapas.hoste}
+					>
+						<span>{zapas.domaci}</span>
+						<span>{zapas.cas}</span>
+						<span>{zapas.hoste}</span>
 					</div>
 				);
 			}
+
+			tym = tym[0];
+
+			tymStatistiky.push(
+				<React.Fragment key={"Stat" + tym.skupina + tym.nazev}>
+					<div>
+						<label htmlFor="">Body</label>
+						<input
+							type="text"
+							value={tym.body}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">Záp</label>
+						<input
+							type="text"
+							value={tym.zapasy}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">V</label>
+						<input
+							type="text"
+							value={tym.vyhry}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">R</label>
+						<input
+							type="text"
+							value={tym.remizy}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">P</label>
+						<input
+							type="text"
+							value={tym.prohry}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">GR</label>
+						<input
+							type="text"
+							value={tym.vstrelene_goly - tym.obdrzene_goly}
+							onChange={() => ""}
+						/>
+					</div>
+					<div>
+						<label htmlFor="">Sk</label>
+						<input
+							type="text"
+							value={tym.skupina ? tym.skupina : "A"}
+							onChange={() => ""}
+						/>
+					</div>
+				</React.Fragment>
+			);
 		}
 
 		return (
@@ -199,7 +261,8 @@ class AdminGroup extends Component {
 				</div>
 
 				<div id="adming-tym-info">
-					<div>
+					{
+						tymStatistiky /*<div>
 						<label htmlFor="">Body</label>
 						<input type="text" value="7" onChange={() => ""} />
 					</div>
@@ -223,6 +286,11 @@ class AdminGroup extends Component {
 						<label htmlFor="">GR</label>
 						<input type="text" value="7" onChange={() => ""} />
 					</div>
+					<div>
+						<label htmlFor="">Sk</label>
+						<input type="text" value="A" onChange={() => ""} />
+					</div>*/
+					}
 				</div>
 			</section>
 		);

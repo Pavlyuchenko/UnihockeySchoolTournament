@@ -2,9 +2,8 @@
 	margin-left: 50%;
 	transform: translateX(-50%);
 	margin-right: 20%;
-	margin-top: 50px;
-	height: 100%;
-	max-width: 450px;
+	margin-top: 100px;
+	max-width: 600px;
 }
 
 #prob-zap-h2 {
@@ -18,12 +17,12 @@
 
 #prob-zap-wrapper {
 	width: 100%;
-	height: 160px;
+	height: 200px;
 }
 
 #prob-zap-tymy {
 	width: 100%;
-	height: 40px;
+	height: 45px;
 	background-color: #23436f;
 	display: flex;
 	justify-content: space-around;
@@ -42,7 +41,7 @@
 	text-align: center;
 	color: #f1faee;
 	font-weight: 500;
-	font-size: 80px;
+	font-size: 100px;
 	position: relative;
 }
 
@@ -60,18 +59,19 @@
 	text-align: center;
 	color: #e63946;
 	font-weight: 500;
-	font-size: 80px;
+	font-size: 100px;
 	position: relative;
 }
 .prob-zap-jmeno {
-	line-height: 40px;
+	line-height: 38px;
 	font-weight: 400;
-	font-size: 17px;
+	font-size: 20px;
 	color: #f1faee;
 	position: absolute;
 	top: -40px;
 	left: 50%;
 	transform: translateX(-50%);
+	white-space: nowrap;
 }
 
 #prob-zap-hoste:before {
@@ -93,6 +93,44 @@
 	left: 5px;
 	bottom: 0;
 	font-size: 30px;
+}
+
+.anim {
+	animation: blik 1s infinite ease-in-out;
+}
+
+.animh {
+	animation: blikh 1s infinite ease-in-out;
+}
+
+@keyframes blik {
+	0% {
+		background-color: #23426e;
+	}
+	49% {
+		background-color: #23426e;
+	}
+	50% {
+		background-color: #e63946;
+	}
+	100% {
+		background-color: #e63946;
+	}
+}
+
+@keyframes blikh {
+	0% {
+		background-color: #23426e;
+	}
+	49% {
+		background-color: #23426e;
+	}
+	50% {
+		background-color: #f1faee;
+	}
+	100% {
+		background-color: #f1faee;
+	}
 }
 
 @media only screen and (max-width: 700px) {

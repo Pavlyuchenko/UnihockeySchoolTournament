@@ -34,10 +34,22 @@ class ProbihajiciZapas extends Component {
 				<div id="prob-zap-wrapper">
 					<div id="prob-zap-tymy"></div>
 					<div id="prob-zap-skore-wrapper">
-						<div id="prob-zap-domaci">
-							<span className="prob-zap-jmeno">Vygrachanci</span>
-							{this.props.casovac.skore1}
-							<span id="prob-zap-timer-left">
+						<div
+							id="prob-zap-domaci"
+							className={this.props.blikClassDomaci ? "anim" : ""}
+						>
+							<span className="prob-zap-jmeno">
+								{this.props.zapas.domaci}
+							</span>
+							{this.props.zapas.skore1}
+							<span
+								id="prob-zap-timer-left"
+								style={
+									this.props.casovac.pause
+										? { color: "#23426E" }
+										: {}
+								}
+							>
 								{this.props.casovac.minuty < 12 &&
 								this.props.casovac.minuty >= 0
 									? this.props.casovac.minuty < 10
@@ -46,12 +58,22 @@ class ProbihajiciZapas extends Component {
 									: "kon"}
 							</span>
 						</div>
-						<div id="prob-zap-hoste">
+						<div
+							id="prob-zap-hoste"
+							className={this.props.blikClassHoste ? "animh" : ""}
+						>
 							<span className="prob-zap-jmeno">
-								Antišunkofleci
+								{this.props.zapas.hoste}
 							</span>
-							{this.props.casovac.skore2}
-							<span id="prob-zap-timer-right">
+							{this.props.zapas.skore2}
+							<span
+								id="prob-zap-timer-right"
+								style={
+									this.props.casovac.pause
+										? { color: "#23426E" }
+										: {}
+								}
+							>
 								{this.props.casovac.minuty < 12 &&
 								this.props.casovac.minuty >= 0
 									? this.props.casovac.sekundy < 10

@@ -382,11 +382,12 @@ tr:nth-child(odd) {
 	font-weight: 500;
 	color: #f1faee;
 	font-size: 18px;
+	margin-top: 10px;
 }
 
 #adming-tym-info input {
-	width: 55px;
-	height: 52px;
+	width: 48px;
+	height: 48px;
 
 	border: 0;
 	font-size: 40px;

@@ -18,16 +18,28 @@ class Casovac extends Component {
 		let minuty = JSON.parse(localStorage.getItem("minuty"));
 		let sekundy = JSON.parse(localStorage.getItem("sekundy"));
 		let desetiny = JSON.parse(localStorage.getItem("desetiny"));
+		let domaciSkore = JSON.parse(localStorage.getItem("domaciSkore"));
+		let hosteSkore = JSON.parse(localStorage.getItem("hosteSkore"));
 
 		if (!minuty && !sekundy && !desetiny) {
 			minuty = 0;
 			sekundy = 0;
 			desetiny = 0;
 		}
+		if (!domaciSkore && !hosteSkore) {
+			domaciSkore = 0;
+			hosteSkore = 0;
+		}
 
 		this.updateTime(minuty, sekundy);
 		this.setState(
-			{ minuty: minuty, sekundy: sekundy, desetiny: desetiny },
+			{
+				minuty: minuty,
+				sekundy: sekundy,
+				desetiny: desetiny,
+				domaciSkore: domaciSkore,
+				hosteSkore: hosteSkore,
+			},
 			function () {
 				this.interval = setInterval(this.updateTime, 1000);
 			}
@@ -49,12 +61,48 @@ class Casovac extends Component {
 			event.stopPropagation();
 			if (event.code === "KeyQ") {
 				this.setState({ domaciSkore: this.state.domaciSkore + 1 });
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						skoreDomaci: this.state.domaciSkore,
+						skoreHoste: this.state.hosteSkore,
+					}),
+				};
+				fetch("http://127.0.0.1:5000/update_skore", requestOptions);
 			} else if (event.code === "KeyW") {
 				this.setState({ hosteSkore: this.state.hosteSkore + 1 });
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						skoreDomaci: this.state.domaciSkore,
+						skoreHoste: this.state.hosteSkore,
+					}),
+				};
+				fetch("http://127.0.0.1:5000/update_skore", requestOptions);
 			} else if (event.code === "KeyA" && this.state.domaciSkore > 0) {
 				this.setState({ domaciSkore: this.state.domaciSkore - 1 });
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						skoreDomaci: this.state.domaciSkore,
+						skoreHoste: this.state.hosteSkore,
+					}),
+				};
+				fetch("http://127.0.0.1:5000/update_skore", requestOptions);
 			} else if (event.code === "KeyS" && this.state.hosteSkore > 0) {
 				this.setState({ hosteSkore: this.state.hosteSkore - 1 });
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						skoreDomaci: this.state.domaciSkore,
+						skoreHoste: this.state.hosteSkore,
+					}),
+				};
+				fetch("http://127.0.0.1:5000/update_skore", requestOptions);
 			} else if (event.code === "Space") {
 				if (this.state.pauseTimer) {
 					const requestOptions = {
@@ -85,6 +133,15 @@ class Casovac extends Component {
 				}
 				this.setState({ pauseTimer: !this.state.pauseTimer });
 			}
+
+			localStorage.setItem(
+				"domaciSkore",
+				JSON.stringify(this.state.domaciSkore)
+			);
+			localStorage.setItem(
+				"hosteSkore",
+				JSON.stringify(this.state.hosteSkore)
+			);
 		});
 
 		/*fetch("http://127.0.0.1:5000/main")
@@ -172,6 +229,19 @@ class Casovac extends Component {
 				);
 			});
 		}
+	};
+
+	dalsiZapas = () => {
+		
+		localStorage.setItem("domaciSkore", JSON.stringify(0));
+		localStorage.setItem("hosteSkore", JSON.stringify(0));
+		this.setState({ hosteSkore: this.state.hosteSkore - 1 });
+
+		this.setState({ minuty: 0, sekundy: 0, domaciSkore: 0, hosteSkore: 0 });
+
+		localStorage.setItem("minuty", JSON.stringify(0));
+		localStorage.setItem("sekundy", JSON.stringify(0));
+		localStorage.setItem("desetiny", JSON.stringify(0));
 	};
 
 	render() {
@@ -387,6 +457,7 @@ class Casovac extends Component {
 					</div>
 					<div></div>
 				</div>
+				<button onClick={this.dalsiZapas}>Další zápas</button>
 				<button
 					onClick={() => {
 						this.setState({ nastaveno: true });

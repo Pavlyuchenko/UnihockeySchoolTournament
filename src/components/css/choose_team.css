@@ -71,6 +71,7 @@
 	justify-content: flex-start;
 	display: flex;
 	flex-wrap: wrap;
+	user-select: none;
 }
 
 .chos-team-team-wrapper {
