@@ -100,9 +100,26 @@ class Registrace extends Component {
 							}}
 							value={this.state.hraci[i - 1].trida}
 						>
+							<option value="1.A">1.A</option>
+							<option value="2.A">2.A</option>
+							<option value="3.A">3.A</option>
+							<option value="4.A">4.A</option>
+							<option value="5.A">5.A</option>
+							<option value="1.B">1.B</option>
+							<option value="1.C">1.C</option>
+							<option value="1.D">1.D</option>
 							<option value="6.A">6.A</option>
+							<option value="2.B">2.B</option>
+							<option value="2.C">2.C</option>
+							<option value="2.D">2.D</option>
 							<option value="7.A">7.A</option>
+							<option value="3.B">3.B</option>
+							<option value="3.C">3.C</option>
+							<option value="3.D">3.D</option>
 							<option value="8.A">8.A</option>
+							<option value="4.B">4.B</option>
+							<option value="4.C">4.C</option>
+							<option value="4.D">4.D</option>
 						</select>
 					</div>
 				</div>

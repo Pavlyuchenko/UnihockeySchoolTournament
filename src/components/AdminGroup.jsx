@@ -27,6 +27,7 @@ class AdminGroup extends Component {
 				for (let i = 0; i < result.zapasy.length; i++) {
 					classes.push("");
 				}
+
 				this.setState({
 					zapasy: result.zapasy,
 					classes: classes,
@@ -127,7 +128,7 @@ class AdminGroup extends Component {
 					onClick={() => this.setState({ chosenId: tym.id })}
 				>
 					<td>{tym.nazev}</td>
-					<td align="right">A</td>
+					<td align="right">{tym.skupina ? tym.skupina : ""}</td>
 					<td align="right">{tym.body}</td>
 					<td align="right">{tym.vyhry}</td>
 					<td align="right">{tym.remizy}</td>
@@ -138,6 +139,68 @@ class AdminGroup extends Component {
 		}
 
 		return res;
+	};
+
+	updateTymStatistiky = (e, tym, stat) => {
+		let tymy = [...this.state.tymy];
+		let tymVar = tymy.filter((a) => tym.id === a.id)[0];
+
+		switch (stat) {
+			case "body":
+				tymVar.body = e.target.value;
+				break;
+			case "zapasy":
+				tymVar.zapasy = e.target.value;
+				break;
+			case "vyhry":
+				tymVar.vyhry = e.target.value;
+				break;
+			case "remizy":
+				tymVar.remizy = e.target.value;
+				break;
+			case "prohry":
+				tymVar.prohry = e.target.value;
+				break;
+			case "vstrelene_goly":
+				tymVar.vstrelene_goly = e.target.value;
+				break;
+			case "skupina":
+				tymVar.skupina = e.target.value;
+				break;
+			case "obdrzene_goly":
+				tymVar.obdrzene_goly = e.target.value;
+				break;
+			default:
+				break;
+		}
+
+		this.setState({ tymy: tymy });
+	};
+
+	sendData = (e, tym) => {
+		if (e.key === "Enter") {
+			const requestOptions = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					id: tym.id,
+					body: tym.body,
+					zapasy: tym.zapasy,
+					vyhry: tym.vyhry,
+					remizy: tym.remizy,
+					prohry: tym.prohry,
+					obdrzene_goly: tym.obdrzene_goly,
+					vstrelene_goly: tym.vstrelene_goly,
+					skupina: tym.skupina,
+				}),
+			};
+			fetch(
+				"http://127.0.0.1:5000/update_tym_statistiky",
+				requestOptions
+			).then(() => this.loadZapasyAndTymy());
+		}
 	};
 
 	chosenTeam = () => {
@@ -187,11 +250,29 @@ class AdminGroup extends Component {
 			tymStatistiky.push(
 				<React.Fragment key={"Stat" + tym.skupina + tym.nazev}>
 					<div>
+						<label htmlFor="">Sk</label>
+						<input
+							type="text"
+							value={tym.skupina}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "skupina")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
+						/>
+					</div>
+					<div>
 						<label htmlFor="">Body</label>
 						<input
 							type="text"
 							value={tym.body}
-							onChange={() => ""}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "body")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 					<div>
@@ -199,7 +280,12 @@ class AdminGroup extends Component {
 						<input
 							type="text"
 							value={tym.zapasy}
-							onChange={() => ""}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "zapasy")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 					<div>
@@ -207,7 +293,12 @@ class AdminGroup extends Component {
 						<input
 							type="text"
 							value={tym.vyhry}
-							onChange={() => ""}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "vyhry")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 					<div>
@@ -215,7 +306,12 @@ class AdminGroup extends Component {
 						<input
 							type="text"
 							value={tym.remizy}
-							onChange={() => ""}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "remizy")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 					<div>
@@ -223,23 +319,47 @@ class AdminGroup extends Component {
 						<input
 							type="text"
 							value={tym.prohry}
-							onChange={() => ""}
+							onChange={(e) =>
+								this.updateTymStatistiky(e, tym, "prohry")
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
+						/>
+					</div>
+
+					<div>
+						<label htmlFor="">VG</label>
+						<input
+							type="text"
+							value={tym.vstrelene_goly}
+							onChange={(e) =>
+								this.updateTymStatistiky(
+									e,
+									tym,
+									"vstrelene_goly"
+								)
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 					<div>
-						<label htmlFor="">GR</label>
+						<label htmlFor="">OG</label>
 						<input
 							type="text"
-							value={tym.vstrelene_goly - tym.obdrzene_goly}
-							onChange={() => ""}
-						/>
-					</div>
-					<div>
-						<label htmlFor="">Sk</label>
-						<input
-							type="text"
-							value={tym.skupina ? tym.skupina : "A"}
-							onChange={() => ""}
+							value={tym.obdrzene_goly}
+							onChange={(e) =>
+								this.updateTymStatistiky(
+									e,
+									tym,
+									"obdrzene_goly"
+								)
+							}
+							onKeyDown={(e) => {
+								this.sendData(e, tym);
+							}}
 						/>
 					</div>
 				</React.Fragment>

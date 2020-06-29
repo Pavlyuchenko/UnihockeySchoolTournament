@@ -3,6 +3,28 @@ import "./css/hrajici_tabulka.css";
 
 class HrajiciTabulka extends Component {
 	state = {};
+
+	createRow = () => {
+		let res = [];
+
+		if (this.props.tymy) {
+			for (let tym of this.props.tymy) {
+				res.push(
+					<div key={tym + "TymStatistika" + tym.nazev}>
+						<span>{tym.nazev}</span>
+						<span>{tym.zapasy}</span>
+						<span>{tym.vyhry}</span>
+						<span>{tym.remizy}</span>
+						<span>{tym.prohry}</span>
+						<span>{tym.vstrelene_goly - tym.obdrzene_goly}</span>
+						<span>{tym.body}</span>
+					</div>
+				);
+			}
+		}
+		return res;
+	};
+
 	render() {
 		return (
 			<section id="hrajici-tabulka-sect">
@@ -19,7 +41,8 @@ class HrajiciTabulka extends Component {
 					<span>B</span>
 				</div>
 				<div id="hrajici-tabulka-tabulka">
-					<div>
+					{
+						this.createRow() /*<div>
 						<span>Učitelé</span>
 						<span>3</span>
 						<span>1</span>
@@ -54,7 +77,8 @@ class HrajiciTabulka extends Component {
 						<span>4</span>
 						<span>1</span>
 						<span>5</span>
-					</div>
+					</div>*/
+					}
 				</div>
 			</section>
 		);

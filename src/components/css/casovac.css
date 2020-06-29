@@ -82,3 +82,30 @@ body {
 	left: 50%;
 	transform: translateX(-50%);
 }
+
+#casovac-dalsi-zapas {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	border: 0;
+	background-color: #e63946;
+	color: #f1faee;
+	font-size: 25px;
+	font-weight: 500;
+	font-family: "Rubik";
+	width: 150px;
+	height: 50px;
+
+	cursor: pointer;
+
+	transition: 0.2s;
+}
+
+#casovac-dalsi-zapas:hover {
+	background-color: #23426e;
+	width: 170px;
+	height: 70px;
+
+	bottom: 10px;
+	right: 10px;
+}

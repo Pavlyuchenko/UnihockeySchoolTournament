@@ -30,6 +30,7 @@ class Main extends Component {
 						zapasy: arr,
 						casovac: result.casovac,
 						prvniZapas: arr[0],
+						tymy: result.tymy,
 					},
 					function () {
 						if (this.interval) {
@@ -78,6 +79,7 @@ class Main extends Component {
 						prvniZapas: arr[0],
 						blikClassDomaci: domaciGol,
 						blikClassHoste: hosteGol,
+						tymy: result.tymy,
 					},
 					function () {
 						if (this.interval) {
@@ -126,7 +128,7 @@ class Main extends Component {
 					blikClassHoste={this.state.blikClassHoste}
 				/>
 				<NasledujiciZapasy zapasy={this.state.zapasy} />
-				<HrajiciTabulka />
+				<HrajiciTabulka tymy={this.state.tymy} />
 			</>
 		);
 	}

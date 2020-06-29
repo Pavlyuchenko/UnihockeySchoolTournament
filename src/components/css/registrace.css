@@ -166,7 +166,7 @@ label {
 #regiser-button {
 	width: 100%;
 	height: 40px;
-	margin-top: 40px;
+	margin-top: 0px;
 	margin-bottom: 30px;
 	background-color: #e63946;
 	color: #f1faee;
@@ -254,8 +254,8 @@ label {
 	content: "";
 	display: inline-block;
 	position: absolute;
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
@@ -275,9 +275,10 @@ label {
 #primary span {
 	position: absolute;
 	margin-left: 50%;
+	margin-top: 5px;
 	transform: translateX(-50%) translateY(-50%);
 	top: 50%;
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: 500;
 	color: #f1faee;
 }
@@ -286,7 +287,7 @@ label {
 	position: absolute;
 	margin-left: 50%;
 	transform: translateX(-50%);
-	top: 75%;
+	top: 100%;
 	font-size: 18px;
 	width: max-content;
 	font-weight: 500;
@@ -436,6 +437,7 @@ label {
 		cursor: pointer;
 		right: 20%;
 		transition: 0.2s;
+		margin-top: 40px;
 	}
 	#regiser-button-zpet {
 		width: 150px;
@@ -471,6 +473,7 @@ label {
 		transform: translateX(-50%) translateY(-50%);
 		top: 50%;
 		font-size: 34px;
+		margin-top: 0px;
 	}
 
 	#primary p {
