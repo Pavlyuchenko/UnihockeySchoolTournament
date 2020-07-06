@@ -397,6 +397,179 @@ tr:nth-child(odd) {
 	color: #102d38;
 }
 
+/*
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+---------------------------ODEHRANE ZAPASY------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+*/
+#adming-odehrany-zapasy {
+	background-color: #e63946;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+#adming-odehrany-zapasy h3 {
+	padding: 0;
+	margin: 0;
+
+	color: #f1faee;
+	font-weight: 500;
+
+	font-size: 24px;
+}
+
+#adming-odehrany-zapasy-popis-flex {
+	display: flex;
+
+	margin-top: 15px;
+	background-color: #102d38;
+}
+
+#adming-odehrany-zapasy-popis {
+	width: 100%;
+	padding: 5px;
+	padding-left: 1%;
+	padding-right: 2%;
+
+	color: #f1faee;
+	font-weight: 500;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+#adming-odehrany-zapasy-order-popis {
+	color: #f1faee;
+	font-weight: 500;
+	padding: 5px;
+
+	width: 5%;
+	min-width: 40px;
+}
+
+.adming-odehrany-zapas {
+	display: flex;
+	margin-top: 10px;
+}
+
+.adming-odehrany-zapas:nth-child(odd) {
+	background-color: #f1faee;
+	color: #102d38;
+}
+
+.adming-odehrany-zapas:nth-child(even) {
+	background-color: #23426e;
+	color: #f1faee;
+}
+
+.adming-odehrany-zapas-flex {
+	width: 100%;
+	padding: 5px;
+	padding-left: 1%;
+	padding-right: 2%;
+
+	line-height: 25px;
+
+	font-weight: 500;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.adming-odehrany-zapasy-order {
+	color: #f1faee;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;
+	width: 5%;
+	min-width: 40px;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapasy-order-input {
+	color: #f1faee;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px;
+	width: 5%;
+	min-width: 30px;
+	height: 15px;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas:nth-child(odd) .adming-odehrany-zapasy-order-input {
+	border: 0;
+	padding: 5px;
+
+	background-color: #102d38;
+	color: #f1faee;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas:nth-child(even) .adming-odehrany-zapasy-order-input {
+	border: 0;
+	padding: 5px;
+
+	background-color: #f1faee;
+	color: #102d38;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas .adming-odehrany-zapasy-order-input:focus {
+	border: 0;
+	padding-left: 5px;
+}
+
+.adming-odehrany-zapasy-skore-domaci-input {
+	display: inline;
+	color: #f1faee;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px;
+	max-width: 10px;
+	min-width: 5px;
+	height: 15px;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas:nth-child(odd)
+	.adming-odehrany-zapasy-skore-domaci-input {
+	border: 0;
+	padding: 5px;
+
+	background-color: #102d38;
+	color: #f1faee;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas:nth-child(even)
+	.adming-odehrany-zapasy-skore-domaci-input {
+	border: 0;
+	padding: 5px;
+
+	background-color: #f1faee;
+	color: #102d38;
+
+	font-size: 16px;
+}
+
+.adming-odehrany-zapas .adming-odehrany-zapasy-skore-domaci-input:focus {
+	border: 0;
+	padding-left: 5px;
+}
+
 @media only screen and (max-width: 700px) {
 	#adming-zapasy {
 		margin-left: 10%;

@@ -196,7 +196,6 @@ class Casovac extends Component {
 		localStorage.setItem("hosteSkore", JSON.stringify(0));
 
 		this.setState({
-			hosteSkore: this.state.hosteSkore - 1,
 			minuty: 0,
 			sekundy: 0,
 			domaciSkore: 0,
