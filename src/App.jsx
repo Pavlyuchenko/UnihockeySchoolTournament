@@ -17,6 +17,7 @@ import Registrace from "./components/Registrace";
 import Admin from "./components/Admin";
 import AdminGroup from "./components/AdminGroup";
 import Casovac from "./components/Casovac";
+import TymInfo from "./components/TymInfo";
 
 class App extends Component {
 	checkFavoriteTeam = () => {
@@ -89,6 +90,16 @@ class App extends Component {
 					/>
 					<Route exact path="/admin" component={Admin} />
 					<Route exact path="/adming" component={AdminGroup} />
+
+					<Route
+						exact
+						path="/tym/:nazev"
+						render={(props) => {
+							console.log(props.match.params.nazev);
+
+							return <TymInfo nazev={props.match.params.nazev} />;
+						}}
+					/>
 				</Switch>
 			</Router>
 		);

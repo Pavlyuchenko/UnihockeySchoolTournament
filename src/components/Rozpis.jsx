@@ -35,7 +35,7 @@ class Rozpis extends Component {
 						domaci={zapas.domaci}
 						cas={"9:00" /*zapas.cas*/}
 						hoste={zapas.hoste}
-						key={zapas.domaci + " asd " + zapas.hoste}
+						key={zapas.domaci + " asd1 " + zapas.hoste}
 					/>
 				);
 			} else {
@@ -44,7 +44,7 @@ class Rozpis extends Component {
 						domaci={zapas.domaci}
 						cas={"9:00" /*zapas.cas*/}
 						hoste={zapas.hoste}
-						key={zapas.domaci + " asd " + zapas.hoste}
+						key={zapas.domaci + " asd2 " + zapas.hoste}
 					/>
 				);
 			}

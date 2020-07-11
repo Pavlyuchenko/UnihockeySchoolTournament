@@ -1,0 +1,300 @@
+#tym-info-badge {
+	width: 100%;
+	height: 80px;
+	position: relative;
+
+	margin-top: 20px;
+}
+
+#tym-info-line {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100% /*60%*/;
+	/*margin-left: 20%;
+	margin-right: 20%;*/
+	height: 10px;
+	background-color: #23426e;
+	z-index: -1;
+}
+
+#tym-info-nadpis-div {
+	height: 100%;
+	width: 500px;
+
+	background-color: #e63946;
+	border: 6px solid #f1faee;
+
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+
+	text-align: center;
+
+	box-sizing: border-box;
+}
+
+#tym-info-nadpis {
+	line-height: 70px;
+	margin: 0;
+	padding: 0;
+
+	font-size: 50px;
+	color: #f1faee;
+
+	font-weight: 500;
+}
+
+/*
+---------
+*/
+#tym-info-basic-flex {
+	display: flex;
+	justify-content: space-between;
+
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 50px;
+
+	height: calc(5vw + 20px);
+}
+
+.tym-info-basic-item-wrapper {
+	width: calc(5vw + 20px);
+	height: 100%;
+}
+
+.tym-info-basic-item-div {
+	text-align: center;
+	position: relative;
+	height: 100%;
+
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.tym-info-basic-item-div h3 {
+	margin: 0;
+	padding: 0;
+}
+
+.tym-info-basic-item-div:first-child {
+	margin-left: 0;
+}
+
+.tym-info-basic-item-div:last-child {
+	margin-right: 0;
+}
+
+.tym-info-basic-item-wrapper:nth-child(1) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.tym-info-basic-item-wrapper:nth-child(2) {
+	background-color: #f1faee;
+	color: #e63946;
+}
+
+.tym-info-basic-item-wrapper:nth-child(3) {
+	background-color: #e63946;
+	color: #f1faee;
+}
+
+.tym-info-basic-item-wrapper:nth-child(4) {
+	background-color: #23426e;
+	color: #f1faee;
+}
+.tym-info-basic-item-wrapper:nth-child(5) {
+	background-color: #f1faee;
+	color: #23426e;
+}
+
+.tym-info-basic-item-div h3 {
+	font-size: 39px;
+	font-weight: 500;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.tym-info-basic-item-wrapper h4 {
+	margin: 0;
+	padding: 0;
+
+	color: #f1faee;
+
+	font-weight: 500;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+#tym-info-the-odd-one {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	font-size: 20px;
+	font-weight: 400;
+}
+
+@media only screen and (max-width: 1350px) {
+	#tym-info-odd-second {
+		font-size: 25px;
+	}
+}
+
+/* 
+--------------------------
+----Zapasy-a-Soupiska-----
+--------------------------
+*/
+
+#tym-info-zap-sou-flex {
+	display: flex;
+	justify-content: space-between;
+
+	height: 500px;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 100px;
+}
+
+#tym-info-zapasy {
+	width: 47%;
+	background-color: #23426e;
+}
+
+#tym-info-soupiska {
+	width: 47%;
+	height: 100%;
+
+	background-color: #e63946;
+}
+
+#tym-info-zap-sou-flex h3 {
+	color: #f1faee;
+	font-weight: 500;
+	font-size: 30px;
+
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#tym-info-zapasy h4 {
+	color: #f1faee;
+	font-weight: 400;
+	font-size: 18px;
+
+	margin: 0;
+	margin-left: 20px;
+}
+
+/*
+-----
+Zapas 
+----- 
+*/
+.tym-info-zapas-wrapper {
+	background: linear-gradient(to right, #e63946 50%, #f1faee 50%);
+
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	height: 35px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	line-height: 35px;
+	font-size: 18px;
+	font-size: 20px;
+	font-weight: 500;
+	color: #f1faee;
+}
+
+.tym-info-zapas-wrapper span:first-child {
+	margin-left: 15px;
+}
+
+.tym-info-zapas-wrapper span:last-child {
+	margin-right: 15px;
+}
+
+.tym-info-zapas-cas {
+	position: absolute;
+	right: 51.5%;
+
+	font-weight: 500;
+	font-size: 25px;
+}
+
+.tym-info-zapas-cas-2 {
+	position: absolute;
+	left: 51%;
+
+	color: #e63946;
+	font-weight: 500;
+	font-size: 25px;
+}
+
+.tym-info-zapas-hoste {
+	color: #e63946;
+	font-weight: 500;
+}
+/*
+*/
+
+@media only screen and (max-width: 700px) {
+	#tym-info-badge {
+		height: 45px;
+		position: relative;
+		margin-top: 35px;
+	}
+	#tym-info-line {
+		width: 100%;
+		height: 8px;
+	}
+	#tym-info-nadpis-div {
+		width: 80%;
+		border: 5px solid #f1faee;
+	}
+	#tym-info-nadpis {
+		line-height: 35px;
+		font-size: 22px;
+		font-weight: 400;
+	}
+
+	#tym-info-basic-flex {
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 20px;
+
+		height: calc(8vw + 20px);
+	}
+
+	.tym-info-basic-item-wrapper {
+		width: calc(8vw + 20px);
+	}
+
+	.tym-info-basic-item-div h3 {
+		font-size: 28px;
+	}
+
+	#tym-info-the-odd-one {
+		font-size: 12px;
+	}
+
+	.tym-info-basic-item-wrapper h4 {
+		margin-top: 5px;
+		font-size: 11px;
+	}
+
+	#tym-info-odd-second {
+		font-size: 16px;
+	}
+}

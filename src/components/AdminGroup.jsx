@@ -31,8 +31,9 @@ class AdminGroup extends Component {
 				this.setState({
 					zapasy: result.zapasy,
 					classes: classes,
+					classesOdehrane: classes,
 					tymy: result.tymy,
-					odehrane_zapasy: result.odehrane_zapasy,
+					odehraneZapasy: result.odehrane_zapasy,
 				});
 			});
 	};
@@ -98,8 +99,8 @@ class AdminGroup extends Component {
 	createOdehraneZapasy = () => {
 		let res = [];
 
-		if (this.state.odehrane_zapasy) {
-			for (let zapas of this.state.odehrane_zapasy) {
+		if (this.state.odehraneZapasy) {
+			for (let zapas of this.state.odehraneZapasy) {
 				res.push(
 					<div
 						className="adming-odehrany-zapas"
@@ -122,9 +123,7 @@ class AdminGroup extends Component {
 								onChange={(e) =>
 									this.onOdehranyZapasChangeDomaci(
 										e,
-										this.state.odehrane_zapasy.indexOf(
-											zapas
-										)
+										this.state.odehraneZapasy.indexOf(zapas)
 									)
 								}
 								value={zapas.skore1}
@@ -156,9 +155,7 @@ class AdminGroup extends Component {
 								onChange={(e) =>
 									this.onOdehranyZapasChangeHoste(
 										e,
-										this.state.odehrane_zapasy.indexOf(
-											zapas
-										)
+										this.state.odehraneZapasy.indexOf(zapas)
 									)
 								}
 								value={zapas.skore2}
@@ -191,9 +188,7 @@ class AdminGroup extends Component {
 								onChange={(e) =>
 									this.onOdehranyZapasChange(
 										e,
-										this.state.odehrane_zapasy.indexOf(
-											zapas
-										)
+										this.state.odehraneZapasy.indexOf(zapas)
 									)
 								}
 								value={zapas.order}
@@ -216,6 +211,11 @@ class AdminGroup extends Component {
 											requestOptions
 										).then(() => this.loadZapasyAndTymy());
 									}
+								}}
+								style={{
+									backgroundColor: this.state.classesOdehrane[
+										this.state.odehraneZapasy.indexOf(zapas)
+									],
 								}}
 							/>
 						</span>
@@ -244,33 +244,39 @@ class AdminGroup extends Component {
 	};
 
 	onOdehranyZapasChange = (e, id) => {
-		let zapasy = [...this.state.odehrane_zapasy];
+		let zapasy = [...this.state.odehraneZapasy];
 		let zapas = { ...zapasy[id] };
 
 		zapas.order = e.target.value;
 		zapasy[id] = zapas;
 
-		this.setState({ odehrane_zapasy: zapasy });
+		let classes = [...this.state.classesOdehrane];
+		let clas = { ...classes[id] };
+
+		clas = "#4CAF50";
+		classes[id] = clas;
+
+		this.setState({ odehraneZapasy: zapasy, classesOdehrane: classes });
 	};
 
 	onOdehranyZapasChangeDomaci = (e, id) => {
-		let zapasy = [...this.state.odehrane_zapasy];
+		let zapasy = [...this.state.odehraneZapasy];
 		let zapas = { ...zapasy[id] };
 
 		zapas.skore1 = e.target.value;
 		zapasy[id] = zapas;
 
-		this.setState({ odehrane_zapasy: zapasy });
+		this.setState({ odehraneZapasy: zapasy });
 	};
 
 	onOdehranyZapasChangeHoste = (e, id) => {
-		let zapasy = [...this.state.odehrane_zapasy];
+		let zapasy = [...this.state.odehraneZapasy];
 		let zapas = { ...zapasy[id] };
 
 		zapas.skore2 = e.target.value;
 		zapasy[id] = zapas;
 
-		this.setState({ odehrane_zapasy: zapasy });
+		this.setState({ odehraneZapasy: zapasy });
 	};
 
 	addZapas = () => {
