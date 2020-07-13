@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
 import Logo from "./Logo";
+import TymInfoZapas from "./TymInfoZapas";
 import "./css/tym-info.css";
 
 class TymInfo extends Component {
@@ -91,98 +92,76 @@ class TymInfo extends Component {
 
 										<h4>Odehrané</h4>
 										<div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="1"
+												cas2="0"
+											/>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="5"
+												cas2="6"
+											/>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="0"
+												cas2="3"
+											/>
 										</div>
 
 										<h4>Následující</h4>
 										<div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
-											<div className="tym-info-zapas-wrapper">
-												<span className="tym-info-domaci">
-													Antišunky
-												</span>
-												<span className="tym-info-zapas-cas">
-													9
-												</span>
-												<span className="tym-info-zapas-cas-2">
-													00
-												</span>
-												<span className="tym-info-zapas-hoste">
-													Učitelé
-												</span>
-											</div>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="9"
+												cas2="00"
+											/>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="9"
+												cas2="00"
+											/>
+											<TymInfoZapas
+												domaci="Antišunkofleci"
+												hoste="Vygrachanci"
+												cas1="9"
+												cas2="00"
+											/>
 										</div>
 									</div>
 									<div id="tym-info-soupiska">
 										<h3>Soupiska</h3>
+										<div id="tym-info-soupiska-wrapper">
+											<div className="tym-info-soupiska-item">
+												<span>Vojta Olšr</span>
+												<span>7. A</span>
+											</div>
+											<div className="tym-info-soupiska-item">
+												<span>Adam Lehnert</span>
+												<span>2. C</span>
+											</div>
+											<div className="tym-info-soupiska-item">
+												<span>Jakub Hronek</span>
+												<span>7. A</span>
+											</div>
+											<div className="tym-info-soupiska-item">
+												<span>Ondřej Sembol</span>
+												<span>7. A</span>
+											</div>
+											<div className="tym-info-soupiska-item">
+												<span>Lukáš Procházka</span>
+												<span>7. A</span>
+											</div>
+											<div className="tym-info-soupiska-item">
+												<span>Tomáš Adamec</span>
+												<span>7. A</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</>

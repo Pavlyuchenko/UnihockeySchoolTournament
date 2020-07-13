@@ -70,6 +70,14 @@
 	background-color: #f1faee;
 	color: #e63946;
 }
+#hrajici-tabulka-tabulka div:nth-child(even) a {
+	color: #f1faee;
+	font-weight: 500;
+}
+#hrajici-tabulka-tabulka div:nth-child(even) a {
+	color: #e63946;
+	font-weight: 500;
+}
 
 #hrajici-tabulka-tabulka div span {
 	font-size: 19px;

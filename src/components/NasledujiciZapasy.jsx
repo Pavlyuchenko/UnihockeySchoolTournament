@@ -26,7 +26,7 @@ class NasledujiciZapasy extends Component {
 		let domaci = "";
 		let hoste = "";
 
-		for (let i = 0; i < this.props.zapasy.length; i++) {
+		for (let i = 1; i < this.props.zapasy.length; i++) {
 			domaci = this.props.zapasy[i].domaci;
 			hoste = this.props.zapasy[i].hoste;
 			result.push(

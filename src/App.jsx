@@ -14,8 +14,8 @@ import Pravidla from "./components/Pravidla";
 import Dotazy from "./components/Dotazy";
 import Pavouk from "./components/Pavouk";
 import Registrace from "./components/Registrace";
-import Admin from "./components/Admin";
-import AdminGroup from "./components/AdminGroup";
+import Admin from "./components/Admin/Admin";
+import AdminGroup from "./components/AdminGroup/AdminGroup";
 import Casovac from "./components/Casovac";
 import TymInfo from "./components/TymInfo";
 

@@ -7,10 +7,7 @@ class Zapas extends Component {
 		return (
 			<div className="nasl-zap-zap-wrapper">
 				<div className="nasl-zap-zap-domaci">
-					<Link
-						to={"/tym/" + this.props.domaci}
-						style={{ textDecoration: "underline" }}
-					>
+					<Link to={"/tym/" + this.props.domaci}>
 						{this.props.domaci}
 					</Link>
 				</div>
@@ -19,7 +16,6 @@ class Zapas extends Component {
 						to={"/tym/" + this.props.hoste}
 						style={{
 							color: "#e63946",
-							textDecoration: "underline",
 						}}
 					>
 						{this.props.hoste}

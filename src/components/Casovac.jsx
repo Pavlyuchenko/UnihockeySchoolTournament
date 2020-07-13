@@ -13,6 +13,7 @@ class Casovac extends Component {
 		desetiny: -1,
 		pauseTimer: true,
 		zapas: "",
+		showNastaveni: false,
 	};
 
 	sendSkore = () => {
@@ -95,9 +96,6 @@ class Casovac extends Component {
 		}
 
 		document.addEventListener("keydown", (event) => {
-			event.preventDefault();
-			event.stopPropagation();
-
 			if (event.code === "KeyQ") {
 				this.setState({ domaciSkore: this.state.domaciSkore + 1 });
 				this.sendSkore();
@@ -112,6 +110,8 @@ class Casovac extends Component {
 				this.sendSkore();
 			} else if (event.code === "Space") {
 				this.sendCasovac();
+				event.preventDefault();
+				event.stopPropagation();
 			}
 
 			localStorage.setItem(
@@ -476,6 +476,71 @@ class Casovac extends Component {
 				>
 					Nastaveno
 				</button>
+				<button
+					id="casovac-nastaveni"
+					onClick={() =>
+						this.setState({
+							showNastaveni: !this.state.showNastaveni,
+						})
+					}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="39"
+						height="39"
+						viewBox="0 0 39 39"
+						fill="none"
+					>
+						<path d="M2.26659 9.02942L0 14.7596C5.78853 18.6492 2.41189 22.6314 0 24.1363C0 24.1363 2.26659 29.9023 2.44095 29.8665C9.20586 28.4774 9.67661 33.6867 9.06638 36.465C9.06638 36.465 14.6457 39.2432 14.82 38.9828C18.7256 33.1484 22.7241 36.5518 24.2351 38.9828C24.2351 38.9828 30.1293 36.7254 30.076 36.465C28.6811 29.6582 33.9117 29.2298 36.7014 29.8665C36.7014 29.8665 39.3167 24.3705 38.968 24.1363C32.9702 20.1078 36.4689 16.2645 38.968 14.8464C38.968 14.8464 37.1373 9.02942 36.527 9.02942C29.7417 9.02942 29.2914 5.23822 29.8144 2.431L24.1479 0C20.2424 5.48711 16.302 2.28629 14.82 0L9.06638 2.431C10.4612 9.44616 5.11437 9.75293 2.26659 9.02942Z" />
+						<circle cx="19.5" cy="19.5" r="6.5" fill="#102D38" />
+					</svg>
+				</button>
+				<div
+					id="casovac-nastaveni-fixed"
+					style={{
+						display: this.state.showNastaveni ? "inline" : "none",
+					}}
+				>
+					<div id="casovac-nastaveni-nadpis-holder">
+						<h3>Nastavení</h3>
+
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="27"
+							height="27"
+							viewBox="0 0 27 27"
+							fill="none"
+							onClick={() =>
+								this.setState({
+									showNastaveni: !this.state.showNastaveni,
+								})
+							}
+							id="casovac-nastaveni-krizek"
+						>
+							<path
+								d="M3 3C7.23413 7.23413 10.6928 10.6928 13.5 13.5M13.5 13.5C21.5658 21.5658 24.2527 24.2527 24.5 24.5L13.5 13.5ZM13.5 13.5L3 24L24 3"
+								strokeWidth="6"
+							/>
+						</svg>
+					</div>
+					<h5>Časovač</h5>
+					<div id="casovac-nastaveni-cas">
+						<input type="text" value="06" />
+						<span>:</span>
+						<input type="text" value="45" />
+					</div>
+
+					<h5>Skóre</h5>
+					<div id="casovac-nastaveni-cas">
+						<input type="text" value="1" />
+						<span>:</span>
+						<input type="text" value="4" />
+					</div>
+
+					<h5>Tresty</h5>
+					<input type="text" />
+					<input type="text" />
+				</div>
 			</>
 		);
 	}

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Logo from "./Logo";
-import Navigation from "./Navigation";
-import "./css/adming.css";
+import Logo from "../Logo";
+import Navigation from "../Navigation";
+import AdminGPořadíZápasů from "./AdminGPořadíZápasů";
+import AdminGNovyZapas from "./AdminGNovyZapas";
+import "../css/adming.css";
 
 class AdminGroup extends Component {
 	state = {
@@ -10,9 +12,6 @@ class AdminGroup extends Component {
 		displayNew: "none",
 		tymy: [],
 		chosenId: 1,
-		chosenDomaci: 1,
-		chosenHoste: 1,
-		order: 10,
 	};
 
 	componentDidMount() {
@@ -36,64 +35,6 @@ class AdminGroup extends Component {
 					odehraneZapasy: result.odehrane_zapasy,
 				});
 			});
-	};
-
-	createZapasy = () => {
-		let res = [];
-
-		for (let zapas of this.state.zapasy) {
-			res.push(
-				<div className="adming-zapas" key={zapas.id + "asedsadasf"}>
-					<div className="adming-zapas-flex">
-						<span className="adming-zapasy-home-team">
-							{zapas.domaci}
-						</span>
-						<span className="adming-zapasy-cas">{zapas.cas}</span>
-						<span className="adming-zapasy-away-team">
-							{zapas.hoste}
-						</span>
-					</div>
-					<span className="adming-zapasy-order">
-						<input
-							type="text"
-							onChange={(e) =>
-								this.onChange(
-									e,
-									this.state.zapasy.indexOf(zapas)
-								)
-							}
-							value={zapas.order}
-							className="adming-zapasy-order-input"
-							onKeyDown={(e) => {
-								if (e.key === "Enter") {
-									const requestOptions = {
-										method: "POST",
-										headers: {
-											"Content-Type": "application/json",
-										},
-										body: JSON.stringify({
-											id: zapas.id,
-											order: e.target.value,
-										}),
-									};
-									fetch(
-										"http://127.0.0.1:5000/update_order",
-										requestOptions
-									).then(() => this.loadZapasyAndTymy());
-								}
-							}}
-							style={{
-								backgroundColor: this.state.classes[
-									this.state.zapasy.indexOf(zapas)
-								],
-							}}
-						/>
-					</span>
-				</div>
-			);
-		}
-
-		return res;
 	};
 
 	createOdehraneZapasy = () => {
@@ -279,7 +220,7 @@ class AdminGroup extends Component {
 		this.setState({ odehraneZapasy: zapasy });
 	};
 
-	addZapas = () => {
+	addZapasDisplayBox = () => {
 		if (this.state.displayNew === "none") {
 			this.setState({ displayNew: "" });
 		} else {
@@ -585,127 +526,27 @@ class AdminGroup extends Component {
 		);
 	};
 
-	tymyOption = () => {
-		let res = [];
-
-		for (let tym of this.state.tymy) {
-			res.push(
-				<option value={tym.id} key={"tyym" + tym.id}>
-					{tym.nazev}
-				</option>
-			);
-		}
-
-		return res;
-	};
-
 	render() {
 		return (
 			<>
 				<Logo />
 				<Navigation />
 
-				<section id="adming-zapasy">
-					<h3>Pořadí zápasů</h3>
-					<div id="adming-zapasy-popis-flex">
-						<div id="adming-zapasy-popis">
-							<span>Domácí</span>
-							<span>Čas</span>
-							<span>Hosté</span>
-						</div>
-						<span id="adming-zapasy-order-popis">Order</span>
-					</div>
+				<AdminGPořadíZápasů
+					createZapasy={this.createZapasy}
+					addZapasDisplayBox={this.addZapasDisplayBox}
+					zapasy={this.state.zapasy}
+					classes={this.state.classes}
+					onChange={this.onChange}
+					loadZapasyAndTymy={this.loadZapasyAndTymy}
+				/>
 
-					{this.createZapasy()}
-
-					<div id="adming-zapasy-pridat" onClick={this.addZapas}>
-						Přidat
-					</div>
-				</section>
-
-				<section
-					id="adming-zapasy-novy-zapas"
-					style={{ display: this.state.displayNew }}
-				>
-					<div id="adming-zapasy-novy-domaci">
-						<span>Domácí</span>
-						<select
-							onChange={(e) => {
-								this.setState({ chosenDomaci: e.target.value });
-							}}
-							value={this.state.chosenDomaci}
-						>
-							{this.tymyOption()}
-						</select>
-					</div>
-					<div id="adming-zapasy-novy-hoste">
-						<span>Hosté</span>
-						<select
-							onChange={(e) => {
-								this.setState({ chosenHoste: e.target.value });
-							}}
-							value={this.state.chosenHoste}
-						>
-							{this.tymyOption()}
-						</select>
-					</div>
-					<div id="adming-zapasy-novy-order">
-						<span>Order</span>
-						<div style={{ display: "flex" }}>
-							<input
-								value={this.state.order}
-								onChange={(e) => {
-									this.setState({ order: e.target.value });
-								}}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										const requestOptions = {
-											method: "POST",
-											headers: {
-												"Content-Type":
-													"application/json",
-											},
-											body: JSON.stringify({
-												domaci_id: this.state
-													.chosenDomaci,
-												hoste_id: this.state
-													.chosenHoste,
-												order: this.state.order,
-											}),
-										};
-										fetch(
-											"http://127.0.0.1:5000/add_zapas",
-											requestOptions
-										).then(() => this.loadZapasyAndTymy());
-										this.addZapas();
-									}
-								}}
-							/>
-							<button
-								onClick={(e) => {
-									const requestOptions = {
-										method: "POST",
-										headers: {
-											"Content-Type": "application/json",
-										},
-										body: JSON.stringify({
-											domaci_id: this.state.chosenDomaci,
-											hoste_id: this.state.chosenHoste,
-											order: this.state.order,
-										}),
-									};
-									fetch(
-										"http://127.0.0.1:5000/add_zapas",
-										requestOptions
-									).then(() => this.loadZapasyAndTymy());
-									this.addZapas();
-								}}
-							>
-								+
-							</button>
-						</div>
-					</div>
-				</section>
+				<AdminGNovyZapas
+					displayNew={this.state.displayNew}
+					tymy={this.state.tymy}
+					loadZapasyAndTymy={this.loadZapasyAndTymy}
+					addZapasDisplayBox={this.addZapasDisplayBox}
+				/>
 
 				<div id="adming-flex-wrapper">
 					<section id="adming-tymy">

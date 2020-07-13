@@ -156,7 +156,6 @@
 	display: flex;
 	justify-content: space-between;
 
-	height: 500px;
 	margin-left: 20%;
 	margin-right: 20%;
 	margin-top: 100px;
@@ -165,11 +164,12 @@
 #tym-info-zapasy {
 	width: 47%;
 	background-color: #23426e;
+
+	padding-bottom: 10px;
 }
 
 #tym-info-soupiska {
 	width: 47%;
-	height: 100%;
 
 	background-color: #e63946;
 }
@@ -247,7 +247,38 @@ Zapas
 	font-weight: 500;
 }
 /*
+Soupiska
 */
+#tym-info-soupiska-wrapper {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.tym-info-soupiska-item {
+	background-color: #102d38;
+	color: #f1faee;
+
+	height: 40px;
+	margin-bottom: 10px;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.tym-info-soupiska-item span:nth-child(1) {
+	font-size: 18px;
+	font-weight: 500;
+
+	margin-left: 10px;
+	line-height: 40px;
+}
+.tym-info-soupiska-item span:nth-child(2) {
+	font-size: 24px;
+	font-weight: 500;
+
+	margin-right: 10px;
+	line-height: 40px;
+}
 
 @media only screen and (max-width: 700px) {
 	#tym-info-badge {

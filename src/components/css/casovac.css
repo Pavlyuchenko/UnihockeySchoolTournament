@@ -109,3 +109,113 @@ body {
 	bottom: 10px;
 	right: 10px;
 }
+
+#casovac-nastaveni {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+
+#casovac-nastaveni path {
+	fill: #f1faee;
+	transition: 0.15s;
+}
+#casovac-nastaveni:hover path {
+	fill: #67666e;
+}
+
+#casovac-nastaveni-fixed {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+	width: 450px;
+	background-color: #f1faee;
+	border: 10px solid #102d38;
+}
+
+#casovac-nastaveni-nadpis-holder {
+	display: flex;
+	justify-content: space-between;
+}
+
+#casovac-nastaveni-fixed h3 {
+	margin: 0;
+	padding: 0;
+	margin-top: 10px;
+	margin-left: 10px;
+
+	font-size: 40px;
+	font-weight: 500;
+	color: #102d38;
+}
+
+#casovac-nastaveni-fixed svg {
+	margin: 0;
+	padding: 0;
+	margin-top: 10px;
+	margin-right: 10px;
+
+	font-size: 20px;
+	font-weight: 500;
+	color: #102d38;
+}
+
+#casovac-nastaveni-fixed h5 {
+	margin: 0;
+	padding: 0;
+	margin-top: 10px;
+	margin-left: 10px;
+
+	font-size: 22px;
+	font-weight: 500;
+	color: #102d38;
+}
+
+#casovac-nastaveni-cas {
+	display: flex;
+	justify-content: space-between;
+
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#casovac-nastaveni-cas input {
+	height: 150px;
+	width: 40%;
+
+	border: 0;
+	background-color: #102d38;
+	color: #f1faee;
+	font-size: 100px;
+	font-family: "Rubik";
+	font-weight: 500;
+	text-align: center;
+}
+
+#casovac-nastaveni-cas span {
+	margin: 0;
+	font-weight: 500;
+	font-size: 110px;
+	color: #102d38;
+
+	align-self: flex-end;
+}
+
+#casovac-nastaveni-krizek {
+	cursor: pointer;
+}
+
+#casovac-nastaveni-krizek path {
+	stroke: #102d38;
+	transition: 0.15s;
+}
+
+#casovac-nastaveni-krizek:hover path {
+	stroke: #9dadb2;
+}

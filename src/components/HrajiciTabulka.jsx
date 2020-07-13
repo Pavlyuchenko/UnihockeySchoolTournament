@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./css/hrajici_tabulka.css";
+import { Link } from "react-router-dom";
 
 class HrajiciTabulka extends Component {
 	state = {};
@@ -11,7 +12,10 @@ class HrajiciTabulka extends Component {
 			for (let tym of this.props.tymy) {
 				res.push(
 					<div key={tym + "TymStatistika" + tym.nazev}>
-						<span>{tym.nazev}</span>
+						<span style={{ textDecoration: "underline" }}>
+							<Link to={"/tym/" + tym.nazev}>{tym.nazev}</Link>
+						</span>
+
 						<span>{tym.zapasy}</span>
 						<span>{tym.vyhry}</span>
 						<span>{tym.remizy}</span>
@@ -40,46 +44,7 @@ class HrajiciTabulka extends Component {
 					<span>G</span>
 					<span>B</span>
 				</div>
-				<div id="hrajici-tabulka-tabulka">
-					{
-						this.createRow() /*<div>
-						<span>Učitelé</span>
-						<span>3</span>
-						<span>1</span>
-						<span>0</span>
-						<span>1</span>
-						<span>5</span>
-						<span>3</span>
-					</div>
-					<div>
-						<span>Vygrachanci</span>
-						<span>7</span>
-						<span>4</span>
-						<span>1</span>
-						<span>0</span>
-						<span>8</span>
-						<span>5</span>
-					</div>
-					<div>
-						<span>Antišunkofleci</span>
-						<span>4</span>
-						<span>0</span>
-						<span>9</span>
-						<span>5</span>
-						<span>10</span>
-						<span>0</span>
-					</div>
-					<div>
-						<span>Boney M</span>
-						<span>2</span>
-						<span>2</span>
-						<span>6</span>
-						<span>4</span>
-						<span>1</span>
-						<span>5</span>
-					</div>*/
-					}
-				</div>
+				<div id="hrajici-tabulka-tabulka">{this.createRow()}</div>
 			</section>
 		);
 	}
