@@ -5,6 +5,7 @@ import AdminGPořadíZápasů from "./AdminGPořadíZápasů";
 import AdminGNovyZapas from "./AdminGNovyZapas";
 import AdminGTabulka from "./AdminGTabulka";
 import AdminGChosenTeam from "./AdminGChosenTeam";
+import AdminGOdehraneZapasy from "./AdminGOdehraneZapasy";
 import "../css/adming.css";
 
 class AdminGroup extends Component {
@@ -39,137 +40,6 @@ class AdminGroup extends Component {
 			});
 	};
 
-	createOdehraneZapasy = () => {
-		let res = [];
-
-		if (this.state.odehraneZapasy) {
-			for (let zapas of this.state.odehraneZapasy) {
-				res.push(
-					<div
-						className="adming-odehrany-zapas"
-						key={zapas.id + "asedsadasf"}
-					>
-						<div className="adming-odehrany-zapas-flex">
-							<span className="adming-odehrany-zapasy-home-team">
-								{zapas.domaci}
-							</span>
-							<span className="adming-odehrany-zapasy-cas">
-								{zapas.cas}
-							</span>
-							<span className="adming-odehrany-zapasy-away-team">
-								{zapas.hoste}
-							</span>
-						</div>
-						<span className="adming-odehrany-zapasy-order">
-							<input
-								type="text"
-								onChange={(e) =>
-									this.onOdehranyZapasChangeDomaci(
-										e,
-										this.state.odehraneZapasy.indexOf(zapas)
-									)
-								}
-								value={zapas.skore1}
-								className="adming-odehrany-zapasy-skore-domaci-input"
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										const requestOptions = {
-											method: "POST",
-											headers: {
-												"Content-Type":
-													"application/json",
-											},
-											body: JSON.stringify({
-												id: zapas.id,
-												skore1: zapas.skore1,
-												skore2: zapas.skore2,
-											}),
-										};
-										fetch(
-											"http://127.0.0.1:5000/update_skore_odehrany_zapas",
-											requestOptions
-										).then(() => this.loadZapasyAndTymy());
-									}
-								}}
-							/>
-
-							<input
-								type="text"
-								onChange={(e) =>
-									this.onOdehranyZapasChangeHoste(
-										e,
-										this.state.odehraneZapasy.indexOf(zapas)
-									)
-								}
-								value={zapas.skore2}
-								className="adming-odehrany-zapasy-skore-domaci-input"
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										const requestOptions = {
-											method: "POST",
-											headers: {
-												"Content-Type":
-													"application/json",
-											},
-											body: JSON.stringify({
-												id: zapas.id,
-												skore1: zapas.skore1,
-												skore2: zapas.skore2,
-											}),
-										};
-										fetch(
-											"http://127.0.0.1:5000/update_skore_odehrany_zapas",
-											requestOptions
-										).then(() => this.loadZapasyAndTymy());
-									}
-								}}
-							/>
-						</span>
-						<span className="adming-odehrany-zapasy-order">
-							<input
-								type="text"
-								onChange={(e) =>
-									this.onOdehranyZapasChange(
-										e,
-										this.state.odehraneZapasy.indexOf(zapas)
-									)
-								}
-								value={zapas.order}
-								className="adming-odehrany-zapasy-order-input"
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										const requestOptions = {
-											method: "POST",
-											headers: {
-												"Content-Type":
-													"application/json",
-											},
-											body: JSON.stringify({
-												id: zapas.id,
-												order: e.target.value,
-											}),
-										};
-										fetch(
-											"http://127.0.0.1:5000/update_order",
-											requestOptions
-										).then(() => this.loadZapasyAndTymy());
-									}
-								}}
-								style={{
-									backgroundColor: this.state.classesOdehrane[
-										this.state.odehraneZapasy.indexOf(zapas)
-									],
-								}}
-							/>
-						</span>
-					</div>
-				);
-			}
-		}
-
-		return res;
-	};
-
 	onOrderChange = (e, id) => {
 		let zapasy = [...this.state.zapasy];
 		let zapas = { ...zapasy[id] };
@@ -184,42 +54,6 @@ class AdminGroup extends Component {
 		classes[id] = clas;
 
 		this.setState({ zapasy: zapasy, classes: classes });
-	};
-
-	onOdehranyZapasChange = (e, id) => {
-		let zapasy = [...this.state.odehraneZapasy];
-		let zapas = { ...zapasy[id] };
-
-		zapas.order = e.target.value;
-		zapasy[id] = zapas;
-
-		let classes = [...this.state.classesOdehrane];
-		let clas = { ...classes[id] };
-
-		clas = "#4CAF50";
-		classes[id] = clas;
-
-		this.setState({ odehraneZapasy: zapasy, classesOdehrane: classes });
-	};
-
-	onOdehranyZapasChangeDomaci = (e, id) => {
-		let zapasy = [...this.state.odehraneZapasy];
-		let zapas = { ...zapasy[id] };
-
-		zapas.skore1 = e.target.value;
-		zapasy[id] = zapas;
-
-		this.setState({ odehraneZapasy: zapasy });
-	};
-
-	onOdehranyZapasChangeHoste = (e, id) => {
-		let zapasy = [...this.state.odehraneZapasy];
-		let zapas = { ...zapasy[id] };
-
-		zapas.skore2 = e.target.value;
-		zapasy[id] = zapas;
-
-		this.setState({ odehraneZapasy: zapasy });
 	};
 
 	addZapasDisplayBox = () => {
@@ -289,6 +123,42 @@ class AdminGroup extends Component {
 		this.setState({ tymy: tymy });
 	};
 
+	onOdehranyZapasChange = (e, id) => {
+		let zapasy = [...this.state.odehraneZapasy];
+		let zapas = { ...zapasy[id] };
+
+		zapas.order = e.target.value;
+		zapasy[id] = zapas;
+
+		let classes = [...this.state.classesOdehrane];
+		let clas = { ...classes[id] };
+
+		clas = "#4CAF50";
+		classes[id] = clas;
+
+		this.setState({ odehraneZapasy: zapasy, classesOdehrane: classes });
+	};
+
+	onOdehranyZapasChangeDomaci = (e, id) => {
+		let zapasy = [...this.state.odehraneZapasy];
+		let zapas = { ...zapasy[id] };
+
+		zapas.skore1 = e.target.value;
+		zapasy[id] = zapas;
+
+		this.setState({ odehraneZapasy: zapasy });
+	};
+
+	onOdehranyZapasChangeHoste = (e, id) => {
+		let zapasy = [...this.state.odehraneZapasy];
+		let zapas = { ...zapasy[id] };
+
+		zapas.skore2 = e.target.value;
+		zapasy[id] = zapas;
+
+		this.setState({ odehraneZapasy: zapasy });
+	};
+
 	render() {
 		return (
 			<>
@@ -324,24 +194,16 @@ class AdminGroup extends Component {
 					/>
 				</div>
 
-				<section id="adming-odehrany-zapasy">
-					<h3>Odehrané zápasy</h3>
-					<div id="adming-odehrany-zapasy-popis-flex">
-						<div id="adming-odehrany-zapasy-popis">
-							<span>Domácí</span>
-							<span>Čas</span>
-							<span>Hosté</span>
-						</div>
-						<span id="adming-odehrany-zapasy-order-popis">
-							Skóre
-						</span>
-						<span id="adming-odehrany-zapasy-order-popis">
-							Order
-						</span>
-					</div>
-
-					{this.createOdehraneZapasy()}
-				</section>
+				<AdminGOdehraneZapasy
+					odehraneZapasy={this.state.odehraneZapasy}
+					classesOdehrane={this.state.classesOdehrane}
+					loadZapasyAndTymy={this.loadZapasyAndTymy}
+					onOdehranyZapasChange={this.onOdehranyZapasChange}
+					onOdehranyZapasChangeDomaci={
+						this.onOdehranyZapasChangeDomaci
+					}
+					onOdehranyZapasChangeHoste={this.onOdehranyZapasChangeHoste}
+				/>
 			</>
 		);
 	}
