@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/probihajici_zapas.css";
+import "../css/probihajici_zapas.css";
 
 class ProbihajiciZapas extends Component {
 	state = {};

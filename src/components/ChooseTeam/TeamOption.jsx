@@ -13,13 +13,14 @@ class TeamOption extends Component {
 	render() {
 		return (
 			<div
-				className={
-					"chos-team-team " +
-					this.state.class +
-					" " +
-					this.state.green
-				}
+				className={"chos-team-team " + this.state.green}
 				onClick={() => this.changeColor(this.props.teamName)}
+				style={{
+					backgroundColor:
+						this.props.teamName === "Chci zůstat neutrální"
+							? "#3e3e3e"
+							: "e63946",
+				}}
 			>
 				<span>{this.props.teamName}</span>
 				<div className="checkmark"></div>

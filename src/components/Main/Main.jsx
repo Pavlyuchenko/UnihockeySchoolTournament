@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "../Navigation";
+import Logo from "../Logo";
 import ProbihajiciZapas from "./ProbihajiciZapas";
 import NasledujiciZapasy from "./NasledujiciZapasy";
 import HrajiciTabulka from "./HrajiciTabulka";
 
 class Main extends Component {
+	state = {
+		favTeam: "",
+		test: "",
+		zapasy: [],
+		casovac: "",
+		prvniZapas: [],
+		blikClassDomaci: false,
+		blikClassHoste: false,
+	};
+
 	componentDidMount() {
 		const favTeam = JSON.parse(localStorage.getItem("favTeam"));
 
@@ -107,15 +117,6 @@ class Main extends Component {
 		}
 	};
 
-	state = {
-		favTeam: "",
-		test: "",
-		zapasy: [],
-		casovac: "",
-		prvniZapas: [],
-		blikClassDomaci: false,
-		blikClassHoste: false,
-	};
 	render() {
 		return (
 			<>

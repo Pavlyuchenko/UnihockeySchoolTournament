@@ -6,8 +6,8 @@ import {
 	/*Link,
 	Redirect,*/
 } from "react-router-dom";
-import Main from "./components/Main";
-import ChooseTeam from "./components/ChooseTeam";
+import Main from "./components/Main/Main";
+import ChooseTeam from "./components/ChooseTeam/ChooseTeam";
 import Rozpis from "./components/Rozpis";
 import Tabulky from "./components/Tabulky";
 import Pravidla from "./components/Pravidla";
@@ -17,7 +17,7 @@ import Registrace from "./components/Registrace";
 import Admin from "./components/Admin/Admin";
 import AdminGroup from "./components/AdminGroup/AdminGroup";
 import Casovac from "./components/Casovac";
-import TymInfo from "./components/TymInfo";
+import TymInfo from "./components/TymInfo/TymInfo";
 
 class App extends Component {
 	checkFavoriteTeam = () => {

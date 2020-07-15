@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/hrajici_tabulka.css";
+import "../css/hrajici_tabulka.css";
 import { Link } from "react-router-dom";
 
 class HrajiciTabulka extends Component {

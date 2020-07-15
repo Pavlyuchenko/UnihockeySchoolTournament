@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/nasledujici_zapasy.css";
+import "../css/nasledujici_zapasy.css";
 import Zapas from "./Zapas";
 import { Link } from "react-router-dom";
 
