@@ -1,0 +1,25 @@
+#pc-nav-reg {
+	position: absolute;
+	right: 20%;
+	top: 30px;
+	color: #f1faee;
+	height: 114px;
+	display: flex;
+	left: calc(30% + 150px); /*650px;*/
+	justify-content: flex-end;
+}
+
+#pc-nav-reg a {
+	margin-left: 20%;
+}
+
+#pc-nav-reg span {
+	line-height: 114px;
+	font-size: 1vw;
+	font-weight: 400;
+}
+
+#pc-nav-reg #reg-test {
+	border-bottom: 5px solid #e63946;
+	font-weight: 500;
+}

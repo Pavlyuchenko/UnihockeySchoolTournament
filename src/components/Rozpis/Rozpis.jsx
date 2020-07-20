@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "../Navigation";
+import Logo from "../Logo";
 import { isMobile } from "react-device-detect";
 import RozpisZapas from "./RozpisZapas";
 import RozpisNewZapas from "./RozpisNewZapas";
-import "./css/rozpis.css";
+import "../css/rozpis.css";
 
 class Rozpis extends Component {
 	state = { zapasy: "" };

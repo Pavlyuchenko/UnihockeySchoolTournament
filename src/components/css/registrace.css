@@ -23,7 +23,7 @@
 #register-sect {
 	margin-left: 10%;
 	margin-right: 10%;
-	margin-top: 50px;
+	margin-top: 120px;
 }
 
 #register-top-div {
@@ -137,6 +137,48 @@ label {
 	border-bottom: 3px solid #e63946;
 }
 
+.register-jmeno-hrace2 {
+	width: 100%;
+	border: 2px solid transparent;
+	height: 30px;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	font-family: "Rubik", sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	padding-left: 10px;
+	color: #e63946;
+	margin: 0;
+	outline: none;
+	transition: 0s;
+}
+
+.register-jmeno-hrace2:focus,
+.register-jmeno-hrace2:active {
+	border: 0;
+	padding-top: 4px;
+	padding-left: 12px;
+	border-bottom: 3px solid #e63946;
+}
+
+.register-jmeno-wrapper {
+	width: 100%;
+	display: flex;
+}
+
+.register-delete-player {
+	background-color: #e63946;
+	color: #f1faee;
+
+	width: 8%;
+	height: 35px;
+	text-align: center;
+}
+
+.register-delete-player svg {
+	margin-top: 7px;
+}
+
 .register-trida {
 	width: 17%;
 	outline-color: #e63946;
@@ -236,6 +278,8 @@ label {
 	font-size: 24px;
 
 	outline-color: #f1faee;
+
+	cursor: pointer;
 }
 
 #register-status {
@@ -345,6 +389,26 @@ label {
 	margin-top: 90px;
 }
 
+#register-novy-hrac {
+	width: 160px;
+	height: 40px;
+	border: 0;
+	background-color: #e63946;
+	color: #f1faee;
+
+	font-family: "Rubik";
+	font-weight: 500;
+	font-size: 18px;
+
+	line-height: 39px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#register-novy-hrac span:nth-child(1) {
+	font-size: 32px;
+}
+
 @media only screen and (min-width: 700px) {
 	#registrace-tym-div ::placeholder {
 		font-size: 24px;
@@ -403,7 +467,13 @@ label {
 	}
 
 	.register-jmeno-hrace {
-		width: 87%;
+		width: 98%;
+		height: 35px;
+		font-size: 17px;
+	}
+
+	.register-jmeno-hrace2 {
+		width: 90%;
 		height: 35px;
 		font-size: 17px;
 	}

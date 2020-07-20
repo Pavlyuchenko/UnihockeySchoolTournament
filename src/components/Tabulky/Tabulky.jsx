@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "../Navigation";
+import Logo from "../Logo";
 
 class Tabulky extends Component {
 	state = {};

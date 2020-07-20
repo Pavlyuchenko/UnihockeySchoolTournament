@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import Main from "./components/Main/Main";
 import ChooseTeam from "./components/ChooseTeam/ChooseTeam";
-import Rozpis from "./components/Rozpis";
-import Tabulky from "./components/Tabulky";
-import Pravidla from "./components/Pravidla";
-import Dotazy from "./components/Dotazy";
-import Pavouk from "./components/Pavouk";
-import Registrace from "./components/Registrace";
+import Rozpis from "./components/Rozpis/Rozpis";
+import Tabulky from "./components/Tabulky/Tabulky";
+import Pravidla from "./components/Pravidla/Pravidla";
+import Dotazy from "./components/Dotazy/Dotazy";
+import Pavouk from "./components/Pavouk/Pavouk";
+import Registrace from "./components/Registrace/Registrace";
 import Admin from "./components/Admin/Admin";
 import AdminGroup from "./components/AdminGroup/AdminGroup";
 import Casovac from "./components/Casovac";

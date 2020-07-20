@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "../Navigation";
+import Logo from "../Logo";
 
-class Pavouk extends Component {
+class Dotazy extends Component {
 	state = {};
 	render() {
 		return (
 			<>
 				<Logo />
 				<Navigation />
-				Pavouk
+				Dotazy
 			</>
 		);
 	}
 }
 
-export default Pavouk;
+export default Dotazy;

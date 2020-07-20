@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "../Navigation";
+import Logo from "../Logo";
 
 class Pravidla extends Component {
 	state = {};

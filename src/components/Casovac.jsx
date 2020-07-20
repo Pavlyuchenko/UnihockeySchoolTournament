@@ -155,6 +155,7 @@ class Casovac extends Component {
 			);
 		}
 	};*/
+	
 	updateTime = () => {
 		let sek = this.state.sekundy;
 		let min = this.state.minuty;
