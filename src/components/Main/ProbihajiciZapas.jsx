@@ -5,7 +5,7 @@ class ProbihajiciZapas extends Component {
 	state = {};
 
 	/*componentDidMount() {
-		fetch("http://127.0.0.1:5000/choose_team")
+		fetch("https://vfbapi.pythonanywhere.com/choose_team")
 			.then((response) => response.json())
 			.then((result) => {
 				for (let tym of result.tymy) {

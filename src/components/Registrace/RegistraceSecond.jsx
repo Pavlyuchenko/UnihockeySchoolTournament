@@ -47,6 +47,7 @@ class RegistraceSecond extends Component {
 			},
 		],
 		pocetHracu: 4,
+		textPocetHracu: 4,
 	};
 
 	createInputs = () => {
@@ -65,10 +66,8 @@ class RegistraceSecond extends Component {
 								type="text"
 								name={"jmeno-hrace-" + i}
 								className={
-									i > 4
-										? "register-jmeno-hrace2 "
-										: "register-jmeno-hrace " +
-										  this.state.classes[i - 1]
+									"register-jmeno-hrace " +
+									this.state.classes[i - 1]
 								}
 								autoComplete="off"
 								onBlur={(e) => {
@@ -91,31 +90,6 @@ class RegistraceSecond extends Component {
 									}
 								}}
 							/>
-							{i > 4 && (
-								<div
-									className="register-delete-player"
-									onClick={() =>
-										this.setState({
-											pocetHracu:
-												this.state.pocetHracu - 1,
-										})
-									}
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="22"
-										height="22"
-										viewBox="0 0 22 22"
-										fill="none"
-									>
-										<path
-											d="M2 2L11 11M20 20L11 11M11 11L2 20M11 11L20 2"
-											stroke="#F1FAEE"
-											stroke-width="5"
-										/>
-									</svg>
-								</div>
-							)}
 						</div>
 						<select
 							type="text"
@@ -165,10 +139,10 @@ class RegistraceSecond extends Component {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
 				nazevTymu: this.props.nazevTymu,
-				hraci: this.state.hraci,
+				hraci: this.state.hraci.slice(0, this.state.pocetHracu),
 			}),
 		};
-		fetch("http://127.0.0.1:5000/register", requestOptions);
+		fetch("https://vfbapi.pythonanywhere.com/register", requestOptions);
 
 		localStorage.setItem("registrovan", JSON.stringify(true));
 	};
@@ -176,26 +150,49 @@ class RegistraceSecond extends Component {
 	render() {
 		return (
 			<div id="registrace-second-round" style={this.props.secondRound}>
+				<div id="registrace-pocet-hracu-div">
+					<span>Počet hráčů (4-10): </span>
+					<input
+						type="text"
+						value={this.state.textPocetHracu}
+						onChange={(e) => {
+							if (e.target.value >= 4 && e.target.value <= 10) {
+								this.setState({ pocetHracu: e.target.value });
+							}
+							this.setState({ textPocetHracu: e.target.value });
+						}}
+					/>
+					<button
+						onClick={() => {
+							if (this.state.pocetHracu < 10) {
+								this.setState({
+									pocetHracu: this.state.pocetHracu + 1,
+									textPocetHracu: this.state.pocetHracu + 1,
+								});
+							}
+						}}
+					>
+						+
+					</button>
+					<button
+						onClick={() => {
+							if (this.state.pocetHracu > 4) {
+								this.setState({
+									pocetHracu: this.state.pocetHracu - 1,
+									textPocetHracu: this.state.pocetHracu - 1,
+								});
+							}
+						}}
+					>
+						-
+					</button>
+				</div>
+
 				<div id="registrace-inputs">
 					{this.createInputs()}
 					<span id="registrace-proc-jmeno">
 						Proč musím zadávat jméno a třídu?
 					</span>
-					<button
-						id="register-novy-hrac"
-						onClick={() => {
-							if (this.state.pocetHracu < 10) {
-								this.setState({
-									pocetHracu: this.state.pocetHracu + 1,
-								});
-							}
-						}}
-						style={{
-							display: this.state.pocetHracu === 10 && "none",
-						}}
-					>
-						<span>+</span> <span>Přidat hráče</span>
-					</button>
 				</div>
 				<button
 					id="regiser-button-zpet"
@@ -230,9 +227,9 @@ class RegistraceSecond extends Component {
 					</svg>
 					Zpět
 				</button>
-				<button id="regiser-button" onClick={this.createTeam}>
-					<Link to="/">Registrovat</Link>
-				</button>
+				<Link to="/" id="regiser-button" onClick={this.createTeam}>
+					Registrovat
+				</Link>
 			</div>
 		);
 	}

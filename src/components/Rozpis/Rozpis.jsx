@@ -15,7 +15,7 @@ class Rozpis extends Component {
 	}
 
 	getZapasy = () => {
-		fetch("http://127.0.0.1:5000/get_zapasy")
+		fetch("https://vfbapi.pythonanywhere.com/get_zapasy")
 			.then((response) => response.json())
 			.then((result) => {
 				this.setState({

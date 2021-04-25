@@ -22,7 +22,7 @@ class AdminGroup extends Component {
 	}
 
 	loadZapasyAndTymy = () => {
-		fetch("http://127.0.0.1:5000/adming")
+		fetch("https://vfbapi.pythonanywhere.com/adming")
 			.then((response) => response.json())
 			.then((result) => {
 				let classes = [];

@@ -72,7 +72,7 @@
 }
 #hrajici-tabulka-tabulka div:nth-child(even) a {
 	color: #f1faee;
-	font-weight: 500;
+		font-weight: 500;
 }
 #hrajici-tabulka-tabulka div:nth-child(even) a {
 	color: #e63946;

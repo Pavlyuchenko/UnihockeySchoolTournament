@@ -21,14 +21,14 @@ class Main extends Component {
 
 		this.setState({ favTeam: favTeam });
 
-		/*fetch("http://127.0.0.1:5000/")
+		/*fetch("https://vfbapi.pythonanywhere.com/")
 			.then((result) => result.json())
 			.then((result) =>
 				this.setState({ test: result.hello }, function () {
 					console.log(this.state.test);
 				})
 			);*/
-		fetch("http://127.0.0.1:5000/main")
+		fetch("https://vfbapi.pythonanywhere.com/main")
 			.then((response) => response.json())
 			.then((result) => {
 				let arr = [];
@@ -59,7 +59,7 @@ class Main extends Component {
 	}
 
 	fetchUpdate = () => {
-		fetch("http://127.0.0.1:5000/main")
+		fetch("https://vfbapi.pythonanywhere.com/main")
 			.then((response) => response.json())
 			.then((result) => {
 				let arr = [];

@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import "../css/nasledujici_zapasy.css";
 import Zapas from "./Zapas";
 import { Link } from "react-router-dom";
+import { isMobile } from "react-device-detect";
+import RozpisNewZapas from "../Rozpis/RozpisNewZapas";
 
 class NasledujiciZapasy extends Component {
 	state = { zapasy: [] };
 
 	/*componentDidMount() {
-		fetch("http://127.0.0.1:5000/main")
+		fetch("https://vfbapi.pythonanywhere.com/main")
 			.then((response) => response.json())
 			.then((result) => {
 				let arr = [];
@@ -29,13 +31,25 @@ class NasledujiciZapasy extends Component {
 		for (let i = 1; i < this.props.zapasy.length; i++) {
 			domaci = this.props.zapasy[i].domaci;
 			hoste = this.props.zapasy[i].hoste;
-			result.push(
-				<Zapas
-					domaci={domaci}
-					hoste={hoste}
-					key={domaci + "vs" + hoste + i}
-				/>
-			);
+			if (isMobile) {
+				result.push(
+					<RozpisNewZapas
+						domaci={domaci}
+						hoste={hoste}
+						cas={"09:00"}
+						key={domaci + " asd " + hoste}
+					/>
+				);
+			} else {
+				result.push(
+					<Zapas
+						domaci={domaci}
+						hoste={hoste}
+						cas="9:00"
+						key={domaci + "vs" + hoste + i}
+					/>
+				);
+			}
 		}
 
 		return result;

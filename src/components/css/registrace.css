@@ -137,30 +137,6 @@ label {
 	border-bottom: 3px solid #e63946;
 }
 
-.register-jmeno-hrace2 {
-	width: 100%;
-	border: 2px solid transparent;
-	height: 30px;
-	box-sizing: border-box;
-	margin-bottom: 0;
-	font-family: "Rubik", sans-serif;
-	font-weight: 500;
-	font-size: 15px;
-	padding-left: 10px;
-	color: #e63946;
-	margin: 0;
-	outline: none;
-	transition: 0s;
-}
-
-.register-jmeno-hrace2:focus,
-.register-jmeno-hrace2:active {
-	border: 0;
-	padding-top: 4px;
-	padding-left: 12px;
-	border-bottom: 3px solid #e63946;
-}
-
 .register-jmeno-wrapper {
 	width: 100%;
 	display: flex;
@@ -389,24 +365,56 @@ label {
 	margin-top: 90px;
 }
 
-#register-novy-hrac {
-	width: 160px;
-	height: 40px;
-	border: 0;
-	background-color: #e63946;
-	color: #f1faee;
-
-	font-family: "Rubik";
-	font-weight: 500;
-	font-size: 18px;
-
-	line-height: 39px;
-	display: flex;
-	justify-content: space-evenly;
-}
-
 #register-novy-hrac span:nth-child(1) {
 	font-size: 32px;
+}
+
+#registrace-pocet-hracu-div {
+	display: inline-flex;
+	margin-left: 50%;
+	transform: translateX(-50%);
+
+	background-color: #23426e;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 40px;
+	margin-top: 10px;
+}
+
+#registrace-pocet-hracu-div span {
+	font-size: 22px;
+	font-weight: 400;
+	color: #f1faee;
+	margin-right: 10px;
+}
+
+#registrace-pocet-hracu-div input {
+	width: 40px;
+	height: 25px;
+	border: 0;
+	margin-top: 7px;
+
+	color: #102d38;
+	font-family: "Rubik";
+	font-weight: 500;
+	text-align: center;
+	font-size: 24px;
+}
+
+#registrace-pocet-hracu-div button {
+	width: 40px;
+	height: 27px;
+	border: 0;
+	margin-top: 7px;
+
+	background-color: #102d38;
+	color: #f1faee;
+
+	margin-left: 8px;
+
+	font-size: 22px;
 }
 
 @media only screen and (min-width: 700px) {
@@ -508,6 +516,9 @@ label {
 		right: 20%;
 		transition: 0.2s;
 		margin-top: 40px;
+
+		text-align: center;
+		line-height: 50px;
 	}
 	#regiser-button-zpet {
 		width: 150px;

@@ -51,7 +51,7 @@ class App extends Component {
 					navstevnik: true,
 				}),
 			};
-			fetch("http://127.0.0.1:5000/statistika", requestOptions);
+			fetch("https://vfbapi.pythonanywhere.com/statistika", requestOptions);
 		}
 
 		localStorage.setItem("navstiveno", JSON.stringify(true));

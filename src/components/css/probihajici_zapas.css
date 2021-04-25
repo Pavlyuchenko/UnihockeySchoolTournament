@@ -64,7 +64,7 @@
 }
 .prob-zap-jmeno {
 	line-height: 38px;
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 20px;
 	color: #f1faee;
 	position: absolute;
@@ -138,5 +138,6 @@
 		margin-left: 10%;
 		transform: translateX(0%);
 		margin-right: 10%;
+		margin-top: 50px;
 	}
 }

@@ -25,7 +25,7 @@ class Casovac extends Component {
 				skoreHoste: this.state.hosteSkore,
 			}),
 		};
-		fetch("http://127.0.0.1:5000/update_skore", requestOptions);
+		fetch("https://vfbapi.pythonanywhere.com/update_skore", requestOptions);
 	};
 
 	sendCasovac = () => {
@@ -38,7 +38,7 @@ class Casovac extends Component {
 					sekundy: this.state.sekundy,
 				}),
 			};
-			fetch("http://127.0.0.1:5000/update_casovac", requestOptions);
+			fetch("https://vfbapi.pythonanywhere.com/update_casovac", requestOptions);
 		} else {
 			const requestOptions = {
 				method: "POST",
@@ -48,7 +48,7 @@ class Casovac extends Component {
 					sekundy: this.state.sekundy,
 				}),
 			};
-			fetch("http://127.0.0.1:5000/pause_casovac", requestOptions);
+			fetch("https://vfbapi.pythonanywhere.com/pause_casovac", requestOptions);
 		}
 		this.setState({ pauseTimer: !this.state.pauseTimer });
 	};
@@ -124,7 +124,7 @@ class Casovac extends Component {
 			);
 		});
 
-		fetch("http://127.0.0.1:5000/get_curr_zapas")
+		fetch("https://vfbapi.pythonanywhere.com/get_curr_zapas")
 			.then((response) => response.json())
 			.then((result) => {
 				this.setState({ zapas: result.zapas });
@@ -208,7 +208,7 @@ class Casovac extends Component {
 		localStorage.setItem("sekundy", JSON.stringify(0));
 		localStorage.setItem("desetiny", JSON.stringify(0));
 
-		fetch("http://127.0.0.1:5000/dalsi_zapas")
+		fetch("https://vfbapi.pythonanywhere.com/dalsi_zapas")
 			.then((response) => response.json())
 			.then((result) => {
 				this.setState({ zapas: result.zapas });
