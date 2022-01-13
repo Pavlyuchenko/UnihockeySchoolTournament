@@ -31,10 +31,17 @@ class RegistraceFirst extends Component {
 						ref={(input) => {
 							this.nameInput = input;
 						}}
-						onBlur={(e) => {
+						onKeyPress={(e) => {
+							if (e.target.value.length > 15) {
+								e.preventDefault()
+								return
+							}
+						}}
+						onChange={(e) => {
 							this.props.setNazevTymu(e.target.value);
-
-							if (e.target.value !== "") {
+						}}
+						onBlur={(e) => {
+							if (e.target.value.length >= 4 && e.target.value.length <= 16) {
 								this.setState({
 									classTym: {
 										backgroundColor: "#e63946",
@@ -46,7 +53,7 @@ class RegistraceFirst extends Component {
 							}
 						}}
 					/>
-					<span id="registrace-max-deset">max. 10 znaků</span>
+					<span id="registrace-max-deset">max. 15 znaků, min. 4 znaky</span>
 				</div>
 				<button
 					id="regiser-pokracovat-button"

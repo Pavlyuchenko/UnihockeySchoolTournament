@@ -14,7 +14,7 @@ class TeamOption extends Component {
 		return (
 			<div
 				className={"chos-team-team " + this.state.green}
-				onClick={() => this.changeColor(this.props.teamName)}
+				onClick={() => {return;this.changeColor(this.props.teamName)}}
 				style={{
 					backgroundColor:
 						this.props.teamName === "Chci zůstat neutrální"

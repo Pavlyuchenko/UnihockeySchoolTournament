@@ -195,6 +195,8 @@ label {
 	font-size: 24px;
 
 	outline-color: #f1faee;
+	text-align: center;
+	line-height: 40px;
 }
 
 #regiser-button:hover,
@@ -381,6 +383,8 @@ label {
 	padding-right: 10px;
 	margin-bottom: 40px;
 	margin-top: 10px;
+
+	width: 100%;
 }
 
 #registrace-pocet-hracu-div span {
@@ -418,6 +422,9 @@ label {
 }
 
 @media only screen and (min-width: 700px) {
+	#registrace-pocet-hracu-div {
+		width: auto;
+	}
 	#registrace-tym-div ::placeholder {
 		font-size: 24px;
 	}

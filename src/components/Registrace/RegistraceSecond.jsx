@@ -7,43 +7,43 @@ class RegistraceSecond extends Component {
 		hraci: [
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 			{
 				jmeno: "",
-				trida: "6.A",
+				trida: "8.A",
 			},
 		],
 		pocetHracu: 4,
@@ -102,7 +102,7 @@ class RegistraceSecond extends Component {
 								hraci[i - 1] = hrac;
 								this.setState({ hraci: hraci });
 							}}
-							value={this.state.hraci[i - 1].trida}
+							value={this.state.hraci[i - 1]?.trida}
 						>
 							<option value="1.A">1.A</option>
 							<option value="2.A">2.A</option>
@@ -134,6 +134,19 @@ class RegistraceSecond extends Component {
 	};
 
 	createTeam = () => {
+		let pocetHracu = 0;
+
+		for (let i = 0; i < this.state.hraci.length; i++) {
+			if (this.state.hraci[i].jmeno.length > 0) {
+				pocetHracu += 1;
+			}
+		}
+
+		console.log(pocetHracu)
+		console.log(this.props.nazevTymu.length)
+		if (pocetHracu < 4) return
+		if (this.props.nazevTymu.length < 4 || this.props.nazevTymu.length > 15) return
+
 		const requestOptions = {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -142,9 +155,10 @@ class RegistraceSecond extends Component {
 				hraci: this.state.hraci.slice(0, this.state.pocetHracu),
 			}),
 		};
-		fetch("https://vfbapi.pythonanywhere.com/register", requestOptions);
-
-		localStorage.setItem("registrovan", JSON.stringify(true));
+		fetch("https://vfbapi.pythonanywhere.com/register", requestOptions).then(() => {
+			localStorage.setItem("registrovan", JSON.stringify(true));
+			window.location.href = "/"
+		});
 	};
 
 	render() {
@@ -155,6 +169,11 @@ class RegistraceSecond extends Component {
 					<input
 						type="text"
 						value={this.state.textPocetHracu}
+						onBlur={(e) => {
+							if (!(e.target.value >= 4 && e.target.value <= 10)) {
+								this.setState({ textPocetHracu: this.state.pocetHracu })
+							}
+						}}
 						onChange={(e) => {
 							if (e.target.value >= 4 && e.target.value <= 10) {
 								this.setState({ pocetHracu: e.target.value });
@@ -227,9 +246,9 @@ class RegistraceSecond extends Component {
 					</svg>
 					Zpět
 				</button>
-				<Link to="/" id="regiser-button" onClick={this.createTeam}>
+				<div id="regiser-button" onClick={this.createTeam}>
 					Registrovat
-				</Link>
+				</div>
 			</div>
 		);
 	}
