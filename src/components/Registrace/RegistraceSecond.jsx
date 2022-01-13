@@ -211,9 +211,6 @@ class RegistraceSecond extends Component {
 
 				<div id="registrace-inputs">
 					{this.createInputs()}
-					<span id="registrace-proc-jmeno">
-						Proč musím zadávat jméno a třídu?
-					</span>
 				</div>
 				<button
 					id="regiser-button-zpet"

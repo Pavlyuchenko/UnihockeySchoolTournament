@@ -162,12 +162,13 @@ class ChooseTeam extends Component {
 				<RegistraceNavigation active={4} />
 
 				<header id="chos-team-header">
-					<h1>Vyber si svůj tým*</h1>
+					{/* <h1>Vyber si svůj tým*</h1>
 					<h3>*jehož jsi fanouškem nebo hráčem</h3>
 					<span onClick={this.showWhy}>Proč?</span>
 					<div id={this.state.showWhy ? "show-why" : "dont-show-why"}>
 						<span onClick={this.showWhy}>x</span>
-					</div>
+					</div> */}
+					<h1>Seznam registrovaných týmů</h1>
 					<div id="chos-team-search-wrapper">
 						<input
 							type="text"
