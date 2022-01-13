@@ -190,6 +190,7 @@ class RegistraceSecond extends Component {
 								});
 							}
 						}}
+						style={{cursor: "pointer"}}
 					>
 						+
 					</button>
@@ -202,6 +203,7 @@ class RegistraceSecond extends Component {
 								});
 							}
 						}}
+						style={{cursor: "pointer"}}
 					>
 						-
 					</button>
