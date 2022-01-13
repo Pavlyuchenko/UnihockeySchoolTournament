@@ -28,7 +28,7 @@ class Navigation extends Component {
 		return (
 			<>
 				<MobileView viewClassName="mobile-nav">
-					<Link to="/dotazy">
+					<Link to="/registrace">
 						<div
 							id="nav-dotazy"
 							className={"nav-links " + this.state.visible}
@@ -44,25 +44,48 @@ class Navigation extends Component {
 							Pravidla
 						</div>
 					</Link>
-					<Link to="/rozpis">
+					<Link to="/dotazy">
 						<div
-							id="nav-rozpis"
+							id="nav-pavouk"
 							className={"nav-links " + this.state.visible}
 						>
 							Dotazy
 						</div>
 					</Link>
+					<Link to="/">
+						<div
+							id="nav-tabulky"
+							className={"nav-links " + this.state.visible}
+						>
+							Týmy
+						</div>
+					</Link>
+					<span
+						id="mobile-nav-circle"
+						onClick={this.changeClass}
+					></span>
+					<div
+						className={this.state.class}
+						onClick={this.changeClass}
+					>
+						<div className="bar1"></div>
+						<div className="bar2"></div>
+						<div className="bar3"></div>
+					</div>
 				</MobileView>
 				<BrowserView>
 					<div id="pc-nav-reg">
-						<Link to="/rozpis">
-							<span id="reg-test">Registrace</span>
+						<Link to="/registrace">
+							<span id={this.props.active === 1 && "reg-test"}>Registrace</span>
 						</Link>
 						<Link to="/pravidla">
-							<span>Pravidla</span>
+							<span id={this.props.active === 2 && "reg-test"}>Pravidla</span>
 						</Link>
 						<Link to="/dotazy">
-							<span>Dotazy</span>
+							<span id={this.props.active === 3 && "reg-test"}>Dotazy</span>
+						</Link>
+						<Link to="/">
+							<span id={this.props.active === 4 && "reg-test"}>Týmy</span>
 						</Link>
 					</div>
 				</BrowserView>

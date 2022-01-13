@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import TeamOption from "./TeamOption";
 import "../css/choose_team.css";
 import { Link } from "react-router-dom";
+import RegistraceNavigation from "../Registrace/RegistraceNavigation";
 
 class ChooseTeam extends Component {
 	state = {
@@ -158,6 +159,8 @@ class ChooseTeam extends Component {
 		return (
 			<>
 				<Logo />
+				<RegistraceNavigation active={4} />
+
 				<header id="chos-team-header">
 					<h1>Vyber si svůj tým*</h1>
 					<h3>*jehož jsi fanouškem nebo hráčem</h3>

@@ -1,0 +1,16 @@
+.dotaz {
+	background-color: #fff;
+	color: #e63946;
+	font-weight: 500;
+	padding: 10px 10px;
+	font-size: 24px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.dotaz-answer {
+	color: #102d38;
+	font-size: 19px;
+	font-weight: 400;
+	margin-bottom: 0;
+}

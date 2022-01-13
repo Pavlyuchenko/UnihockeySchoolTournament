@@ -41,7 +41,7 @@ class Registrace extends Component {
 		return (
 			<>
 				<Logo />
-				<RegistraceNavigation />
+				<RegistraceNavigation active={1} />
 
 				<section id="register-sect">
 					{/*

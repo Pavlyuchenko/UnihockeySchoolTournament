@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navigation from "../Navigation";
+import RegistraceNavigation from "../Registrace/RegistraceNavigation";
 import Logo from "../Logo";
 
 class Pravidla extends Component {
@@ -8,8 +8,11 @@ class Pravidla extends Component {
 		return (
 			<>
 				<Logo />
-				<Navigation />
-				Pravidla
+				<RegistraceNavigation active={2} />
+				
+				<header id="chos-team-header">
+					Pravidla
+				</header>
 			</>
 		);
 	}
