@@ -11,7 +11,7 @@ class ChooseTeam extends Component {
 		showButton: "nodisplay",
 		tymy: [/* "Chci zůstat neutrální" */],
 		jmenaHracu: [/* [] */],
-		tridy: [""],
+		tridy: [/* "" */],
 		lastGreen: "",
 		search: "",
 		showWhy: false,
