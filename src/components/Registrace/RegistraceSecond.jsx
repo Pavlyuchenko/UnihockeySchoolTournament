@@ -165,7 +165,7 @@ class RegistraceSecond extends Component {
 		return (
 			<div id="registrace-second-round" style={this.props.secondRound}>
 				<div id="registrace-pocet-hracu-div">
-					<span>Počet hráčů (4-10): </span>
+					<span>Počet hráčů<span id="only-desktop"> (4-10)</span>: </span>
 					<input
 						type="text"
 						value={this.state.textPocetHracu}

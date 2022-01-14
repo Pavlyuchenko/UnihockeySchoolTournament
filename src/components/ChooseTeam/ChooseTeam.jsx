@@ -9,8 +9,8 @@ class ChooseTeam extends Component {
 	state = {
 		favTeam: "",
 		showButton: "nodisplay",
-		tymy: ["Chci zůstat neutrální"],
-		jmenaHracu: [[]],
+		tymy: [/* "Chci zůstat neutrální" */],
+		jmenaHracu: [/* [] */],
 		tridy: [""],
 		lastGreen: "",
 		search: "",
