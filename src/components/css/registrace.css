@@ -430,7 +430,17 @@ label {
 	touch-action: manipulation;
 }
 
+#registrace-info {
+	margin-top: -90px;
+	color: #fff;
+	float: right;
+}
+
 @media only screen and (min-width: 700px) {
+	#registrace-info {
+		margin-top: 15px;
+	}
+
 	#regiser-pokracovat-button {
 		width: 20%;
 	}

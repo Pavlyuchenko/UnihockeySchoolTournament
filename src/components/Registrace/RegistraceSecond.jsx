@@ -245,9 +245,11 @@ class RegistraceSecond extends Component {
 					</svg>
 					Zpět
 				</button>
+
 				<div id="regiser-button" onClick={this.createTeam}>
 					Registrovat
 				</div>
+				<p id="registrace-info">Registrací se zavazujete k zaplacení částky 150 Kč u Kuby Hronka v 8.A co možná nejdříve.</p>
 			</div>
 		);
 	}
