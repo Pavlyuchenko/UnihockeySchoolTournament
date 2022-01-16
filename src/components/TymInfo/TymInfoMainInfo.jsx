@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class TymInfoMainInfo extends Component {
-	state = {};
 	render() {
 		return (
 			<>
@@ -14,38 +13,32 @@ class TymInfoMainInfo extends Component {
 				<div id="tym-info-basic-flex">
 					<div className="tym-info-basic-item-wrapper">
 						<div className="tym-info-basic-item-div">
-							<h3>A</h3>
+							<h3>{this.props.tym.skupina}</h3>
 						</div>
 						<h4>Skupina</h4>
-					</div>
-					<div className="tym-info-basic-item-wrapper">
-						<div className="tym-info-basic-item-div">
-							<h3 id="tym-info-odd-second">MGO</h3>
-						</div>
-						<h4>Škola</h4>
 					</div>
 					<div className="tym-info-basic-item-wrapper">
 						<div
 							className="tym-info-basic-item-div"
 							id="tym-info-the-odd-one"
 						>
-							<span>6.A</span>
-							<span>2.C</span>
-							<span>2.B</span>
+							{this.props.tridy?.map((trida, i) => {
+								return <span key={trida + i}>{trida}</span>
+							})}
 						</div>
 						<h4>Třídy hráčů</h4>
 					</div>
 					<div className="tym-info-basic-item-wrapper">
 						<div className="tym-info-basic-item-div">
-							<h3>12</h3>
+							<h3>{this.props.tym?.zapasy}</h3>
 						</div>
-						<h4>Fanouošci týmu</h4>
+						<h4>Odehrané zápasy</h4>
 					</div>
 					<div className="tym-info-basic-item-wrapper">
 						<div className="tym-info-basic-item-div">
-							<h3>8</h3>
+							<h3>{this.props.tym?.vyhry}</h3>
 						</div>
-						<h4>Odehrané zápasy</h4>
+						<h4>Výhry</h4>
 					</div>
 				</div>
 			</>

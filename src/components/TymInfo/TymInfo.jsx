@@ -8,6 +8,7 @@ import "../css/tym-info.css";
 class TymInfo extends Component {
 	state = {
 		tym: "",
+		tridy: []
 	};
 
 	componentDidMount() {
@@ -26,8 +27,15 @@ class TymInfo extends Component {
 						error: "Tento tym neexistuje",
 					});
 				} else {
+					let alreadyMentioned = []
+					for (let i = 0; i < result.tym.hraci.length; i++) {
+						if (!alreadyMentioned.includes(result.tym.hraci[i].trida)) {
+							alreadyMentioned.push(result.tym.hraci[i].trida)
+						}
+					}
 					this.setState({
 						tym: result.tym,
+						tridy: alreadyMentioned,
 					});
 				}
 			});
@@ -42,7 +50,7 @@ class TymInfo extends Component {
 					? this.state.error
 					: this.state.tym && (
 							<>
-								<TymInfoMainInfo tym={this.state.tym} />
+								<TymInfoMainInfo tym={this.state.tym} nazev={this.props.nazev} tridy={this.state.tridy} />
 
 								<div id="tym-info-zap-sou-flex">
 									<div id="tym-info-zapasy">
@@ -50,75 +58,58 @@ class TymInfo extends Component {
 
 										<h4>Odehrané</h4>
 										<div>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="1"
-												cas2="0"
-											/>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="5"
-												cas2="6"
-											/>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="0"
-												cas2="3"
-											/>
+											{
+												this.state.tym.zapasy_arr.filter(zapas => zapas.order <= this.state.tym.current_order).length > 0
+													? 
+														(this.state.tym?.zapasy_arr.map(zapas => {
+															return (
+																zapas.order <= this.state.tym.current_order &&
+																<TymInfoZapas
+																	key={zapas.order + "Zapas"}
+																	domaci={zapas.domaci}
+																	hoste={zapas.hoste}
+																	cas1={zapas.skore.split(":")[0]}
+																	cas2={zapas.skore.split(":")[1]}
+																/>
+															)
+														
+														}))
+													: <p style={{ marginLeft: "20px", color: "#fff" }}>Žádné odehrané zápasy nejsou</p>
+											}
 										</div>
 
 										<h4>Následující</h4>
 										<div>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="9"
-												cas2="00"
-											/>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="9"
-												cas2="00"
-											/>
-											<TymInfoZapas
-												domaci="Antišunkofleci"
-												hoste="Vygrachanci"
-												cas1="9"
-												cas2="00"
-											/>
+											{	
+												this.state.tym.zapasy_arr.filter(zapas => zapas.order > this.state.tym.current_order).length > 0
+													?
+														(this.state.tym?.zapasy_arr.map(zapas => {
+															return (
+																zapas.order > this.state.tym.current_order &&
+																<TymInfoZapas
+																	key={zapas.order + "Zapas"}
+																	domaci={zapas.domaci}
+																	hoste={zapas.hoste}
+																	cas1="?"
+																	cas2="?"
+																/>
+															)
+														}))
+													: <p style={{ marginLeft: "20px", color: "#fff" }}>Žádné následující zápasy nejsou</p>
+											}
 										</div>
 									</div>
 									<div id="tym-info-soupiska">
 										<h3>Soupiska</h3>
 										<div id="tym-info-soupiska-wrapper">
-											<div className="tym-info-soupiska-item">
-												<span>Vojta Olšr</span>
-												<span>7. A</span>
-											</div>
-											<div className="tym-info-soupiska-item">
-												<span>Adam Lehnert</span>
-												<span>2. C</span>
-											</div>
-											<div className="tym-info-soupiska-item">
-												<span>Jakub Hronek</span>
-												<span>7. A</span>
-											</div>
-											<div className="tym-info-soupiska-item">
-												<span>Ondřej Sembol</span>
-												<span>7. A</span>
-											</div>
-											<div className="tym-info-soupiska-item">
-												<span>Lukáš Procházka</span>
-												<span>7. A</span>
-											</div>
-											<div className="tym-info-soupiska-item">
-												<span>Tomáš Adamec</span>
-												<span>7. A</span>
-											</div>
+											{this.state.tym?.hraci?.map(hrac => {
+												return (
+													<div className="tym-info-soupiska-item" key={hrac.jmeno}>
+														<span>{hrac.jmeno}</span>
+														<span>{hrac.trida}</span>
+													</div>
+												)
+											})}
 										</div>
 									</div>
 								</div>

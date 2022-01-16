@@ -41,11 +41,13 @@ class AdminGChosenTeam extends Component {
 		let tymStatistiky = [];
 		if (tym.length > 0) {
 			nazev = tym[0].nazev;
-
+			
+			let i = 0;
 			for (let hrac of tym[0].hraci) {
+				i += 1
 				hraciArr.push(
 					<div
-						key={hrac.jmeno + hrac}
+						key={hrac.jmeno + hrac + i}
 						className="adming-tym-detail-hraci"
 					>
 						<span>{hrac.jmeno}</span>

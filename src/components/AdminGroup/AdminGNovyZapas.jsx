@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class AdminGNovyZapas extends Component {
-	state = { chosenDomaci: 1, chosenHoste: 1, order: 10 };
+	state = { chosenDomaci: "11", chosenHoste: "11", order: 10 };
 
 	tymyOption = () => {
 		let res = [];

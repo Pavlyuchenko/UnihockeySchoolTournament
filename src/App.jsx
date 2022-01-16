@@ -28,6 +28,7 @@ class App extends Component {
 		} else {
 			return false;
 		}
+		return true
 	};
 
 	checkRegistrovan = () => {
@@ -67,10 +68,7 @@ class App extends Component {
 						path="/"
 						component={() =>
 							this.checkFavoriteTeam() ? (
-								<Main
-									changeTheme={this.changeTheme}
-									colors={this.state}
-								/>
+								<Main />
 							) : (
 								<ChooseTeam />
 							)
@@ -95,8 +93,6 @@ class App extends Component {
 						exact
 						path="/tym/:nazev"
 						render={(props) => {
-							console.log(props.match.params.nazev);
-
 							return <TymInfo nazev={props.match.params.nazev} />;
 						}}
 					/>
