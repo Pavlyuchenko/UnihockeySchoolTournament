@@ -41,7 +41,7 @@ class RegistraceFirst extends Component {
 							this.props.setNazevTymu(e.target.value);
 						}}
 						onBlur={(e) => {
-							if (e.target.value.length >= 4 && e.target.value.length <= 16) {
+							if (e.target.value.length >= 4 && e.target.value.length <= 15) {
 								this.setState({
 									classTym: {
 										backgroundColor: "#e63946",

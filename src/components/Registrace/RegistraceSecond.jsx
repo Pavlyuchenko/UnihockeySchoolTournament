@@ -142,10 +142,14 @@ class RegistraceSecond extends Component {
 			}
 		}
 
-		console.log(pocetHracu)
-		console.log(this.props.nazevTymu.length)
-		if (pocetHracu < 4) return
-		if (this.props.nazevTymu.length < 4 || this.props.nazevTymu.length > 15) return
+		if (pocetHracu < 4) {
+			alert("UPOZORNĚNÍ! Tvůj tým ještě nebyl zaregistrován, protože jsi na soupisce nevyplnil 4 povinné hráče.")
+			return
+		}
+		if (this.props.nazevTymu.length < 4 || this.props.nazevTymu.length > 15) {
+			alert("UPOZORNĚNÍ! Tvůj tým ještě nebyl zaregistrován, protože jméno tvého týmu je buď kratší než 4 znaky nebo delší než 15 znaků. Oprav tento problém a zkus to znovu.")
+			return
+		}
 
 		const requestOptions = {
 			method: "POST",
