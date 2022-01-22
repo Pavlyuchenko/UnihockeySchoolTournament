@@ -14,6 +14,8 @@ class Casovac extends Component {
 		pauseTimer: true,
 		zapas: "",
 		showNastaveni: false,
+		delkaZapasu: 12,
+		polocas: true,
 	};
 
 	sendSkore = () => {
@@ -127,7 +129,7 @@ class Casovac extends Component {
 		fetch("https://vfbapi.pythonanywhere.com/get_curr_zapas")
 			.then((response) => response.json())
 			.then((result) => {
-				this.setState({ zapas: result.zapas });
+				this.setState({ zapas: result.zapas, delkaZapasu: result.trvani });
 			});
 	}
 
@@ -136,34 +138,33 @@ class Casovac extends Component {
 
 		document.removeEventListener("click", this.updateTime, false);
 	}
-
-	/*updateTime = () => {
-		if (!this.state.pauseTimer) {
-			if (this.state.desetiny === 9) {
-				this.setState({ sekundy: this.state.sekundy + 1, desetiny: 0 });
-			} else {
-				this.setState({ desetiny: this.state.desetiny + 1 });
-			}
-			if (this.state.sekundy === 60) {
-				this.setState({ minuty: this.state.minuty + 1, sekundy: 0 });
-			}
-			localStorage.setItem("minuty", JSON.stringify(this.state.minuty));
-			localStorage.setItem("sekundy", JSON.stringify(this.state.sekundy));
-			localStorage.setItem(
-				"desetiny",
-				JSON.stringify(this.state.desetiny)
-			);
-		}
-	};*/
 	
 	updateTime = () => {
 		let sek = this.state.sekundy;
 		let min = this.state.minuty;
 
-		if (min >= 12) {
+		console.log(min, this.state.delkaZapasu)
+		if (min >= this.state.delkaZapasu) {
 			this.setState({
 				pauseTimer: true,
 				konecZapasu: true,
+			});
+		}
+
+		if (min === this.state.delkaZapasu / 2 && sek === 0 && this.state.polocas) {
+			this.setState({
+				pauseTimer: true,
+				polocas: false
+			}, () => {
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						minuty: this.state.minuty,
+						sekundy: this.state.sekundy,
+					}),
+				};
+				fetch("https://vfbapi.pythonanywhere.com/pause_casovac", requestOptions);
 			});
 		}
 
@@ -193,8 +194,8 @@ class Casovac extends Component {
 	};
 
 	dalsiZapas = () => {
-		localStorage.setItem("domaciSkore", JSON.stringify(0));
-		localStorage.setItem("hosteSkore", JSON.stringify(0));
+		localStorage.setItem("domaciSkore", "0");
+		localStorage.setItem("hosteSkore", "0");
 
 		this.setState({
 			minuty: 0,
@@ -442,14 +443,6 @@ class Casovac extends Component {
 							</span>
 						</div>
 					</div>
-					<div id="casovac-tresty">
-						<div>
-							<h3>Tresty</h3>
-						</div>
-						<div>0:48</div>
-						<div>4:58</div>
-					</div>
-					<div></div>
 				</div>
 				<button
 					onClick={this.dalsiZapas}
@@ -537,10 +530,6 @@ class Casovac extends Component {
 						<span>:</span>
 						<input type="text" value="4" />
 					</div>
-
-					<h5>Tresty</h5>
-					<input type="text" />
-					<input type="text" />
 				</div>
 			</>
 		);

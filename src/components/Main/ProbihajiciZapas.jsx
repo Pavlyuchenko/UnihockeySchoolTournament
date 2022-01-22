@@ -50,7 +50,7 @@ class ProbihajiciZapas extends Component {
 										: {}
 								}
 							>
-								{this.props.casovac.minuty < 12 &&
+								{this.props.casovac.minuty < this.props.delkaZapasu &&
 								this.props.casovac.minuty >= 0
 									? this.props.casovac.minuty < 10
 										? "0" + this.props.casovac.minuty
@@ -74,7 +74,7 @@ class ProbihajiciZapas extends Component {
 										: {}
 								}
 							>
-								{this.props.casovac.minuty < 12 &&
+								{this.props.casovac.minuty < this.props.delkaZapasu &&
 								this.props.casovac.minuty >= 0
 									? this.props.casovac.sekundy < 10
 										? "0" + this.props.casovac.sekundy

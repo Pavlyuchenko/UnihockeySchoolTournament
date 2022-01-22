@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import ProbihajiciZapas from "./ProbihajiciZapas";
 import NasledujiciZapasy from "./NasledujiciZapasy";
 import HrajiciTabulka from "./HrajiciTabulka";
+import { toHaveStyle } from "@testing-library/jest-dom";
 
 class Main extends Component {
 	state = {
@@ -14,6 +15,8 @@ class Main extends Component {
 		prvniZapas: [],
 		blikClassDomaci: false,
 		blikClassHoste: false,
+		delkaZapasu: 12,
+		timeToNext: 0,
 	};
 
 	componentDidMount() {
@@ -35,21 +38,24 @@ class Main extends Component {
 				for (let zapas of result.zapasy) {
 					arr.push(zapas);
 				}
+				let timeToNextMatch = result.casovac.trvani_zapasu - result.casovac.minuty + parseInt(result.casovac.prestavka_mezi_zapasy)
 				this.setState(
 					{
 						zapasy: arr,
 						casovac: result.casovac,
 						prvniZapas: arr[0],
 						tymy: result.tymy,
+						delkaZapasu: result.casovac.trvani_zapasu,
+						timeToNext: timeToNextMatch,
 					},
 					function () {
 						if (this.interval) {
 							clearInterval(this.interval);
 						}
-
+						
 						this.interval = setInterval(this.updateTimer, 1000);
 					}
-				);
+					);
 			});
 		this.fetchUpdateInt = setInterval(this.fetchUpdate, 10000);
 	}
@@ -113,7 +119,9 @@ class Main extends Component {
 				casovac.sekundy++;
 			}
 
-			this.setState({ casovac: casovac });
+			let timeToNext = this.state.casovac.trvani_zapasu - casovac.minuty + parseInt(casovac.prestavka_mezi_zapasy)
+
+			this.setState({ casovac: casovac, timeToNext: timeToNext });
 		}
 	};
 
@@ -127,8 +135,14 @@ class Main extends Component {
 					zapas={this.state.prvniZapas}
 					blikClassDomaci={this.state.blikClassDomaci}
 					blikClassHoste={this.state.blikClassHoste}
+					delkaZapasu={this.state.delkaZapasu}
 				/>
-				<NasledujiciZapasy zapasy={this.state.zapasy} />
+				<NasledujiciZapasy
+					zapasy={this.state.zapasy}
+					delkaZapasu={this.state.delkaZapasu}
+					timeToNext={this.state.timeToNext}
+					prestavkaMeziZapasy={parseInt(this.state.casovac.prestavka_mezi_zapasy)}
+				/>
 				<HrajiciTabulka tymy={this.state.tymy} />
 			</>
 		);
