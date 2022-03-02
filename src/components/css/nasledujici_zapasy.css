@@ -55,11 +55,15 @@
 	position: absolute;
 	right: 0;
 	text-decoration: underline;
+	margin-top: 5px;
 }
 @media only screen and (max-width: 700px) {
 	#nasl-zap-sect {
 		margin-left: 10%;
 		margin-right: 10%;
 		margin-bottom: 220px;
+	}
+	#nasl-zap-h2 h2 {
+		font-size: 18px;
 	}
 }

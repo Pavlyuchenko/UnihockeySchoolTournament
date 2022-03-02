@@ -19,7 +19,7 @@ class TymInfo extends Component {
 				nazev: this.props.nazev,
 			}),
 		};
-		fetch("https://vfbapi.pythonanywhere.com/get_tym", requestOptions)
+		fetch("http://127.0.0.1:5000/get_tym", requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				if (result.tym === "No") {

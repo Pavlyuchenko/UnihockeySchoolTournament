@@ -2,35 +2,10 @@ import React, { Component } from "react";
 import "../css/probihajici_zapas.css";
 
 class ProbihajiciZapas extends Component {
-	state = {};
-
-	/*componentDidMount() {
-		fetch("https://vfbapi.pythonanywhere.com/choose_team")
-			.then((response) => response.json())
-			.then((result) => {
-				for (let tym of result.tymy) {
-					let hraci = [];
-					let tridy = "";
-					for (let hrac of tym.hraci) {
-						hraci.push(hrac.jmeno);
-						if (!tridy.includes(hrac.trida)) {
-							tridy += hrac.trida + ", ";
-						}
-					}
-					tridy = tridy.slice(0, -2);
-					this.setState({
-						tymy: [...this.state.tymy, tym.nazev],
-						jmenaHracu: [...this.state.jmenaHracu, hraci],
-						tridy: [...this.state.tridy, tridy],
-					});
-				}
-			});
-	}*/
-
 	render() {
 		return (
 			<section id="prob-zap-sect">
-				{/*<h2 id="prob-zap-h2">Probíhající zápas:</h2>*/}
+				<h2 id="prob-zap-h2">Hřiště {this.props.hriste}</h2>
 				<div id="prob-zap-wrapper">
 					<div id="prob-zap-tymy"></div>
 					<div id="prob-zap-skore-wrapper">

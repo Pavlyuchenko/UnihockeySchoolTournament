@@ -7,7 +7,7 @@ import RozpisNewZapas from "./RozpisNewZapas";
 import "../css/rozpis.css";
 
 class Rozpis extends Component {
-	state = { zapasy: "" };
+	state = { zapasyA: [], zapasyB: [] };
 
 	componentDidMount() {
 		this.getZapasy();
@@ -15,23 +15,19 @@ class Rozpis extends Component {
 	}
 
 	getZapasy = () => {
-		fetch("https://vfbapi.pythonanywhere.com/get_zapasy")
+		fetch("http://127.0.0.1:5000/get_zapasy")
 			.then((response) => response.json())
 			.then((result) => {
-				let currMinuty = parseInt(result.match_info.current_minuty)
 				let delkaZapasu = parseInt(result.match_info.delka_zapasu)
 				let prestavkaMeziZapasy = parseInt(result.match_info.prestavka_mezi_zapasy)
-				if (currMinuty > delkaZapasu || currMinuty < 0) {
-					currMinuty = delkaZapasu
-				}
 
-				console.log(result)
 
 				this.setState({
-					zapasy: result.zapasy,
-					odehraneZapasy: result.odehrane_zapasy,
+					zapasyA: result.zapasyA,
+					odehraneZapasyA: result.odehrane_zapasyA,
+					zapasyB: result.zapasyB,
+					odehraneZapasyB: result.odehrane_zapasyB,
 					matchInfo: {
-						currMinuty: currMinuty,
 						delkaZapasu: delkaZapasu,
 						prestavkaMeziZapasy: prestavkaMeziZapasy,
 					}
@@ -40,7 +36,7 @@ class Rozpis extends Component {
 			});
 	};
 
-	createRozpis = () => {
+	/* createRozpis = () => {
 		let zapasy = [];
 		let cas = "";
 
@@ -50,9 +46,6 @@ class Rozpis extends Component {
 		var date = new Date(Math.ceil((tempDate.getTime()) / 60000) * 60000 + parseInt(timeToNext) * 60000);
 		var minutes = date.getMinutes();
 		var hour = date.getHours();
-		console.log(hour, minutes)
-		console.log(this.state.matchInfo)
-		console.log(timeToNext)
 
 		if (this.state.matchInfo?.currMinuty > this.state.matchInfo?.delkaZapasu / 2) {
 			minutes -= 1
@@ -95,34 +88,103 @@ class Rozpis extends Component {
 			hrajici = false
 		}
 		return zapasy;
+	}; */
+
+	createRozpis = () => {
+		let zapasy = [];
+		
+		for (let i = 1; i < Math.max(this.state.zapasyA.length, this.state.zapasyB.length); i++) {
+			let zapasA = this.state.zapasyA[i];
+			let zapasB = this.state.zapasyB[i];
+			if (isMobile) {
+				zapasy.push(
+					<>
+						<RozpisNewZapas
+							domaci={zapasA?.domaci}
+							cas={zapasA?.cas}
+							hoste={zapasA?.hoste}
+							key={zapasA?.domaci + " vsA " + zapasA?.hoste}
+						/>
+						<div style={{ marginTop: "-9px" }}></div>
+						<RozpisNewZapas
+							domaci={zapasB?.domaci}
+							cas={zapasB?.cas}
+							hoste={zapasB?.hoste}
+							key={zapasB?.domaci + " vsB " + zapasB?.hoste}
+						/>
+						<div style={{ height: "16px" }}></div>
+					</>
+				);
+			} else {
+				zapasy.push(
+					<>
+						<RozpisZapas
+							domaci={zapasA?.domaci}
+							cas={zapasA?.cas}
+							hoste={zapasA?.hoste}
+							key={zapasA?.domaci + " vsA " + zapasA?.hoste}
+						/>
+						<div style={{ marginTop: "-7px" }}></div>
+						<RozpisZapas
+							domaci={zapasB?.domaci}
+							cas={zapasB?.cas}
+							hoste={zapasB?.hoste}
+							key={zapasB?.domaci + " vsB " + zapasB?.hoste}
+						/>
+						<div style={{ height: "2px" }}></div>
+					</>
+				);
+			}
+		}
+		return zapasy;
 	};
 
 	createOdehrane = () => {
 		let zapasy = [];
 
-		if (this.state.odehraneZapasy) {
-			for (let zapas of this.state.odehraneZapasy) {
-				if (isMobile) {
-					zapasy.push(
+		console.log(this.state.odehraneZapasyA)
+		for (let i = 0; i < Math.max(this.state.odehraneZapasyA?.length, this.state.odehraneZapasyB?.length); i++) {
+			let zapasA = this.state.odehraneZapasyA[i];
+			let zapasB = this.state.odehraneZapasyB[i];
+			console.log(zapasA)
+			if (isMobile) {
+				zapasy.push(
+					<>
 						<RozpisNewZapas
-							domaci={zapas.domaci}
-							hoste={zapas.hoste}
-							skore1={zapas.skore1}
-							skore2={zapas.skore2}
-							key={zapas.domaci + " asd " + zapas.hoste}
+							domaci={zapasA?.domaci}
+							cas={zapasA?.skore1 + ":" + zapasA?.skore2}
+							hoste={zapasA?.hoste}
+							key={zapasA?.domaci + " vsAo " + zapasA?.hoste}
 						/>
-					);
-				} else {
-					zapasy.push(
+						<div style={{ marginTop: "-9px" }}></div>
+						<RozpisNewZapas
+							domaci={zapasB?.domaci}
+							cas={zapasB?.skore1 + ":" + zapasB?.skore2}
+							hoste={zapasB?.hoste}
+							key={zapasB?.domaci + " vsBo " + zapasB?.hoste}
+						/>
+						<div style={{ height: "16px" }}></div>
+					</>
+				);
+			} else {
+				zapasy.push(
+					<>
 						<RozpisZapas
-							domaci={zapas.domaci}
-							hoste={zapas.hoste}
-							skore1={zapas.skore1}
-							skore2={zapas.skore2}
-							key={zapas.domaci + " asd " + zapas.hoste}
+							domaci={zapasA?.domaci}
+							cas={zapasA?.skore1 + ":" + zapasA?.skore2}
+							hoste={zapasA?.hoste}
+							key={zapasA?.domaci + " vsAo " + zapasA?.hoste}
 						/>
-					);
-				}
+						<div style={{ marginTop: "-7px" }}></div>
+						<RozpisZapas
+							domaci={zapasB?.domaci}
+							cas={zapasB?.skore1 + ":" + zapasB?.skore2}
+							hoste={zapasB?.hoste}
+							key={zapasB?.domaci + " vsBo " + zapasB?.hoste}
+						/>
+						<div style={{ height: "2px" }}></div>
+					</>
+				);
 			}
 		}
 		return zapasy;
@@ -136,13 +198,20 @@ class Rozpis extends Component {
 				<div id="rozp-wrapper">
 					<div id="rozpis-nadpis">
 						<h1>Rozpis</h1>
+						<p onClick={() => {
+							alert("Horní zápas ve dvojici se hraje na hřišti A, dolní na hřišti B.")
+						}} style={{ position: "absolute", top: "-32px", right: "15px", fontSize: "34px", fontWeight: "500", cursor: "pointer" }}>?</p>
 					</div>
+
 					<div id="rozpis-zapasy">{this.createRozpis()}</div>
 				</div>
 
 				<div id="rozp-wrapper">
 					<div id="rozpis-nadpis">
 						<h1>Odehrané zápasy</h1>
+						<p onClick={() => {
+							alert("Horní zápas ve dvojici se odehrál na hřišti A, dolní na hřišti B.")
+						}} style={{ position: "absolute", top: "-32px", right: "15px", fontSize: "34px", fontWeight: "500", cursor: "pointer" }}>?</p>
 					</div>
 					<div id="rozpis-zapasy">{this.createOdehrane()}</div>
 				</div>

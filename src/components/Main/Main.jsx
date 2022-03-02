@@ -4,48 +4,51 @@ import Logo from "../Logo";
 import ProbihajiciZapas from "./ProbihajiciZapas";
 import NasledujiciZapasy from "./NasledujiciZapasy";
 import HrajiciTabulka from "./HrajiciTabulka";
-import { toHaveStyle } from "@testing-library/jest-dom";
 
 class Main extends Component {
 	state = {
-		favTeam: "",
 		test: "",
-		zapasy: [],
-		casovac: "",
-		prvniZapas: [],
-		blikClassDomaci: false,
-		blikClassHoste: false,
+		zapasyA: [],
+		zapasyB: [],
+		casovacA: "",
+		casovacB: "",
+		prvniZapasA: [],
+		prvniZapasB: [],
+		blikClassDomaciA: false,
+		blikClassHosteA: false,
+		blikClassDomaciB: false,
+		blikClassHosteB: false,
 		delkaZapasu: 12,
 		timeToNext: 0,
 	};
 
 	componentDidMount() {
-		const favTeam = JSON.parse(localStorage.getItem("favTeam"));
-
-		this.setState({ favTeam: favTeam });
-
-		/*fetch("https://vfbapi.pythonanywhere.com/")
-			.then((result) => result.json())
-			.then((result) =>
-				this.setState({ test: result.hello }, function () {
-					console.log(this.state.test);
-				})
-			);*/
-		fetch("https://vfbapi.pythonanywhere.com/main")
+		fetch("http://127.0.0.1:5000/main")
 			.then((response) => response.json())
 			.then((result) => {
-				let arr = [];
-				for (let zapas of result.zapasy) {
-					arr.push(zapas);
+				console.log(result)
+
+				let arrA = [];
+				let arrB = [];
+				for (let zapas of result.zapasyA) {
+					arrA.push(zapas);
 				}
-				let timeToNextMatch = result.casovac.trvani_zapasu - result.casovac.minuty + parseInt(result.casovac.prestavka_mezi_zapasy)
+				for (let zapas of result.zapasyB) {
+					arrB.push(zapas);
+				}
+
+				let timeToNextMatch = result.casovacA.trvani_zapasu - result.casovacA.minuty + parseInt(result.casovacA.prestavka_mezi_zapasy)
+
 				this.setState(
 					{
-						zapasy: arr,
-						casovac: result.casovac,
-						prvniZapas: arr[0],
-						tymy: result.tymy,
-						delkaZapasu: result.casovac.trvani_zapasu,
+						zapasyA: arrA,
+						zapasyB: arrB,
+						casovacA: result.casovacA,
+						casovacB: result.casovacB,
+						prvniZapasA: arrA[0],
+						prvniZapasB: arrB[0],
+						/* tymy: result.tymy, */
+						delkaZapasu: result.casovacA.trvani_zapasu,
 						timeToNext: timeToNextMatch,
 					},
 					function () {
@@ -65,37 +68,60 @@ class Main extends Component {
 	}
 
 	fetchUpdate = () => {
-		fetch("https://vfbapi.pythonanywhere.com/main")
+		fetch("http://127.0.0.1:5000/main")
 			.then((response) => response.json())
 			.then((result) => {
-				let arr = [];
-				for (let zapas of result.zapasy) {
-					arr.push(zapas);
+				let arrA = [];
+				let arrB = [];
+				for (let zapas of result.zapasyA) {
+					arrA.push(zapas);
+				}
+				for (let zapas of result.zapasyB) {
+					arrB.push(zapas);
 				}
 
-				let domaciGol = "";
-				let hosteGol = "";
+				let domaciGolA = "";
+				let hosteGolA = "";
+				let domaciGolB = "";
+				let hosteGolB = "";
 
-				if (this.state.prvniZapas.skore1 < arr[0].skore1) {
-					domaciGol = "anim";
+				if (this.state.prvniZapasA.skore1 < arrA[0].skore1) {
+					domaciGolA = "anim";
 					setTimeout(() => {
-						this.setState({ blikClassDomaci: "" });
+						this.setState({ blikClassDomaciA: "" });
 					}, 4000);
 				}
-				if (this.state.prvniZapas.skore2 < arr[0].skore2) {
-					hosteGol = "animh";
+				if (this.state.prvniZapasA.skore2 < arrA[0].skore2) {
+					hosteGolA = "animh";
 					setTimeout(() => {
-						this.setState({ blikClassHoste: "" });
+						this.setState({ blikClassHosteA: "" });
+					}, 4000);
+				}
+				if (this.state.prvniZapasB.skore1 < arrB[0].skore1) {
+					domaciGolB = "anim";
+					setTimeout(() => {
+						this.setState({ blikClassDomaciB: "" });
+					}, 4000);
+				}
+				if (this.state.prvniZapasB.skore2 < arrB[0].skore2) {
+					hosteGolB = "animh";
+					setTimeout(() => {
+						this.setState({ blikClassHosteB: "" });
 					}, 4000);
 				}
 				this.setState(
 					{
-						zapasy: arr,
-						casovac: result.casovac,
-						prvniZapas: arr[0],
-						blikClassDomaci: domaciGol,
-						blikClassHoste: hosteGol,
-						tymy: result.tymy,
+						zapasyA: arrA,
+						zapasyB: arrB,
+						casovacA: result.casovacA,
+						casovacB: result.casovacB,
+						prvniZapasA: arrA[0],
+						prvniZapasB: arrB[0],
+						blikClassDomaciA: domaciGolA,
+						blikClassHosteA: hosteGolA,
+						blikClassDomaciB: domaciGolB,
+						blikClassHosteB: hosteGolB,
+						/* tymy: result.tymy, */
 					},
 					function () {
 						if (this.interval) {
@@ -109,8 +135,8 @@ class Main extends Component {
 	};
 
 	updateTimer = () => {
-		if (!this.state.casovac.pause) {
-			let casovac = this.state.casovac;
+		if (!this.state.casovacA.pause) {
+			let casovac = this.state.casovacA;
 
 			if (casovac.sekundy >= 59) {
 				casovac.minuty++;
@@ -119,9 +145,23 @@ class Main extends Component {
 				casovac.sekundy++;
 			}
 
-			let timeToNext = this.state.casovac.trvani_zapasu - casovac.minuty + parseInt(casovac.prestavka_mezi_zapasy)
+			let timeToNext = this.state.casovacA.trvani_zapasu - casovac.minuty + parseInt(casovac.prestavka_mezi_zapasy)
 
-			this.setState({ casovac: casovac, timeToNext: timeToNext });
+			this.setState({ casovacA: casovac, timeToNext: timeToNext });
+		}
+		if (!this.state.casovacB.pause) {
+			let casovac = this.state.casovacB;
+
+			if (casovac.sekundy >= 59) {
+				casovac.minuty++;
+				casovac.sekundy = 0;
+			} else {
+				casovac.sekundy++;
+			}
+
+			let timeToNext = this.state.casovacA.trvani_zapasu - casovac.minuty + parseInt(casovac.prestavka_mezi_zapasy)
+
+			this.setState({ casovacB: casovac, timeToNext: timeToNext });
 		}
 	};
 
@@ -131,19 +171,37 @@ class Main extends Component {
 				<Logo />
 				<Navigation />
 				<ProbihajiciZapas
-					casovac={this.state.casovac}
-					zapas={this.state.prvniZapas}
-					blikClassDomaci={this.state.blikClassDomaci}
-					blikClassHoste={this.state.blikClassHoste}
+					casovac={this.state.casovacA}
+					zapas={this.state.prvniZapasA}
+					blikClassDomaci={this.state.blikClassDomaciA}
+					blikClassHoste={this.state.blikClassHosteA}
 					delkaZapasu={this.state.delkaZapasu}
+					hriste="A"
+				/>
+				<ProbihajiciZapas
+					casovac={this.state.casovacB}
+					zapas={this.state.prvniZapasB}
+					blikClassDomaci={this.state.blikClassDomaciB}
+					blikClassHoste={this.state.blikClassHosteB}
+					delkaZapasu={this.state.delkaZapasu}
+					hriste="B"
 				/>
 				<NasledujiciZapasy
-					zapasy={this.state.zapasy}
+					zapasy={this.state.zapasyA}
 					delkaZapasu={this.state.delkaZapasu}
 					timeToNext={this.state.timeToNext}
-					prestavkaMeziZapasy={parseInt(this.state.casovac.prestavka_mezi_zapasy)}
+					prestavkaMeziZapasy={parseInt(this.state.casovacA.prestavka_mezi_zapasy)}
+					hriste="A"
 				/>
-				<HrajiciTabulka tymy={this.state.tymy} />
+				<div style={{ marginTop: "-35px" }}></div>
+				<NasledujiciZapasy
+					zapasy={this.state.zapasyB}
+					delkaZapasu={this.state.delkaZapasu}
+					timeToNext={this.state.timeToNext}
+					prestavkaMeziZapasy={parseInt(this.state.casovacB.prestavka_mezi_zapasy)}
+					hriste="B"
+				/>
+				{/* <HrajiciTabulka tymy={this.state.tymy} /> */}
 			</>
 		);
 	}

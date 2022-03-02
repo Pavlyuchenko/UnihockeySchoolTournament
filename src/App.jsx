@@ -28,7 +28,6 @@ class App extends Component {
 		} else {
 			return false;
 		}
-		return true
 	};
 
 	checkRegistrovan = () => {
@@ -52,7 +51,7 @@ class App extends Component {
 					navstevnik: true,
 				}),
 			};
-			fetch("https://vfbapi.pythonanywhere.com/statistika", requestOptions);
+			fetch("http://127.0.0.1:5000/statistika", requestOptions);
 		}
 
 		localStorage.setItem("navstiveno", JSON.stringify(true));
@@ -63,23 +62,14 @@ class App extends Component {
 		return (
 			<Router>
 				<Switch>
-					<Route
-						exact
-						path="/"
-						component={() =>
-							this.checkFavoriteTeam() ? (
-								<Main />
-							) : (
-								<ChooseTeam />
-							)
-						}
-					/>
+					<Route exact path="/" component={ChooseTeam} />
 					<Route exact path="/rozpis" component={Rozpis} />
 					<Route exact path="/pavouk" component={Pavouk} />
 					<Route exact path="/pravidla" component={Pravidla} />
 					<Route exact path="/dotazy" component={Dotazy} />
 					<Route exact path="/tabulky" component={Tabulky} />
-					<Route exact path="/casovac" component={Casovac} />
+					<Route exact path="/casovac/a" component={() => { return <Casovac hriste="a" />}} />
+					<Route exact path="/casovac/b" component={() => { return <Casovac hriste="b" />}} />
 
 					<Route
 						exact

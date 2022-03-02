@@ -15,7 +15,7 @@ class Admin extends Component {
 	};
 
 	componentDidMount() {
-		fetch("https://vfbapi.pythonanywhere.com/adminn")
+		fetch("http://127.0.0.1:5000/adminn")
 			.then((response) => response.json())
 			.then((result) => {
 				for (let tym of result.tymy) {
@@ -46,7 +46,7 @@ class Admin extends Component {
 			}),
 		};
 
-		fetch("https://vfbapi.pythonanywhere.com/update_potvrzeno", requestOptions).then(
+		fetch("http://127.0.0.1:5000/update_potvrzeno", requestOptions).then(
 			() => {
 				var copy = [...this.state.nove_tymy];
 				let asd = copy.splice(index, 1);
@@ -70,7 +70,7 @@ class Admin extends Component {
 				idTymu: teamId,
 			}),
 		};
-		fetch("https://vfbapi.pythonanywhere.com/delete_tym", requestOptions);
+		fetch("http://127.0.0.1:5000/delete_tym", requestOptions);
 	};
 
 	confirmZaplaceno = (index, teamId) => {
@@ -81,7 +81,7 @@ class Admin extends Component {
 				idTymu: teamId,
 			}),
 		};
-		fetch("https://vfbapi.pythonanywhere.com/zaplaceni_potvrzeno", requestOptions).then(
+		fetch("http://127.0.0.1:5000/zaplaceni_potvrzeno", requestOptions).then(
 			() => {
 				let tymy = this.state.prijate_tymy;
 				tymy[index].zaplaceno = !this.state.prijate_tymy[index]

@@ -18,7 +18,7 @@ class ChooseTeam extends Component {
 	};
 
 	componentDidMount() {
-		fetch("https://vfbapi.pythonanywhere.com/choose_team")
+		fetch("http://127.0.0.1:5000/choose_team")
 			.then((response) => response.json())
 			.then((result) => {
 				for (let tym of result.tymy) {
@@ -162,6 +162,11 @@ class ChooseTeam extends Component {
 				<RegistraceNavigation active={4} />
 
 				<header id="chos-team-header">
+					<div id="information">
+						! Turnaj se koná 8. 3. od 7:00 v hale Slezského gymnázia. !
+						<br />
+						Sleduj tuto stránku a <u><a href="https://www.facebook.com/groups/644499778933226/" target="blank">Facebook MGO Info</a></u>, aby ses dozvěděl, kdy tvůj tým hraje první zápas.
+					</div>
 					{/* <h1>Vyber si svůj tým*</h1>
 					<h3>*jehož jsi fanouškem nebo hráčem</h3>
 					<span onClick={this.showWhy}>Proč?</span>

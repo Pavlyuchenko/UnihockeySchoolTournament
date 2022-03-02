@@ -23,7 +23,7 @@ class AdminGChosenTeam extends Component {
 				}),
 			};
 			fetch(
-				"https://vfbapi.pythonanywhere.com/update_tym_statistiky",
+				"http://127.0.0.1:5000/update_tym_statistiky",
 				requestOptions
 			).then(() => this.props.loadZapasyAndTymy());
 		}

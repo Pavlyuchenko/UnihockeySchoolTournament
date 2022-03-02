@@ -33,8 +33,8 @@ class NasledujiciZapasy extends Component {
 					<RozpisNewZapas
 						domaci={domaci}
 						hoste={hoste}
-						cas={hour + ":" + (minutes < 10 ? "0" + minutes : minutes) }
-						key={domaci + " asd " + hoste}
+						cas={this.props.zapasy[i].cas}
+						key={domaci + "vs" + hoste + i}
 					/>
 				);
 			} else {
@@ -42,11 +42,17 @@ class NasledujiciZapasy extends Component {
 					<RozpisZapas
 						domaci={domaci}
 						hoste={hoste}
-						cas={hour + ":" + (minutes < 10 ? "0" + minutes : minutes) }
+						cas={this.props.zapasy[i].cas}
 						key={domaci + "vs" + hoste + i}
 					/>
 				);
 			}
+			{/* <RozpisZapas
+				domaci={domaci}
+				hoste={hoste}
+				cas={hour + ":" + (minutes < 10 ? "0" + minutes : minutes) }
+				key={domaci + "vs" + hoste + i}
+			/> */}
 
 			minutes += this.props.delkaZapasu + this.props.prestavkaMeziZapasy
 		}
@@ -58,7 +64,7 @@ class NasledujiciZapasy extends Component {
 		return (
 			<section id="nasl-zap-sect">
 				<div id="nasl-zap-h2">
-					<h2>Následující zápasy</h2>
+					<h2>Následující zápasy na hřišti {this.props.hriste}</h2>
 					{this.createZapasy()}
 					<Link to="/rozpis" id="nasl-zap-rozpis">
 						Celý rozpis

@@ -43,7 +43,7 @@ class AdminGNasledujiciZapas extends Component {
 									}),
 								};
 								fetch(
-									"https://vfbapi.pythonanywhere.com/update_order",
+									"http://127.0.0.1:5000/update_order",
 									requestOptions
 								).then(() => this.props.loadZapasyAndTymy());
 							}

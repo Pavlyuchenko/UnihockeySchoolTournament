@@ -43,20 +43,20 @@ class Navigation extends Component {
 							Pravidla
 						</div>
 					</Link>
-					<Link to="/rozpis">
+					{/* <Link to="/pavouk">
 						<div
 							id="nav-rozpis"
 							className={"nav-links " + this.state.visible}
 						>
-							Rozpis
+							Pavouk
 						</div>
-					</Link>
-					<Link to="/pavouk">
+					</Link> */}
+					<Link to="/rozpis">
 						<div
 							id="nav-pavouk"
 							className={"nav-links " + this.state.visible}
 						>
-							Pavouk
+							Rozpis
 						</div>
 					</Link>
 					<Link to="/tabulky">
@@ -91,9 +91,9 @@ class Navigation extends Component {
 						<Link to="/dotazy">
 							<span>Dotazy</span>
 						</Link>
-						<Link to="/pavouk">
+						{/* <Link to="/pavouk">
 							<span>Pavouk</span>
-						</Link>
+						</Link> */}
 						<Link to="/tabulky">
 							<span>Tabulky</span>
 						</Link>

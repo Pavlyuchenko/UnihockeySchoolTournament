@@ -159,7 +159,7 @@ class RegistraceSecond extends Component {
 				hraci: this.state.hraci.slice(0, this.state.pocetHracu),
 			}),
 		};
-		fetch("https://vfbapi.pythonanywhere.com/register", requestOptions).then(() => {
+		fetch("http://127.0.0.1:5000/register", requestOptions).then(() => {
 			localStorage.setItem("registrovan", JSON.stringify(true));
 			window.location.href = "/"
 		});
