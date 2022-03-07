@@ -93,7 +93,7 @@ class Rozpis extends Component {
 	createRozpis = () => {
 		let zapasy = [];
 		
-		for (let i = 1; i < Math.max(this.state.zapasyA.length, this.state.zapasyB.length); i++) {
+		for (let i = 0; i < Math.max(this.state.zapasyA.length, this.state.zapasyB.length); i++) {
 			let zapasA = this.state.zapasyA[i];
 			let zapasB = this.state.zapasyB[i];
 			console.log(zapasA)
