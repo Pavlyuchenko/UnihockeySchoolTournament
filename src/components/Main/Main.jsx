@@ -3,7 +3,7 @@ import Navigation from "../Navigation";
 import Logo from "../Logo";
 import ProbihajiciZapas from "./ProbihajiciZapas";
 import NasledujiciZapasy from "./NasledujiciZapasy";
-import HrajiciTabulka from "./HrajiciTabulka";
+import PavoukTest from "../Pavouk/PavoukTest";
 
 class Main extends Component {
 	state = {
@@ -26,8 +26,6 @@ class Main extends Component {
 		fetch("http://127.0.0.1:5000/main")
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result)
-
 				let arrA = [];
 				let arrB = [];
 				for (let zapas of result.zapasyA) {
@@ -85,25 +83,25 @@ class Main extends Component {
 				let domaciGolB = "";
 				let hosteGolB = "";
 
-				if (this.state.prvniZapasA.skore1 < arrA[0].skore1) {
+				if (this.state.prvniZapasA?.skore1 < arrA[0]?.skore1) {
 					domaciGolA = "anim";
 					setTimeout(() => {
 						this.setState({ blikClassDomaciA: "" });
 					}, 4000);
 				}
-				if (this.state.prvniZapasA.skore2 < arrA[0].skore2) {
+				if (this.state.prvniZapasA?.skore2 < arrA[0]?.skore2) {
 					hosteGolA = "animh";
 					setTimeout(() => {
 						this.setState({ blikClassHosteA: "" });
 					}, 4000);
 				}
-				if (this.state.prvniZapasB.skore1 < arrB[0].skore1) {
+				if (this.state.prvniZapasB?.skore1 < arrB[0]?.skore1) {
 					domaciGolB = "anim";
 					setTimeout(() => {
 						this.setState({ blikClassDomaciB: "" });
 					}, 4000);
 				}
-				if (this.state.prvniZapasB.skore2 < arrB[0].skore2) {
+				if (this.state.prvniZapasB?.skore2 < arrB[0]?.skore2) {
 					hosteGolB = "animh";
 					setTimeout(() => {
 						this.setState({ blikClassHosteB: "" });
@@ -167,42 +165,50 @@ class Main extends Component {
 
 	render() {
 		return (
-			<>
+			<div id="MAIN-DIV">
+				{this.state.zapasyA.length > 0 || this.state.zapasyB.length > 0 ? 
+					<>
 				<Logo />
 				<Navigation />
-				<ProbihajiciZapas
-					casovac={this.state.casovacA}
-					zapas={this.state.prvniZapasA}
-					blikClassDomaci={this.state.blikClassDomaciA}
-					blikClassHoste={this.state.blikClassHosteA}
-					delkaZapasu={this.state.delkaZapasu}
-					hriste="A"
-				/>
-				<ProbihajiciZapas
-					casovac={this.state.casovacB}
-					zapas={this.state.prvniZapasB}
-					blikClassDomaci={this.state.blikClassDomaciB}
-					blikClassHoste={this.state.blikClassHosteB}
-					delkaZapasu={this.state.delkaZapasu}
-					hriste="B"
-				/>
-				<NasledujiciZapasy
-					zapasy={this.state.zapasyA}
-					delkaZapasu={this.state.delkaZapasu}
-					timeToNext={this.state.timeToNext}
-					prestavkaMeziZapasy={parseInt(this.state.casovacA.prestavka_mezi_zapasy)}
-					hriste="A"
-				/>
-				<div style={{ marginTop: "-35px" }}></div>
-				<NasledujiciZapasy
-					zapasy={this.state.zapasyB}
-					delkaZapasu={this.state.delkaZapasu}
-					timeToNext={this.state.timeToNext}
-					prestavkaMeziZapasy={parseInt(this.state.casovacB.prestavka_mezi_zapasy)}
-					hriste="B"
-				/>
+						<ProbihajiciZapas
+							casovac={this.state.casovacA}
+							zapas={this.state.prvniZapasA}
+							blikClassDomaci={this.state.blikClassDomaciA}
+							blikClassHoste={this.state.blikClassHosteA}
+							delkaZapasu={this.state.delkaZapasu}
+							hriste="A"
+						/>
+						<ProbihajiciZapas
+							casovac={this.state.casovacB}
+							zapas={this.state.prvniZapasB}
+							blikClassDomaci={this.state.blikClassDomaciB}
+							blikClassHoste={this.state.blikClassHosteB}
+							delkaZapasu={this.state.delkaZapasu}
+							hriste="B"
+						/>
+
+					
+						<NasledujiciZapasy
+							zapasy={this.state.zapasyA}
+							delkaZapasu={this.state.delkaZapasu}
+							timeToNext={this.state.timeToNext}
+							prestavkaMeziZapasy={parseInt(this.state.casovacA.prestavka_mezi_zapasy)}
+							hriste="A"
+						/>
+						<NasledujiciZapasy
+							zapasy={this.state.zapasyB}
+							delkaZapasu={this.state.delkaZapasu}
+							timeToNext={this.state.timeToNext}
+							prestavkaMeziZapasy={parseInt(this.state.casovacB.prestavka_mezi_zapasy)}
+							hriste="B"
+						/>
+					</>
+				: <>
+					<PavoukTest />
+				</>
+				}
 				{/* <HrajiciTabulka tymy={this.state.tymy} /> */}
-			</>
+			</div>
 		);
 	}
 }

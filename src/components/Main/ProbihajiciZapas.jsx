@@ -14,9 +14,9 @@ class ProbihajiciZapas extends Component {
 							className={this.props.blikClassDomaci ? "anim" : ""}
 						>
 							<span className="prob-zap-jmeno">
-								{this.props.zapas.domaci}
+								{this.props.zapas?.domaci}
 							</span>
-							{this.props.zapas.skore1}
+							{this.props.zapas?.skore1}
 							<span
 								id="prob-zap-timer-left"
 								style={
@@ -38,9 +38,9 @@ class ProbihajiciZapas extends Component {
 							className={this.props.blikClassHoste ? "animh" : ""}
 						>
 							<span className="prob-zap-jmeno">
-								{this.props.zapas.hoste}
+								{this.props.zapas?.hoste}
 							</span>
-							{this.props.zapas.skore2}
+							{this.props.zapas?.skore2}
 							<span
 								id="prob-zap-timer-right"
 								style={

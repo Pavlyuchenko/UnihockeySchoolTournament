@@ -66,4 +66,19 @@
 	#nasl-zap-h2 h2 {
 		font-size: 18px;
 	}
+	#nasl-zap-sect {
+		padding-top: 40px;
+	}
+	#MAIN-DIV {
+		padding-bottom: 150px;
+	}
+}
+
+.zapas-skupiny {
+	position: absolute;
+	right: calc(100% + 5px);
+	top: 0;
+	font-size: 20px;
+	color: #f1faee;
+	line-height: 30px;
 }

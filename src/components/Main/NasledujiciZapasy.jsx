@@ -35,6 +35,7 @@ class NasledujiciZapasy extends Component {
 						hoste={hoste}
 						cas={this.props.zapasy[i].cas}
 						key={domaci + "vs" + hoste + i}
+						skupina={this.props.zapasy[i].skupina}
 					/>
 				);
 			} else {
@@ -44,6 +45,7 @@ class NasledujiciZapasy extends Component {
 						hoste={hoste}
 						cas={this.props.zapasy[i].cas}
 						key={domaci + "vs" + hoste + i}
+						skupina={this.props.zapasy[i].skupina}
 					/>
 				);
 			}

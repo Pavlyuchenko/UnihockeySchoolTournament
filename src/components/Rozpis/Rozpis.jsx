@@ -96,6 +96,7 @@ class Rozpis extends Component {
 		for (let i = 1; i < Math.max(this.state.zapasyA.length, this.state.zapasyB.length); i++) {
 			let zapasA = this.state.zapasyA[i];
 			let zapasB = this.state.zapasyB[i];
+			console.log(zapasA)
 			if (isMobile) {
 				zapasy.push(
 					<>
@@ -104,6 +105,7 @@ class Rozpis extends Component {
 							cas={zapasA?.cas}
 							hoste={zapasA?.hoste}
 							key={zapasA?.domaci + " vsA " + zapasA?.hoste}
+							skupina={this.state.zapasyA[i]?.skupina}
 						/>
 						<div style={{ marginTop: "-9px" }}></div>
 						<RozpisNewZapas
@@ -111,6 +113,7 @@ class Rozpis extends Component {
 							cas={zapasB?.cas}
 							hoste={zapasB?.hoste}
 							key={zapasB?.domaci + " vsB " + zapasB?.hoste}
+							skupina={this.state.zapasyB[i]?.skupina}
 						/>
 						<div style={{ height: "16px" }}></div>
 					</>
@@ -123,6 +126,7 @@ class Rozpis extends Component {
 							cas={zapasA?.cas}
 							hoste={zapasA?.hoste}
 							key={zapasA?.domaci + " vsA " + zapasA?.hoste}
+							skupina={this.state.zapasyA[i]?.skupina}
 						/>
 						<div style={{ marginTop: "-7px" }}></div>
 						<RozpisZapas
@@ -130,6 +134,7 @@ class Rozpis extends Component {
 							cas={zapasB?.cas}
 							hoste={zapasB?.hoste}
 							key={zapasB?.domaci + " vsB " + zapasB?.hoste}
+							skupina={this.state.zapasyB[i]?.skupina}
 						/>
 						<div style={{ height: "2px" }}></div>
 					</>
@@ -142,11 +147,9 @@ class Rozpis extends Component {
 	createOdehrane = () => {
 		let zapasy = [];
 
-		console.log(this.state.odehraneZapasyA)
 		for (let i = 0; i < Math.max(this.state.odehraneZapasyA?.length, this.state.odehraneZapasyB?.length); i++) {
 			let zapasA = this.state.odehraneZapasyA[i];
 			let zapasB = this.state.odehraneZapasyB[i];
-			console.log(zapasA)
 			if (isMobile) {
 				zapasy.push(
 					<>

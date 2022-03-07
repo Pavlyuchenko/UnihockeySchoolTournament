@@ -204,6 +204,7 @@ class Casovac extends Component {
 			domaciSkore: 0,
 			hosteSkore: 0,
 			konecZapasu: false,
+			polocas: true,
 		});
 
 		localStorage.setItem("minuty", JSON.stringify(0));

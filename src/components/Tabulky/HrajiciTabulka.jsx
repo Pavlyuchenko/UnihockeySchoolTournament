@@ -33,7 +33,7 @@ class HrajiciTabulka extends Component {
 		return (
 			<section id="hrajici-tabulka-sect">
 				<div id="hrajici-tabulka-nadpis">
-					<h3>Tabulka hrající skupiny</h3>
+					<h3>Tabulka skupiny {this.props.skupina}</h3>
 				</div>
 				<div id="hrajici-tabulka-popis">
 					<span>Jméno</span>

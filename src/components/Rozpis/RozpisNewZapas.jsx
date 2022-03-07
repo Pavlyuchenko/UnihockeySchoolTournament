@@ -4,6 +4,7 @@ class RozpisNewZapas extends Component {
 	state = {};
 	render() {
 		return (
+			<div style={{position: "relative"}}>
 			<div className="rozpis-new-zapas">
 				<div className="rozpis-new-domaci-div">
 					<span>{this.props.domaci}</span>
@@ -19,6 +20,8 @@ class RozpisNewZapas extends Component {
 						{this.props.cas ? this.props.cas : this.props.skore2}
 					</span>
 				</div>
+			</div>
+			<span className="zapas-skupiny">{this.props.skupina}</span>
 			</div>
 		);
 	}

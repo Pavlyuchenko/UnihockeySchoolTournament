@@ -19,7 +19,7 @@ class Pravidla extends Component {
 					<h2>Skupinová fáze</h2>
 					Ve skupinové fáze jsou týmy rozděleny do pěti skupin podle náhodného losu 
 					(jen týmy učitelů jsme vědomě rozdělili, aby se v žádné skupině nenacházely dva týmy učitelů).
-					Všechny skupinové zápasy se odehrají v hale Slezského gymnázia v úterý, 1. 2. 2022 mezi 7:30 a 
+					Všechny skupinové zápasy se odehrají v hale Slezského gymnázia v úterý, 8. 3. 2022 mezi 7:30 a 
 					10:30, přičemž každý zápas trvá 2x6 minut hrubého času. K dispozici budou dvě hřiště A a B, na obou se bude
 					hrát současně. Všech 5 skupin bude hrát zároveň, takže prosíme všechny týmy, aby při této fázi zůstávaly
 					na hale. Dále je nutné sledovat tyto stránky s aktuálním rozpisem, je totiž možné, že budeme muset některé

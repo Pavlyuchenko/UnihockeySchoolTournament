@@ -12,7 +12,7 @@ import Rozpis from "./components/Rozpis/Rozpis";
 import Tabulky from "./components/Tabulky/Tabulky";
 import Pravidla from "./components/Pravidla/Pravidla";
 import Dotazy from "./components/Dotazy/Dotazy";
-import Pavouk from "./components/Pavouk/Pavouk";
+import PavoukTest from "./components/Pavouk/PavoukTest";
 import Registrace from "./components/Registrace/Registrace";
 import Admin from "./components/Admin/Admin";
 import AdminGroup from "./components/AdminGroup/AdminGroup";
@@ -62,9 +62,9 @@ class App extends Component {
 		return (
 			<Router>
 				<Switch>
-					<Route exact path="/" component={ChooseTeam} />
+					<Route exact path="/" component={Main} />
 					<Route exact path="/rozpis" component={Rozpis} />
-					<Route exact path="/pavouk" component={Pavouk} />
+					<Route exact path="/pavouk" component={PavoukTest} />
 					<Route exact path="/pravidla" component={Pravidla} />
 					<Route exact path="/dotazy" component={Dotazy} />
 					<Route exact path="/tabulky" component={Tabulky} />
