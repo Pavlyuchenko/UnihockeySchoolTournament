@@ -27,7 +27,7 @@ class Casovac extends Component {
 				skoreHoste: this.state.hosteSkore,
 			}),
 		};
-		fetch("http://127.0.0.1:5000/update_skore" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
+		fetch("https://vfbapi.pythonanywhere.com/update_skore" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
 	};
 
 	sendCasovac = () => {
@@ -40,7 +40,7 @@ class Casovac extends Component {
 					sekundy: this.state.sekundy,
 				}),
 			};
-			fetch("http://127.0.0.1:5000/update_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
+			fetch("https://vfbapi.pythonanywhere.com/update_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
 		} else {
 			const requestOptions = {
 				method: "POST",
@@ -50,7 +50,7 @@ class Casovac extends Component {
 					sekundy: this.state.sekundy,
 				}),
 			};
-			fetch("http://127.0.0.1:5000/pause_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
+			fetch("https://vfbapi.pythonanywhere.com/pause_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
 		}
 		this.setState({ pauseTimer: !this.state.pauseTimer });
 	};
@@ -127,7 +127,7 @@ class Casovac extends Component {
 			);
 		});
 
-		fetch("http://127.0.0.1:5000/get_curr_zapas" + (this.props.hriste === "b" ? "_b" : ""))
+		fetch("https://vfbapi.pythonanywhere.com/get_curr_zapas" + (this.props.hriste === "b" ? "_b" : ""))
 			.then((response) => response.json())
 			.then((result) => {
 				this.setState({ zapas: result.zapas, delkaZapasu: result.trvani });
@@ -165,7 +165,7 @@ class Casovac extends Component {
 						sekundy: this.state.sekundy,
 					}),
 				};
-				fetch("http://127.0.0.1:5000/pause_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
+				fetch("https://vfbapi.pythonanywhere.com/pause_casovac" + (this.props.hriste === "b" ? "_b" : ""), requestOptions);
 			});
 		}
 
@@ -211,7 +211,7 @@ class Casovac extends Component {
 		localStorage.setItem("sekundy", JSON.stringify(0));
 		localStorage.setItem("desetiny", JSON.stringify(0));
 
-		fetch("http://127.0.0.1:5000/dalsi_zapas" + (this.props.hriste === "b" ? "_b" : ""))
+		fetch("https://vfbapi.pythonanywhere.com/dalsi_zapas" + (this.props.hriste === "b" ? "_b" : ""))
 			.then((response) => response.json())
 			.then((result) => {
 				this.setState({ zapas: result.zapas });

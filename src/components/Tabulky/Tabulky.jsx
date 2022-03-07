@@ -5,7 +5,7 @@ import HrajiciTabulka from "./HrajiciTabulka";
 
 class Tabulky extends Component {
 	componentDidMount() {
-		fetch("http://127.0.0.1:5000/get_teams")
+		fetch("https://vfbapi.pythonanywhere.com/get_teams")
 			.then((response) => response.json())
 			.then((result) => {
 				let tymy = result.tymy

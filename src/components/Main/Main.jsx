@@ -23,7 +23,7 @@ class Main extends Component {
 	};
 
 	componentDidMount() {
-		fetch("http://127.0.0.1:5000/main")
+		fetch("https://vfbapi.pythonanywhere.com/main")
 			.then((response) => response.json())
 			.then((result) => {
 				let arrA = [];
@@ -66,7 +66,7 @@ class Main extends Component {
 	}
 
 	fetchUpdate = () => {
-		fetch("http://127.0.0.1:5000/main")
+		fetch("https://vfbapi.pythonanywhere.com/main")
 			.then((response) => response.json())
 			.then((result) => {
 				let arrA = [];

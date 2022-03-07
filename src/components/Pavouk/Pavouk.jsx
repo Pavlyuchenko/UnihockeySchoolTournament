@@ -5,7 +5,7 @@ import "../css/pavouk.css";
 
 class Pavouk extends Component {
 	componentDidMount() {
-		fetch("http://127.0.0.1:5000/pavouk")
+		fetch("https://vfbapi.pythonanywhere.com/pavouk")
 			.then((response) => response.json())
 			.then((result) => {
 				console.log(result)

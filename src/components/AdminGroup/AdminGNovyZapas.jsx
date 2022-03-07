@@ -67,7 +67,7 @@ class AdminGNovyZapas extends Component {
 										}),
 									};
 									fetch(
-										"http://127.0.0.1:5000/add_zapas",
+										"https://vfbapi.pythonanywhere.com/add_zapas",
 										requestOptions
 									).then(() =>
 										this.props.loadZapasyAndTymy()
@@ -90,7 +90,7 @@ class AdminGNovyZapas extends Component {
 									}),
 								};
 								fetch(
-									"http://127.0.0.1:5000/add_zapas",
+									"https://vfbapi.pythonanywhere.com/add_zapas",
 									requestOptions
 								).then(() => this.props.loadZapasyAndTymy());
 								this.props.addZapasDisplayBox();
