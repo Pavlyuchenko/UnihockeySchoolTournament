@@ -27,12 +27,12 @@ class Navigation extends Component {
 		return (
 			<>
 				<MobileView viewClassName="mobile-nav">
-					<Link to="/dotazy">
+					<Link to="/tymy">
 						<div
 							id="nav-dotazy"
 							className={"nav-links " + this.state.visible}
 						>
-							Dotazy
+							Týmy
 						</div>
 					</Link>
 					<Link to="/">
@@ -88,8 +88,8 @@ class Navigation extends Component {
 						<Link to="/rozpis">
 							<span>Rozpis</span>
 						</Link>
-						<Link to="/dotazy">
-							<span>Dotazy</span>
+						<Link to="/tymy">
+							<span>Týmy</span>
 						</Link>
 						{/* <Link to="/pavouk">
 							<span>Pavouk</span>

@@ -53,7 +53,7 @@ class TymInfo extends Component {
 								<TymInfoMainInfo tym={this.state.tym} nazev={this.props.nazev} tridy={this.state.tridy} />
 
 								<div id="tym-info-zap-sou-flex">
-									<div id="tym-info-zapasy">
+									{/* <div id="tym-info-zapasy">
 										<h3>Zápasy</h3>
 
 										<h4>Odehrané</h4>
@@ -98,7 +98,7 @@ class TymInfo extends Component {
 													: <p style={{ marginLeft: "20px", color: "#fff" }}>Žádné následující zápasy nejsou</p>
 											}
 										</div>
-									</div>
+									</div> */}
 									<div id="tym-info-soupiska">
 										<h3>Soupiska</h3>
 										<div id="tym-info-soupiska-wrapper">

@@ -20,6 +20,7 @@ class Main extends Component {
 		blikClassHosteB: false,
 		delkaZapasu: 12,
 		timeToNext: 0,
+		loading: true,
 	};
 
 	componentDidMount() {
@@ -48,6 +49,7 @@ class Main extends Component {
 						/* tymy: result.tymy, */
 						delkaZapasu: result.casovacA.trvani_zapasu,
 						timeToNext: timeToNextMatch,
+						loading: false,
 					},
 					function () {
 						if (this.interval) {
@@ -166,7 +168,7 @@ class Main extends Component {
 	render() {
 		return (
 			<div id="MAIN-DIV">
-				{this.state.zapasyA.length > 0 || this.state.zapasyB.length > 0 ? 
+				{this.state.zapasyA.length > 0 || this.state.zapasyB.length > 0 || this.state.loading ? 
 					<>
 				<Logo />
 				<Navigation />

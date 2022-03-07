@@ -21,6 +21,9 @@ class Rozpis extends Component {
 				let delkaZapasu = parseInt(result.match_info.delka_zapasu)
 				let prestavkaMeziZapasy = parseInt(result.match_info.prestavka_mezi_zapasy)
 
+				if (result.zapasyA.length === 0 && result.zapasyB.length === 0){
+					window.location.href = "/"
+				}
 
 				this.setState({
 					zapasyA: result.zapasyA,
@@ -32,6 +35,7 @@ class Rozpis extends Component {
 						prestavkaMeziZapasy: prestavkaMeziZapasy,
 					}
 				});
+
 
 			});
 	};

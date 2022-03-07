@@ -63,6 +63,7 @@ class App extends Component {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={Main} />
+					<Route exact path="/tymy" component={ChooseTeam} />
 					<Route exact path="/rozpis" component={Rozpis} />
 					<Route exact path="/pavouk" component={PavoukTest} />
 					<Route exact path="/pravidla" component={Pravidla} />

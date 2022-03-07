@@ -4,6 +4,7 @@ import TeamOption from "./TeamOption";
 import "../css/choose_team.css";
 import { Link } from "react-router-dom";
 import RegistraceNavigation from "../Registrace/RegistraceNavigation";
+import Navigation from "../Navigation";
 
 class ChooseTeam extends Component {
 	state = {
@@ -159,7 +160,8 @@ class ChooseTeam extends Component {
 		return (
 			<>
 				<Logo />
-				<RegistraceNavigation active={4} />
+				{/* <RegistraceNavigation active={4} /> */}
+				<Navigation active={4} />
 
 				<header id="chos-team-header">
 					<div id="information">
